@@ -13,5 +13,6 @@ public enum EventoBotao {
     Incluir,
     Alterar,
     Consultar,
-    Excluir;
+    Excluir,
+    Listar;
 }

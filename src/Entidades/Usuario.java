@@ -10,5 +10,15 @@ package Entidades;
  * @author Rolando
  */
 public class Usuario {
+    private int IdUsuario;
+
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
+    }
+
+    public int getIdUsuario() {
+        return IdUsuario;
+    }
+    
     
 }

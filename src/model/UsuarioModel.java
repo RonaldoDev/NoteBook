@@ -34,6 +34,7 @@ public class UsuarioModel {
     public ArrayList<Usuario> Listar()
     {
         ArrayList<Usuario> _lstUsuarios = new ArrayList<Usuario>();
+        _lstUsuarios.stream().filter((u) -> u.getIdUsuario() == 1).toArray();
         return _lstUsuarios;
     }
 }
