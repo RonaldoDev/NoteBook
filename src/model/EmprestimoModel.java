@@ -6,7 +6,7 @@
 package model;
 
 import Entidades.Livro;
-import Entidades.Usuario;
+import Entidades.Emprestimo;
 import java.util.ArrayList;
 
 /**
@@ -14,19 +14,19 @@ import java.util.ArrayList;
  * @author Rolando
  */
 public class EmprestimoModel {
-     public boolean Incluir(Livro p_livro, Usuario p_usuario)
-    {
-         return true;
-    }
-    public boolean Alterar(Livro p_livro, Usuario p_usuario)
-    {
-         return true;
-    }
-    public boolean Excluir(Livro p_livro, Usuario p_usuario)
+     public boolean Incluir(Livro p_livro, Emprestimo p_emprestimo)
     {
         return true;
     }
-    public Livro Consultar(Livro p_livro, Usuario p_usuario)
+    public boolean Alterar(Livro p_livro, Emprestimo p_emprestimo)
+    {
+         return true;
+    }
+    public boolean Excluir(Livro p_livro, Emprestimo p_emprestimo)
+    {
+        return true;
+    }
+    public Livro Consultar(Livro p_livro, Emprestimo p_emprestimo)
     {
         Livro _p_livro = new Livro();
         return _p_livro;
