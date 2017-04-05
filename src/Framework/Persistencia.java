@@ -10,9 +10,11 @@ import Entidades.Livro;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -27,57 +29,59 @@ import java.util.stream.Stream;
  */
 public class Persistencia {
     
-    public Object ExecutaPersistencia(Object o, EventoBotao evtBotao)
+    public ArrayList<Object> ExecutaPersistencia(Object o, EventoBotao evtBotao)
     {
+        ArrayList<Object> _objRetorno = new ArrayList<>();
         try 
         {
+            String _path = "";
+            _path = RetornaPath(o);
+            Field _field = o.getClass().getField("Id"+o.getClass().getName());
+            int _id = _field.getInt(o);
             switch(evtBotao)
             {
-
                 case Incluir:
-                    o = this.Gravar(o);
+                    _objRetorno.add(this.Gravar(o, _path));
                     break;
                 case Alterar:
+                    _objRetorno.add(this.Alterar(o, _id, _path));
                     break;
                 case Excluir:
+                    _objRetorno.add(this.Excluir(_id, _path));
                     break;
                 case Consultar:
-                    Field _field = o.getClass().getField("Id"+o.getClass().getName());
-                    o = this.RetornaSelecionado(o.getClass().getName(), _field.getInt(o));
+                    _objRetorno.add(this.RetornaSelecionado(o.getClass().getName(),_id));
                     break;
                 case Listar:
+                    _objRetorno = this.RetornaLista(o, _path);
                     break;
             }
             
         
         } 
-        catch (Exception e) {
+        catch (Exception e) 
+        {
         }
-        return o;
+        finally
+        {
+            return _objRetorno;
+        }
     }
-    public boolean Gravar(Object o) throws FileNotFoundException, IOException
+    private boolean Gravar(Object o, String p_path) throws IOException
     {
-        String _path = "";
-        String _nmArquivo = "";
-        if(o.getClass() == Usuario.class)
+        return Gravar(o, p_path, 0);
+    } 
+    private boolean Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException
+    {
+        int _novoId = 0;
+        if(p_id > 0)
         {
-            _path = "../Usuario/";
-            int _novoId = this.RetornaUltimo(_path) + 1;
-            _nmArquivo =  Integer.toString(_novoId) + ".txt";
+            _novoId = p_id;
         }
-        else if(o.getClass() == Livro.class)
-        {
-            _path = "../Livro/";
-            int _novoId = this.RetornaUltimo(_path) + 1;
-            _nmArquivo =  Integer.toString(_novoId) + ".txt";
+        else{
+            _novoId = this.RetornaUltimo(p_path) + 1;
         }
-        else if(o.getClass() == Emprestimo.class)
-        {
-            _path = "../Emprestimo/";
-            int _novoId = this.RetornaUltimo(_path) + 1;
-            _nmArquivo =  Integer.toString(_novoId) + ".txt";
-        }
-        FileOutputStream arquivoGrav = new FileOutputStream(_path+_nmArquivo);
+        FileOutputStream arquivoGrav = new FileOutputStream(RetornaPath(o)+Integer.toString(_novoId) + ".txt");
         ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
         objGravar.writeObject(o);
         objGravar.flush();
@@ -87,17 +91,34 @@ public class Persistencia {
         
         return true;
     }
-    public int RetornaUltimo(String p_path)
+    private boolean Alterar(Object o,int p_id, String p_path) throws IOException
+    {
+        this.Excluir(p_id, p_path);
+        this.Gravar(o, p_path, p_id);
+        return true;
+    }
+    private boolean Excluir(int p_id, String p_path)
+    {
+        File _file = new File(p_path+p_id+".txt");
+        _file.delete();
+        return true;
+    }
+    private int RetornaUltimo(String p_path)
     {
         File arquivo = new File(p_path); 
         File[] arquivos = arquivo.listFiles();
-        Arrays.sort(arquivos,0, arquivos.length);
-        String ultimoArquivo = arquivos[arquivos.length -1].getName();
-        return Integer.parseInt(ultimoArquivo.substring(0,ultimoArquivo.length() -4));
+        int _id = 0;
+        if(arquivos.length > 0)
+        {
+            Arrays.sort(arquivos,0, arquivos.length);
+            String ultimoArquivo = arquivos[arquivos.length -1].getName();
+            _id = Integer.parseInt(ultimoArquivo.substring(0,ultimoArquivo.length() -4));
+        }
+        return _id;
     }
     public File RetornaSelecionado(String p_path, int p_id)
     {
-        File arquivo = new File("../p_path"); 
+        File arquivo = new File("../"+p_path); 
         ArrayList<File> arquivos = new ArrayList<>(Stream.of(arquivo.listFiles()).collect(Collectors.toList()));
         return arquivos.stream()
                 .filter((File f) -> 
@@ -105,6 +126,42 @@ public class Persistencia {
                   .substring(0, f.getName().length() -4)) == p_id)
                     .findFirst()
                      .orElse(arquivo);
-}
+    }
+    public ArrayList<Object> RetornaLista(Object o, String p_path) throws IOException, FileNotFoundException, ClassNotFoundException
+    {
+        File _arquivo = new File("../"+p_path); 
+        ArrayList<File> _arquivos = new ArrayList<>(Stream.of(_arquivo.listFiles()).collect(Collectors.toList()));
+        ArrayList<Object> _objRetorno = new ArrayList<>();
+        for (File arq : _arquivos) {
+            _objRetorno.add(CarregaArquivo(arq.getName(), p_path));
+        }
+        return _objRetorno;
+    }
+    private Object CarregaArquivo(String p_nmArquivo, String p_path) throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+        FileInputStream arquivoLeitura = new FileInputStream(p_path + p_nmArquivo);
+        ObjectInputStream objLeitura =  new ObjectInputStream(arquivoLeitura);
+        arquivoLeitura.close();
+        objLeitura.close();
+        return objLeitura.readObject();
+    }
+    private String RetornaPath(Object o)
+    {
+        String _path = "";
+        if(o.getClass() == Usuario.class)
+        {
+            _path = "../Usuario/";
+        }
+        else if(o.getClass() == Livro.class)
+        {
+            _path = "../Livro/";
+        }
+        else if(o.getClass() == Emprestimo.class)
+        {
+            _path = "../Emprestimo/";
+        }
+        return _path; 
+    }
+    
     
 }
