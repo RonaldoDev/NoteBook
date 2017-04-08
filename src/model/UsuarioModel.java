@@ -6,6 +6,9 @@
 package model;
 
 import Entidades.Usuario;
+import Framework.Persistencia;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -31,10 +34,14 @@ public class UsuarioModel {
         return _p_usuario;
     }
 
-    public ArrayList<Usuario> Listar()
+    public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException
     {
-        ArrayList<Usuario> _lstUsuarios = new ArrayList<Usuario>();
-        _lstUsuarios.stream().filter((u) -> u.getIdUsuario() == 1).toArray();
-        return _lstUsuarios;
+        Persistencia objDados = new Persistencia();
+        ArrayList<Object> arrUsuarioGenerico = objDados.RetornaLista(Usuario.class, "../Usuario");
+        ArrayList<Usuario> arrUsuario = new ArrayList<>();
+        for (Object usuario : arrUsuario) {
+            arrUsuario.add((Usuario)usuario);
+        }
+        return arrUsuario;
     }
 }

@@ -28,9 +28,23 @@ import java.util.stream.Stream;
  * @author Rolando
  */
 public class Persistencia {
-    
+    private Seguranca seg;
+    public Persistencia ()
+    {
+        this.seg = new Seguranca();
+    }
+    private EventoBotao Operacao;
+
+    public EventoBotao getOperacao() {
+        return Operacao;
+    }
+
+    public void setOperacao(EventoBotao Operacao) {
+        this.Operacao = Operacao;
+    }
     public ArrayList<Object> ExecutaPersistencia(Object o, EventoBotao evtBotao)
     {
+        this.setOperacao(evtBotao);
         ArrayList<Object> _objRetorno = new ArrayList<>();
         try 
         {
@@ -47,7 +61,7 @@ public class Persistencia {
                     _objRetorno.add(this.Alterar(o, _id, _path));
                     break;
                 case Excluir:
-                    _objRetorno.add(this.Excluir(_id, _path));
+                    _objRetorno.add(this.Excluir(_id, _path, false));
                     break;
                 case Consultar:
                     _objRetorno.add(this.RetornaSelecionado(o.getClass().getName(),_id));
@@ -61,47 +75,61 @@ public class Persistencia {
         } 
         catch (Exception e) 
         {
+            
         }
         finally
         {
             return _objRetorno;
         }
     }
-    private boolean Gravar(Object o, String p_path) throws IOException
+    private boolean Gravar(Object o, String p_path) throws IOException, Exception
     {
         return Gravar(o, p_path, 0);
     } 
-    private boolean Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException
+    private boolean Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException, Exception
     {
-        int _novoId = 0;
-        if(p_id > 0)
-        {
-            _novoId = p_id;
-        }
-        else{
-            _novoId = this.RetornaUltimo(p_path) + 1;
-        }
-        FileOutputStream arquivoGrav = new FileOutputStream(RetornaPath(o)+Integer.toString(_novoId) + ".txt");
-        ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-        objGravar.writeObject(o);
-        objGravar.flush();
-        objGravar.close();
-        arquivoGrav.flush();
-        arquivoGrav.close();
         
-        return true;
+        if(seg.VerificaAcesso(getOperacao()))
+        {
+        } else {
+            int _novoId = 0;
+            if(p_id > 0)
+            {
+                _novoId = p_id;
+            }
+            else{
+                _novoId = this.RetornaUltimo(p_path) + 1;
+            }
+            FileOutputStream arquivoGrav = new FileOutputStream(RetornaPath(o)+Integer.toString(_novoId) + ".txt");
+            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+            objGravar.writeObject(o);
+            objGravar.flush();
+            objGravar.close();
+            arquivoGrav.flush();
+            arquivoGrav.close();
+            return true;
+        }
+        throw new Exception("Operação não permitida.");
     }
-    private boolean Alterar(Object o,int p_id, String p_path) throws IOException
+    private boolean Alterar(Object o,int p_id, String p_path) throws IOException, Exception
     {
-        this.Excluir(p_id, p_path);
-        this.Gravar(o, p_path, p_id);
-        return true;
+        if(seg.VerificaAcesso(getOperacao()))
+        {
+            this.Excluir(p_id, p_path, true);
+            this.Gravar(o, p_path, p_id);
+            return true;
+        }
+        throw new Exception("Operação não permitida.");
     }
-    private boolean Excluir(int p_id, String p_path)
+    private boolean Excluir(int p_id, String p_path, boolean IsAlterar) throws Exception
     {
-        File _file = new File(p_path+p_id+".txt");
-        _file.delete();
-        return true;
+        if(seg.VerificaAcesso(getOperacao()) || IsAlterar)
+        {
+            File _file = new File(p_path+p_id+".txt");
+            _file.delete();
+            return true;
+        }
+        throw new Exception("Operação não permitida.");
     }
     private int RetornaUltimo(String p_path)
     {
