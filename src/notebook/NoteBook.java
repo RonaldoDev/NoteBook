@@ -6,6 +6,7 @@
 package notebook;
 
 import Entidades.Usuario;
+import View.LoginView;
 import java.awt.List;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class NoteBook {
      */
     public void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Usuario> _lstUsuarios = new ArrayList<Usuario>();
+               /*ArrayList<Usuario> _lstUsuarios = new ArrayList<Usuario>();
         Usuario c = new Usuario();
         c.setIdUsuario(1);
         _lstUsuarios.add(c);
@@ -35,7 +36,7 @@ public class NoteBook {
         Object[] a = new Object[10];
         a = _lstUsuarios.stream().filter((u) -> u.getIdUsuario() == 4).toArray();
         Usuario b = (Usuario)a[0];
-        int r = 1;
+        int r = 1;*/
        
         
     }
