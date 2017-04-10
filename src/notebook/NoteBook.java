@@ -21,7 +21,13 @@ public class NoteBook {
     /**
      * @param args the command line arguments
      */
-    public void main(String[] args) {
+    public static void main(String[] args) {
+        
+         java.awt.EventQueue.invokeLater(() -> {
+             new LoginView().setVisible(true);
+         });
+         
+         
         // TODO code application logic here
                /*ArrayList<Usuario> _lstUsuarios = new ArrayList<Usuario>();
         Usuario c = new Usuario();
