@@ -112,9 +112,6 @@ public class BalcaoView extends javax.swing.JFrame {
             jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
                 .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelEmprestimoLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(jLabelEmprestimos))
                     .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -124,15 +121,18 @@ public class BalcaoView extends javax.swing.JFrame {
                                 .addComponent(jButtonDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(jButtonConsultaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addComponent(jLabelEmprestimos)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanelEmprestimoLayout.setVerticalGroup(
             jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelEmprestimos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
+                .addComponent(jLabelEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -187,21 +187,20 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelLivroLayout.setHorizontalGroup(
             jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLivroLayout.createSequentialGroup()
-                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelLivroLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(jLabelEmprestimos1))
+                .addGap(12, 12, 12)
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelLivroLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelLivroLayout.createSequentialGroup()
-                                .addComponent(jButtonAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(jButtonRemLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jButtonConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jButtonAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jButtonRemLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButtonConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLivroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelEmprestimos1)
+                .addGap(387, 387, 387))
         );
         jPanelLivroLayout.setVerticalGroup(
             jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,10 +272,10 @@ public class BalcaoView extends javax.swing.JFrame {
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(30, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelUsuarioLayout.createSequentialGroup()
-                .addGap(329, 329, 329)
+            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                .addGap(378, 378, 378)
                 .addComponent(jLabelUsuario)
-                .addGap(360, 360, 360))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelUsuarioLayout.setVerticalGroup(
             jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,27 +441,27 @@ public class BalcaoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemListEmprestimoActionPerformed
 
     private void jButtonAddEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddEmprestimoActionPerformed
-        // TODO add your handling code here:
+        new EmprestimoView(0).setVisible(true);
     }//GEN-LAST:event_jButtonAddEmprestimoActionPerformed
 
     private void jButtonDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolucaoActionPerformed
-        // TODO add your handling code here:
+       new EmprestimoView(1).setVisible(true);
     }//GEN-LAST:event_jButtonDevolucaoActionPerformed
 
     private void jButtonConsultaEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaEmprestimoActionPerformed
-        // TODO add your handling code here:
+       new EmprestimoView(2).setVisible(true);
     }//GEN-LAST:event_jButtonConsultaEmprestimoActionPerformed
 
     private void jButtonAddLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLivroActionPerformed
-        // TODO add your handling code here:
+        new LivroView(0).setVisible(true);
     }//GEN-LAST:event_jButtonAddLivroActionPerformed
 
     private void jButtonRemLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemLivroActionPerformed
-        // TODO add your handling code here:
+        new LivroView(1).setVisible(true);
     }//GEN-LAST:event_jButtonRemLivroActionPerformed
 
     private void jButtonConsultaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaLivroActionPerformed
-        // TODO add your handling code here:
+        new LivroView(2).setVisible(true);
     }//GEN-LAST:event_jButtonConsultaLivroActionPerformed
 
     private void jButtonAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUsuarioActionPerformed

@@ -6,6 +6,7 @@
 package model;
 
 import Entidades.Usuario;
+import Enumeradores.EventoBotao;
 import Framework.Persistencia;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,9 +17,13 @@ import java.util.ArrayList;
  * @author Rolando
  */
 public class UsuarioModel {
+    
+    Persistencia persistencia = new Persistencia();
+    
      public boolean Incluir(Usuario p_usuario)
     {
-         return true;
+        persistencia.ExecutaPersistencia(p_usuario, EventoBotao.Incluir);
+        return true;
     }
     public boolean Alterar(Usuario p_usuario)
     {
@@ -30,8 +35,8 @@ public class UsuarioModel {
     }
     public Usuario Consultar(Usuario p_usuario)
     {
-        Usuario _p_usuario = new Usuario();
-        return _p_usuario;
+        //Usuario _p_usuario = new Usuario();
+        return p_usuario;
     }
 
     public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException

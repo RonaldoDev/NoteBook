@@ -28,8 +28,8 @@ public class EmprestimoModel {
     }
     public Livro Consultar(Livro p_livro, Emprestimo p_emprestimo)
     {
-        Livro _p_livro = new Livro();
-        return _p_livro;
+        //Livro _p_livro = new Livro();
+        return p_livro;
     }
 
     public ArrayList<Livro> Listar()

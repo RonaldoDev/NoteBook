@@ -9,6 +9,7 @@ import Enumeradores.EventoBotao;
 import Enumeradores.TransacaoSistema;
 import Framework.Cripto;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -22,11 +23,13 @@ public class Usuario extends Pessoa{
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
 
-    public Usuario(String nm, String end, String cpf, String dtNasc, String username, String Senha, int tipo) {
+    public Usuario(String nm, String end, String cpf, String dtNasc, String username, char[] senha, int tipo) {
         super(nm, end, cpf, dtNasc);
         this.Usuario = username;
-        this.Senha = Senha;
+        
+        this.Senha = String.valueOf(senha);
         this.tipoUsuario = tipo;
+        System.out.println(nm + " " + this.Senha);
     }
     
     
