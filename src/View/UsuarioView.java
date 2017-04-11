@@ -6,6 +6,7 @@
 package View;
 
 import Entidades.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -228,7 +229,18 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldEndUsuarioActionPerformed
 
     private void jButtonAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUsuarioActionPerformed
-        Usuario user = new Usuario();
+        Usuario user = new Usuario(
+                jTextFieldNomeUsuario.getText(),
+                jTextFieldEndUsuario.getText(),
+                jTextFieldCPFUsuario.getText(),
+                jTextFieldDtNascUsuario.getText(),
+                jTextFieldusernmUsuario.getText(),
+                jPasswordFieldpassUsuario.getSelectedText(),
+                1
+        );
+        JOptionPane.showMessageDialog(null, "Usuário Criado com Sucesso!");
+        this.setVisible(false);
+                
     }//GEN-LAST:event_jButtonAddUsuarioActionPerformed
 
     private void jButtonCancelarAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarAddActionPerformed
