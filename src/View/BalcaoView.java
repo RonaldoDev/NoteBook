@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author jackdaniels
@@ -16,6 +18,9 @@ public class BalcaoView extends javax.swing.JFrame {
      */
     public BalcaoView() {
         initComponents();
+        jPanelEmprestimo.setVisible(true);
+        jPanelUsuario.setVisible(false);
+        jPanelLivro.setVisible(false);
     }
 
     /**
@@ -27,83 +32,487 @@ public class BalcaoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gerEmpButton = new javax.swing.JButton();
-        gerLivroButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
+        jPanelEmprestimo = new javax.swing.JPanel();
+        jLabelEmprestimos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTableEmprestimos = new javax.swing.JTable();
+        jButtonAddEmprestimo = new javax.swing.JButton();
+        jButtonDevolucao = new javax.swing.JButton();
+        jButtonConsultaEmprestimo = new javax.swing.JButton();
+        jPanelLivro = new javax.swing.JPanel();
+        jLabelEmprestimos1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTableLivro = new javax.swing.JTable();
+        jButtonAddLivro = new javax.swing.JButton();
+        jButtonRemLivro = new javax.swing.JButton();
+        jButtonConsultaLivro = new javax.swing.JButton();
+        jPanelUsuario = new javax.swing.JPanel();
+        jLabelUsuario = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTableUsuario = new javax.swing.JTable();
+        jButtonAddUsuario = new javax.swing.JButton();
+        jButtonRemUsuario = new javax.swing.JButton();
+        jButtonConsultaUsuario = new javax.swing.JButton();
+        jMenuBarBalcao = new javax.swing.JMenuBar();
+        jMenuUsuario = new javax.swing.JMenu();
+        jMenuItemListUsuario = new javax.swing.JMenuItem();
+        jMenuItemManUsuario = new javax.swing.JMenuItem();
+        jMenuLivro = new javax.swing.JMenu();
+        jMenuItemListLivro = new javax.swing.JMenuItem();
+        jMenuItemManLivro = new javax.swing.JMenuItem();
+        jMenuEmprestimo = new javax.swing.JMenu();
+        jMenuItemListEmprestimo = new javax.swing.JMenuItem();
+        jMenuItemManEmprestimo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        gerEmpButton.setText("Gerenciar Empréstimos");
-        gerEmpButton.addActionListener(new java.awt.event.ActionListener() {
+        jLabelEmprestimos.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabelEmprestimos.setText("Manipular Empréstimos");
+
+        JTableEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Livro", "Usuario", "Data Empréstimo", "Data Devolução"
+            }
+        ));
+        jScrollPane1.setViewportView(JTableEmprestimos);
+        if (JTableEmprestimos.getColumnModel().getColumnCount() > 0) {
+            JTableEmprestimos.getColumnModel().getColumn(3).setHeaderValue("Exemplares Disponíveis");
+        }
+
+        jButtonAddEmprestimo.setText("Adicionar Empréstimo");
+        jButtonAddEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerEmpButtonActionPerformed(evt);
+                jButtonAddEmprestimoActionPerformed(evt);
             }
         });
 
-        gerLivroButton.setText("Gerenciar Livros");
-        gerLivroButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDevolucao.setText("Realizar Devolução");
+        jButtonDevolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerLivroButtonActionPerformed(evt);
+                jButtonDevolucaoActionPerformed(evt);
             }
         });
 
-        logoutButton.setText("Sair");
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultaEmprestimo.setText("Consultar");
+        jButtonConsultaEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                jButtonConsultaEmprestimoActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanelEmprestimoLayout = new javax.swing.GroupLayout(jPanelEmprestimo);
+        jPanelEmprestimo.setLayout(jPanelEmprestimoLayout);
+        jPanelEmprestimoLayout.setHorizontalGroup(
+            jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
+                .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelEmprestimoLayout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(jLabelEmprestimos))
+                    .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
+                                .addComponent(jButtonAddEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jButtonDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jButtonConsultaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanelEmprestimoLayout.setVerticalGroup(
+            jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmprestimoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabelEmprestimos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultaEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        jLabelEmprestimos1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabelEmprestimos1.setText("Manipular Livros");
+
+        JTableLivro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Título do Livro", "Autor", "Total De Exemplares", "Exemplares Disponíveis"
+            }
+        ));
+        jScrollPane2.setViewportView(JTableLivro);
+        if (JTableLivro.getColumnModel().getColumnCount() > 0) {
+            JTableLivro.getColumnModel().getColumn(3).setHeaderValue("Exemplares Disponíveis");
+        }
+
+        jButtonAddLivro.setText("Adicionar Livro");
+        jButtonAddLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddLivroActionPerformed(evt);
+            }
+        });
+
+        jButtonRemLivro.setText("Remover Livro");
+        jButtonRemLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemLivroActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultaLivro.setText("Consultar Livros");
+        jButtonConsultaLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaLivroActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelLivroLayout = new javax.swing.GroupLayout(jPanelLivro);
+        jPanelLivro.setLayout(jPanelLivroLayout);
+        jPanelLivroLayout.setHorizontalGroup(
+            jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelLivroLayout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(jLabelEmprestimos1))
+                    .addGroup(jPanelLivroLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                                .addComponent(jButtonAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jButtonRemLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jButtonConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanelLivroLayout.setVerticalGroup(
+            jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLivroLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabelEmprestimos1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonRemLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        jLabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabelUsuario.setText("Manipular Usuários");
+
+        JTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome Completo", "Tipo", "Data de Cadastro"
+            }
+        ));
+        jScrollPane3.setViewportView(JTableUsuario);
+
+        jButtonAddUsuario.setText("Adicionar Usuário");
+        jButtonAddUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonRemUsuario.setText("Remover Usuário");
+        jButtonRemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultaUsuario.setText("Consultar Usuário");
+        jButtonConsultaUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelUsuarioLayout = new javax.swing.GroupLayout(jPanelUsuario);
+        jPanelUsuario.setLayout(jPanelUsuarioLayout);
+        jPanelUsuarioLayout.setHorizontalGroup(
+            jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelUsuarioLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAddUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jButtonRemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButtonConsultaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(30, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanelUsuarioLayout.createSequentialGroup()
+                .addGap(329, 329, 329)
+                .addComponent(jLabelUsuario)
+                .addGap(360, 360, 360))
+        );
+        jPanelUsuarioLayout.setVerticalGroup(
+            jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonRemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jMenuUsuario.setText("Usuário");
+        jMenuUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuUsuarioActionPerformed(evt);
+            }
+        });
+
+        jMenuItemListUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        jMenuItemListUsuario.setText("Listar Usuário");
+        jMenuItemListUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuUsuario.add(jMenuItemListUsuario);
+
+        jMenuItemManUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, 0));
+        jMenuItemManUsuario.setText("Manipular Usuário");
+        jMenuItemManUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuUsuario.add(jMenuItemManUsuario);
+
+        jMenuBarBalcao.add(jMenuUsuario);
+
+        jMenuLivro.setText("Livro");
+
+        jMenuItemListLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        jMenuItemListLivro.setText("Listar Livros");
+        jMenuItemListLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListLivroActionPerformed(evt);
+            }
+        });
+        jMenuLivro.add(jMenuItemListLivro);
+
+        jMenuItemManLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, 0));
+        jMenuItemManLivro.setText("Manipular Livros");
+        jMenuItemManLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManLivroActionPerformed(evt);
+            }
+        });
+        jMenuLivro.add(jMenuItemManLivro);
+
+        jMenuBarBalcao.add(jMenuLivro);
+
+        jMenuEmprestimo.setText("Empréstimo");
+
+        jMenuItemListEmprestimo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        jMenuItemListEmprestimo.setText("Listar Empréstimos");
+        jMenuItemListEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListEmprestimoActionPerformed(evt);
+            }
+        });
+        jMenuEmprestimo.add(jMenuItemListEmprestimo);
+
+        jMenuItemManEmprestimo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, 0));
+        jMenuItemManEmprestimo.setText("Manipular Empréstimos");
+        jMenuEmprestimo.add(jMenuItemManEmprestimo);
+
+        jMenuBarBalcao.add(jMenuEmprestimo);
+
+        setJMenuBar(jMenuBarBalcao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(gerLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gerEmpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoutButton))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jPanelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(9, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(21, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(gerLivroButton)
-                .addGap(32, 32, 32)
-                .addComponent(gerEmpButton)
-                .addGap(28, 28, 28)
-                .addComponent(logoutButton)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jPanelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(13, 13, 13)
+                    .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(15, 15, 15)
+                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(16, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gerEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerEmpButtonActionPerformed
+    private void jMenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarioActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new EmprestimoView().setVisible(true);
-    }//GEN-LAST:event_gerEmpButtonActionPerformed
+       
+    }//GEN-LAST:event_jMenuUsuarioActionPerformed
 
-    private void gerLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerLivroButtonActionPerformed
+    private void jMenuItemListUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListUsuarioActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new LivroView().setVisible(true);
-    }//GEN-LAST:event_gerLivroButtonActionPerformed
+        jPanelEmprestimo.setVisible(false);
+        jPanelUsuario.setVisible(true);
+        jPanelLivro.setVisible(false);
+    }//GEN-LAST:event_jMenuItemListUsuarioActionPerformed
 
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+    private void jMenuItemManLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManLivroActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new LoginView().setVisible(true);
-    }//GEN-LAST:event_logoutButtonActionPerformed
+        jPanelEmprestimo.setVisible(false);
+        jPanelUsuario.setVisible(false);
+        jPanelLivro.setVisible(true);
+    }//GEN-LAST:event_jMenuItemManLivroActionPerformed
+
+    private void jMenuItemManUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManUsuarioActionPerformed
+        // TODO add your handling code here:
+        jPanelEmprestimo.setVisible(false);
+        jPanelUsuario.setVisible(true);
+        jPanelLivro.setVisible(false);
+    }//GEN-LAST:event_jMenuItemManUsuarioActionPerformed
+
+    private void jMenuItemListLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListLivroActionPerformed
+        // TODO add your handling code here:
+        jPanelEmprestimo.setVisible(false);
+        jPanelUsuario.setVisible(false);
+        jPanelLivro.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListLivroActionPerformed
+
+    private void jMenuItemListEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEmprestimoActionPerformed
+        // TODO add your handling code here:
+        jPanelEmprestimo.setVisible(true);
+        jPanelUsuario.setVisible(false);
+        jPanelLivro.setVisible(false);
+        
+    }//GEN-LAST:event_jMenuItemListEmprestimoActionPerformed
+
+    private void jButtonAddEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddEmprestimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddEmprestimoActionPerformed
+
+    private void jButtonDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolucaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDevolucaoActionPerformed
+
+    private void jButtonConsultaEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaEmprestimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultaEmprestimoActionPerformed
+
+    private void jButtonAddLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddLivroActionPerformed
+
+    private void jButtonRemLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemLivroActionPerformed
+
+    private void jButtonConsultaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultaLivroActionPerformed
+
+    private void jButtonAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUsuarioActionPerformed
+        // TODO add your handling code here:
+        new UsuarioView(0).setVisible(true);
+    }//GEN-LAST:event_jButtonAddUsuarioActionPerformed
+
+    private void jButtonRemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemUsuarioActionPerformed
+        // TODO add your handling code here:
+        new UsuarioView(1).setVisible(true);
+    }//GEN-LAST:event_jButtonRemUsuarioActionPerformed
+
+    private void jButtonConsultaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaUsuarioActionPerformed
+        // TODO add your handling code here:
+        new UsuarioView(2).setVisible(true);
+    }//GEN-LAST:event_jButtonConsultaUsuarioActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton gerEmpButton;
-    private javax.swing.JButton gerLivroButton;
-    private javax.swing.JButton logoutButton;
+    private javax.swing.JTable JTableEmprestimos;
+    private javax.swing.JTable JTableLivro;
+    private javax.swing.JTable JTableUsuario;
+    private javax.swing.JButton jButtonAddEmprestimo;
+    private javax.swing.JButton jButtonAddLivro;
+    private javax.swing.JButton jButtonAddUsuario;
+    private javax.swing.JButton jButtonConsultaEmprestimo;
+    private javax.swing.JButton jButtonConsultaLivro;
+    private javax.swing.JButton jButtonConsultaUsuario;
+    private javax.swing.JButton jButtonDevolucao;
+    private javax.swing.JButton jButtonRemLivro;
+    private javax.swing.JButton jButtonRemUsuario;
+    private javax.swing.JLabel jLabelEmprestimos;
+    private javax.swing.JLabel jLabelEmprestimos1;
+    private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JMenuBar jMenuBarBalcao;
+    private javax.swing.JMenu jMenuEmprestimo;
+    private javax.swing.JMenuItem jMenuItemListEmprestimo;
+    private javax.swing.JMenuItem jMenuItemListLivro;
+    private javax.swing.JMenuItem jMenuItemListUsuario;
+    private javax.swing.JMenuItem jMenuItemManEmprestimo;
+    private javax.swing.JMenuItem jMenuItemManLivro;
+    private javax.swing.JMenuItem jMenuItemManUsuario;
+    private javax.swing.JMenu jMenuLivro;
+    private javax.swing.JMenu jMenuUsuario;
+    private javax.swing.JPanel jPanelEmprestimo;
+    private javax.swing.JPanel jPanelLivro;
+    private javax.swing.JPanel jPanelUsuario;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

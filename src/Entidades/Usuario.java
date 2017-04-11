@@ -14,11 +14,22 @@ import java.util.ArrayList;
  *
  * @author Rolando
  */
-public class Usuario {
+public class Usuario extends Pessoa{
     private int IdUsuario;
+    private String Usuario;
     private String Senha;
+    private int tipoUsuario;
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
+
+    public Usuario(String nm, String end, String cpf, String dtNasc, String username, String Senha, int tipo) {
+        super(nm, end, cpf, dtNasc);
+        this.Usuario = username;
+        this.Senha = Senha;
+        this.tipoUsuario = tipo;
+    }
+    
+    
 
     public String getSenha() {
         return Senha;

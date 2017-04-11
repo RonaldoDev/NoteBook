@@ -10,5 +10,5 @@ package Enumeradores;
  * @author Rolando
  */
 public enum TipoUsuario {
-    
+    FUNCIONARIO, GERENTE, CLIENTE
 }
