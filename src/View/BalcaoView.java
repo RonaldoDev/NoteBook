@@ -194,6 +194,11 @@ public class BalcaoView extends javax.swing.JFrame {
                 jMenuUsuarioActionPerformed(evt);
             }
         });
+        jMenuUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuUsuarioKeyPressed(evt);
+            }
+        });
 
         jMenuItemListUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
         jMenuItemListUsuario.setText("Listar Usuário");
@@ -349,6 +354,10 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelLivro.setVisible(false);
         new EmprestimoView().setVisible(true);
     }//GEN-LAST:event_jMenuItemManEmprestimoActionPerformed
+
+    private void jMenuUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuUsuarioKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuUsuarioKeyPressed
 
 
 
