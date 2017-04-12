@@ -5,6 +5,7 @@
  */
 package Framework;
 
+import Config.DiretorioPadrao;
 import Entidades.Emprestimo;
 import Entidades.Livro;
 import Entidades.Usuario;
@@ -33,7 +34,7 @@ import java.util.stream.Stream;
  */
 public class Persistencia {
     private Seguranca seg;
-    private String dePath = System.getProperty("user.hone");
+    private String dePath = DiretorioPadrao.getDIRETORIO_PADRAO();
     public Persistencia ()
     {
         this.seg = new Seguranca();
