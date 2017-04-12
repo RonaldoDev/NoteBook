@@ -45,6 +45,7 @@ public class LivroController {
         } 
         catch (Exception e) 
         {
+             System.err.println(e);
         }
         return p_livro;
     }
@@ -55,7 +56,8 @@ public class LivroController {
         ArrayList<Livro> _lstLivro = null;
         try{
             _lstLivro = _mdlLivro.Listar();
-        } catch(Exception e){    
+        } catch(Exception e){ 
+             System.err.println(e);
         }
         return _lstLivro;
     }

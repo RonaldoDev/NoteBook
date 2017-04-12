@@ -5,8 +5,13 @@
  */
 package View;
 
+import Controller.EmprestimoController;
+import Controller.LivroController;
+import Controller.UsuarioController;
+import Entidades.Emprestimo;
 import Entidades.Livro;
 import Entidades.Usuario;
+import Enumeradores.TipoUsuario;
 import java.util.ArrayList;
 import javax.swing.JMenuItem;
 import javax.swing.JTable;
@@ -17,6 +22,9 @@ import javax.swing.table.TableModel;
  * @author jackdaniels
  */
 public class BalcaoView extends javax.swing.JFrame {
+    UsuarioController ctrlUsuario = new UsuarioController();
+    LivroController ctrlLivro = new LivroController();
+    EmprestimoController ctrlEmprestimo = new EmprestimoController();
 
     /**
      * Creates new form BalcaoView
@@ -27,8 +35,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(true);
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(false);
-        
-        
+        preencheTabelaEmprestimo();
     }
 
     /**
@@ -78,11 +85,16 @@ public class BalcaoView extends javax.swing.JFrame {
             new String [] {
                 "Livro", "Usuario", "Data Empréstimo", "Data Devolução"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(JTableEmprestimos);
-        if (JTableEmprestimos.getColumnModel().getColumnCount() > 0) {
-            JTableEmprestimos.getColumnModel().getColumn(3).setHeaderValue("Exemplares Disponíveis");
-        }
 
         javax.swing.GroupLayout jPanelEmprestimoLayout = new javax.swing.GroupLayout(jPanelEmprestimo);
         jPanelEmprestimo.setLayout(jPanelEmprestimoLayout);
@@ -155,15 +167,23 @@ public class BalcaoView extends javax.swing.JFrame {
 
         JTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome Completo", "Tipo", "Data de Cadastro"
+                "Nome Completo", "CPF", "Usuario", "Tipo"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(JTableUsuario);
 
         javax.swing.GroupLayout jPanelUsuarioLayout = new javax.swing.GroupLayout(jPanelUsuario);
@@ -316,6 +336,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(false);
         jPanelUsuario.setVisible(true);
         jPanelLivro.setVisible(false);
+        preencheTabelaUsuario();
     }//GEN-LAST:event_jMenuItemListUsuarioActionPerformed
 
     private void jMenuItemManLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManLivroActionPerformed
@@ -324,6 +345,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(true);
         new LivroView().setVisible(true);
+        preencheTabelaLivro();
     }//GEN-LAST:event_jMenuItemManLivroActionPerformed
 
     private void jMenuItemManUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManUsuarioActionPerformed
@@ -331,7 +353,8 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(false);
         jPanelUsuario.setVisible(true);
         jPanelLivro.setVisible(false);
-         new UsuarioView().setVisible(true);
+        preencheTabelaUsuario();
+        new UsuarioView().setVisible(true);
     }//GEN-LAST:event_jMenuItemManUsuarioActionPerformed
 
     private void jMenuItemListLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListLivroActionPerformed
@@ -339,6 +362,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(false);
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(true);
+        preencheTabelaLivro();
     }//GEN-LAST:event_jMenuItemListLivroActionPerformed
 
     private void jMenuItemListEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEmprestimoActionPerformed
@@ -346,6 +370,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(true);
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(false);
+        preencheTabelaEmprestimo();
         
     }//GEN-LAST:event_jMenuItemListEmprestimoActionPerformed
 
@@ -353,6 +378,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(true);
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(false);
+        preencheTabelaEmprestimo();
         new EmprestimoView().setVisible(true);
     }//GEN-LAST:event_jMenuItemManEmprestimoActionPerformed
 
@@ -386,4 +412,43 @@ public class BalcaoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
+
+private void preencheTabelaUsuario(){
+    ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar();
+    lstUsuario.add(new Usuario("daniel", "rua 1", "12354", "02/02/1996", "Daniel", "1234", TipoUsuario.FUNCIONARIO));
+    System.out.println(lstUsuario.size());
+    for(int i =0; i< lstUsuario.size(); i++){
+        JTableUsuario.setValueAt(lstUsuario.get(i).getNome(), i, 0);
+        JTableUsuario.setValueAt(lstUsuario.get(i).getCpf(), i, 1);
+        JTableUsuario.setValueAt(lstUsuario.get(i).getUsername(), i, 2);
+        JTableUsuario.setValueAt(lstUsuario.get(i).getTipoUsuario(), i, 3);
+    }
+}
+
+private void preencheTabelaLivro(){
+    ArrayList<Livro> lstLivro = ctrlLivro.Listar();
+    lstLivro.add(new Livro("teste", "teste", "teste", 1));
+    System.out.println(lstLivro.size());
+    for(int i =0; i< lstLivro.size(); i++){
+        JTableLivro.setValueAt(lstLivro.get(i).getTitulo(), i, 0);
+        JTableLivro.setValueAt(lstLivro.get(i).getAutor(), i, 1);
+        JTableLivro.setValueAt(lstLivro.get(i).getQtdeTotal(), i, 2);
+        JTableLivro.setValueAt(lstLivro.get(i).getQtdeDisponivel(), i, 3);
+    }
+}
+
+private void preencheTabelaEmprestimo(){
+    ArrayList<Emprestimo> lstEmprestimo = ctrlEmprestimo.Listar();
+    lstEmprestimo.add(new Emprestimo(new Livro("t", null, null,0), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO), "02/02/2017", "02/03/2017"));
+    System.out.println(lstEmprestimo.size());
+    for(int i =0; i< lstEmprestimo.size(); i++){
+        JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getLivro().getTitulo(), i, 0);
+        JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getUsuario().getNome(), i, 1);
+        JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtEmprestimo(), i, 2);
+        JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtDevolucao(), i, 3);
+    }
+}
+
+
+
 }

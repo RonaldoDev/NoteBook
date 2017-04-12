@@ -43,6 +43,7 @@ public class UsuarioController {
         } 
         catch (Exception e) 
         {
+             System.err.println(e);
         }
         return p_usuario;
     }
@@ -53,7 +54,7 @@ public class UsuarioController {
         try{
             _lstUsuario = _mdlUsuario.Listar();
         } catch(Exception e){
-            
+            System.err.println(e);
         }
         return _lstUsuario;
     }
