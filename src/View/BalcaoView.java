@@ -428,7 +428,7 @@ public class BalcaoView extends javax.swing.JFrame {
 
     private void preencheTabelaLivro() {
         ArrayList<Livro> lstLivro = ctrlLivro.Listar();
-        lstLivro.add(new Livro("teste", "teste", "teste", 1));
+        lstLivro.add(new Livro("teste", "teste", "teste"));
         System.out.println(lstLivro.size());
         for (int i = 0; i < lstLivro.size(); i++) {
             JTableLivro.setValueAt(lstLivro.get(i).getTitulo(), i, 0);
@@ -440,7 +440,7 @@ public class BalcaoView extends javax.swing.JFrame {
 
     private void preencheTabelaEmprestimo() {
         ArrayList<Emprestimo> lstEmprestimo = ctrlEmprestimo.Listar();
-        lstEmprestimo.add(new Emprestimo(new Livro("t", null, null, 0), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO), "02/02/2017", "02/03/2017"));
+        lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO), "02/02/2017", "02/03/2017"));
         System.out.println(lstEmprestimo.size());
         for (int i = 0; i < lstEmprestimo.size(); i++) {
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getLivro().getTitulo(), i, 0);

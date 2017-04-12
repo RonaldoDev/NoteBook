@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Enumeradores.SituacaoLivro;
+
 /**
  *
  * @author Rolando
@@ -19,6 +21,7 @@ public class Emprestimo {
     public Emprestimo(Livro livro, Usuario user, String dtEmp, String dtDev){
         this.idEmprestimo = 0;
         this.livro = livro;
+        this.livro.setSituacao(SituacaoLivro.Emprestado);
         this.usuario = user;
         this.dtDevolucao = dtDev;
         this.dtEmprestimo = dtEmp;
