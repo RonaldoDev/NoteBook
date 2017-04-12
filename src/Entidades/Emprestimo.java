@@ -10,12 +10,14 @@ package Entidades;
  * @author Rolando
  */
 public class Emprestimo {
+    private int idEmprestimo;
     private Livro livro;
     private Usuario usuario;
     private String dtEmprestimo;
     private String dtDevolucao;
     
     public Emprestimo(Livro livro, Usuario user, String dtEmp, String dtDev){
+        this.idEmprestimo = 0;
         this.livro = livro;
         this.usuario = user;
         this.dtDevolucao = dtDev;
@@ -48,6 +50,20 @@ public class Emprestimo {
      */
     public String getDtDevolucao() {
         return dtDevolucao;
+    }
+
+    /**
+     * @return the idEmprestimo
+     */
+    public int getIdEmprestimo() {
+        return idEmprestimo;
+    }
+
+    /**
+     * @param idEmprestimo the idEmprestimo to set
+     */
+    public void setIdEmprestimo(int idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
     }
     
 }

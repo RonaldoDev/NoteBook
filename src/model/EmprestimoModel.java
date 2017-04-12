@@ -7,6 +7,8 @@ package model;
 
 import Entidades.Livro;
 import Entidades.Emprestimo;
+import Enumeradores.EventoBotao;
+import Framework.Persistencia;
 import java.util.ArrayList;
 
 /**
@@ -14,27 +16,36 @@ import java.util.ArrayList;
  * @author Rolando
  */
 public class EmprestimoModel {
-     public boolean Incluir(Livro p_livro, Emprestimo p_emprestimo)
+    
+    Persistencia db = new Persistencia();
+
+    
+     public Emprestimo Incluir(Livro p_livro, Emprestimo p_emprestimo)
     {
-        return true;
+        p_emprestimo.setIdEmprestimo((int)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Incluir).get(0));
+      return  p_emprestimo;
     }
-    public boolean Alterar(Livro p_livro, Emprestimo p_emprestimo)
+    public Emprestimo Alterar(Livro p_livro, Emprestimo p_emprestimo)
     {
-         return true;
+         return (Emprestimo)db.ExecutaPersistencia(p_emprestimo , EventoBotao.Alterar).get(0);
     }
     public boolean Excluir(Livro p_livro, Emprestimo p_emprestimo)
     {
-        return true;
+        return (boolean)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Excluir).get(0);
     }
-    public Livro Consultar(Livro p_livro, Emprestimo p_emprestimo)
+    public Emprestimo Consultar(Livro p_livro, Emprestimo p_emprestimo)
     {
-        //Livro _p_livro = new Livro();
-        return p_livro;
+        return (Emprestimo)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
+
     }
 
-    public ArrayList<Livro> Listar()
+    public ArrayList<Emprestimo> Listar()
     {
-        ArrayList<Livro> _lstLivros = new ArrayList<Livro>();
-        return _lstLivros;
+        ArrayList<Object> arrEmprestimoGenerico = db.ExecutaPersistencia(0, EventoBotao.Listar);
+        ArrayList<Emprestimo> arrEmprestimo = new ArrayList<>();
+        for (Object emprestimo : arrEmprestimoGenerico) {
+            arrEmprestimo.add((Emprestimo)emprestimo);
+        }
+        return arrEmprestimo;
     }
 }

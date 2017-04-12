@@ -10,7 +10,7 @@ package Entidades;
  * @author Rolando
  */
 public class Livro {
-    
+    private int idLivro;
     private String titulo;
     private String autor;
     private String edicao;
@@ -18,6 +18,7 @@ public class Livro {
     private String qtdeDisponivel;
     
     public Livro(String titulo, String autor, String edicao, String qtdeTotal){
+        this.idLivro = 0;
         this.autor = autor;
         this.titulo = titulo;
         this.edicao = edicao;
@@ -71,6 +72,20 @@ public class Livro {
      */
     public void setQtdeDisponivel(String qtdeDisponivel) {
         this.qtdeDisponivel = qtdeDisponivel;
+    }
+
+    /**
+     * @return the idLivro
+     */
+    public int getIdLivro() {
+        return idLivro;
+    }
+
+    /**
+     * @param idLivro the idLivro to set
+     */
+    public void setIdLivro(int idLivro) {
+        this.idLivro = idLivro;
     }
     
 }

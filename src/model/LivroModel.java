@@ -6,6 +6,8 @@
 package model;
 
 import Entidades.Livro;
+import Enumeradores.EventoBotao;
+import Framework.Persistencia;
 import java.awt.List;
 import java.util.ArrayList;
 
@@ -15,28 +17,34 @@ import java.util.ArrayList;
  */
 public class LivroModel {
     
-    public boolean Incluir(Livro p_livro)
+    Persistencia db = new Persistencia();
+    
+    public Livro Incluir(Livro p_livro)
     {
-         return true;
+         p_livro.setIdLivro((int)db.ExecutaPersistencia(p_livro, EventoBotao.Incluir).get(0));
+      return  p_livro;
     }
-    public boolean Alterar(Livro p_livro)
+    public Livro Alterar(Livro p_livro)
     {
-         return true;
+        return (Livro)db.ExecutaPersistencia(p_livro, EventoBotao.Alterar).get(0);
     }
     public boolean Excluir(Livro p_livro)
     {
-        return true;
+        return (boolean)db.ExecutaPersistencia(p_livro, EventoBotao.Excluir).get(0);
     }
     public Livro Consultar(Livro p_livro)
     {
-        //Livro _p_livro = new Livro();
-        return p_livro;
+        return (Livro)db.ExecutaPersistencia(p_livro, EventoBotao.Alterar).get(0);
     }
 
     public ArrayList<Livro> Listar()
     {
-        ArrayList<Livro> _lstLivros = new ArrayList<Livro>();
-        return _lstLivros;
+        ArrayList<Object> arrLivroGenerico = db.ExecutaPersistencia(0, EventoBotao.Listar);
+        ArrayList<Livro> arrLivro = new ArrayList<>();
+        for (Object livro : arrLivroGenerico) {
+            arrLivro.add((Livro)livro);
+        }
+        return arrLivro;
     }
     
 }
