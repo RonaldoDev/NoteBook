@@ -25,11 +25,10 @@ public class Usuario extends Pessoa{
 
     public Usuario(String nm, String end, String cpf, String dtNasc, String username, char[] senha, int tipo) {
         super(nm, end, cpf, dtNasc);
+        this.IdUsuario = 23;
         this.Usuario = username;
-        
         this.Senha = String.valueOf(senha);
         this.tipoUsuario = tipo;
-        System.out.println(nm + " " + this.Senha);
     }
     
     

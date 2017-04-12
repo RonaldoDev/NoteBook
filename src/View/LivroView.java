@@ -5,6 +5,10 @@
  */
 package View;
 
+import Controller.LivroController;
+import Entidades.Livro;
+import Enumeradores.EventoBotao;
+import Framework.Persistencia;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +16,15 @@ import javax.swing.JOptionPane;
  * @author jackdaniels
  */
 public class LivroView extends javax.swing.JFrame {
+    LivroController lvrController = new LivroController();
 
     /**
      * Creates new form LivroView
+     * @param tipoView
      */
-    public LivroView(int tipoView) {
+    public LivroView() {
         initComponents();
-         switch(tipoView){
+        /* switch(tipoView){
             case 0: //adiciona
                 jPanelAddLivro.setVisible(true);
                 jPanelRmvLivro.setVisible(false);
@@ -36,366 +42,253 @@ public class LivroView extends javax.swing.JFrame {
                 jPanelRmvLivro.setVisible(false);
                 jPanelConsultaLivro.setVisible(true);
             break;
-        }
+        }*/
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelAddLivro = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldTituloLivro = new javax.swing.JTextField();
+        jPanelCrud = new javax.swing.JPanel();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonRmv = new javax.swing.JButton();
+        jButtonCons = new javax.swing.JButton();
+        jButtonEdt = new javax.swing.JButton();
+        jPanelAdd = new javax.swing.JPanel();
+        jPanelCampos = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldDtQtdeLivro = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextFieldAutorLivro = new javax.swing.JTextField();
-        jButtonAddLivro = new javax.swing.JButton();
-        jButtonCancelarAdd = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldDEdicaoLivro = new javax.swing.JTextField();
-        jPanelRmvLivro = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextFieldRmvLivro = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jButtonRmvLivro = new javax.swing.JButton();
-        jButtonRmvCancelar = new javax.swing.JButton();
-        jPanelConsultaLivro = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jTextFieldConsultaLivro = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jButtonConsultarLivro = new javax.swing.JButton();
-        jButtonConsultarCancelar = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jButtonCancel = new javax.swing.JButton();
+        jButtonAddUser = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanelCrud.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jButtonAdd.setText("Adicionar");
+
+        jButtonRmv.setText("Remover");
+
+        jButtonCons.setText("Consultar");
+
+        jButtonEdt.setText("Editar");
+
+        javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
+        jPanelCrud.setLayout(jPanelCrudLayout);
+        jPanelCrudLayout.setHorizontalGroup(
+            jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCons, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelCrudLayout.setVerticalGroup(
+            jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCrudLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(jButtonCons, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(jButtonRmv, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(jButtonEdt, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanelCampos.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Título:");
+
+        jLabel3.setText("Autor:");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Edição:");
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Qtde Estoque:");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCamposLayout = new javax.swing.GroupLayout(jPanelCampos);
+        jPanelCampos.setLayout(jPanelCamposLayout);
+        jPanelCamposLayout.setHorizontalGroup(
+            jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCamposLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCamposLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCamposLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCamposLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+        jPanelCamposLayout.setVerticalGroup(
+            jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCamposLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+
+        jButtonCancel.setText("Cancelar");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
+
+        jButtonAddUser.setText("Adicionar");
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel1.setText("Adicionar Livro");
 
-        jTextFieldTituloLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTituloLivroActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Título");
-
-        jLabel4.setText("Qtde Disponivel");
-
-        jTextFieldDtQtdeLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDtQtdeLivroActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Autor");
-
-        jTextFieldAutorLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAutorLivroActionPerformed(evt);
-            }
-        });
-
-        jButtonAddLivro.setText("Adicionar");
-        jButtonAddLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddLivroActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelarAdd.setText("Cancelar");
-        jButtonCancelarAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarAddActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("Edição");
-
-        javax.swing.GroupLayout jPanelAddLivroLayout = new javax.swing.GroupLayout(jPanelAddLivro);
-        jPanelAddLivro.setLayout(jPanelAddLivroLayout);
-        jPanelAddLivroLayout.setHorizontalGroup(
-            jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jButtonCancelarAdd)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButtonAddLivro))
-                    .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldAutorLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAddLivroLayout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldTituloLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldDtQtdeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldDEdicaoLivro)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelAddLivroLayout.setVerticalGroup(
-            jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddLivroLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTituloLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldAutorLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(11, 11, 11)
-                .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDtQtdeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDEdicaoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanelAddLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancelarAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout jPanelAddLayout = new javax.swing.GroupLayout(jPanelAdd);
+        jPanelAdd.setLayout(jPanelAddLayout);
+        jPanelAddLayout.setHorizontalGroup(
+            jPanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanelAddLayout.createSequentialGroup()
+                        .addComponent(jButtonAddUser)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButtonCancel)))
                 .addContainerGap())
         );
-
-        jLabel17.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel17.setText("Remover Livro");
-
-        jTextFieldRmvLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldRmvLivroActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Digite o nome do livro:");
-
-        jButtonRmvLivro.setText("Remover");
-
-        jButtonRmvCancelar.setText("Cancelar");
-        jButtonRmvCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRmvCancelarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelRmvLivroLayout = new javax.swing.GroupLayout(jPanelRmvLivro);
-        jPanelRmvLivro.setLayout(jPanelRmvLivroLayout);
-        jPanelRmvLivroLayout.setHorizontalGroup(
-            jPanelRmvLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRmvLivroLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
-                .addGroup(jPanelRmvLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldRmvLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel17)
-                    .addGroup(jPanelRmvLivroLayout.createSequentialGroup()
-                        .addComponent(jButtonRmvCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRmvLivro)))
-                .addGap(97, 97, 97))
-        );
-        jPanelRmvLivroLayout.setVerticalGroup(
-            jPanelRmvLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRmvLivroLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel17)
-                .addGap(67, 67, 67)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldRmvLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(jPanelRmvLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRmvLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonRmvCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-
-        jLabel18.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel18.setText("Consultar Livro");
-
-        jTextFieldConsultaLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldConsultaLivroActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Digite o nome do livro:");
-
-        jButtonConsultarLivro.setText("Consultar");
-        jButtonConsultarLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarLivroActionPerformed(evt);
-            }
-        });
-
-        jButtonConsultarCancelar.setText("Cancelar");
-        jButtonConsultarCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarCancelarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelConsultaLivroLayout = new javax.swing.GroupLayout(jPanelConsultaLivro);
-        jPanelConsultaLivro.setLayout(jPanelConsultaLivroLayout);
-        jPanelConsultaLivroLayout.setHorizontalGroup(
-            jPanelConsultaLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaLivroLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jPanelConsultaLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel18)
-                    .addGroup(jPanelConsultaLivroLayout.createSequentialGroup()
-                        .addComponent(jButtonConsultarCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonConsultarLivro)))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-        jPanelConsultaLivroLayout.setVerticalGroup(
-            jPanelConsultaLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaLivroLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel18)
-                .addGap(65, 65, 65)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(jPanelConsultaLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConsultarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsultarCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+        jPanelAddLayout.setVerticalGroup(
+            jPanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelRmvLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelCrud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelAddLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelRmvLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelConsultaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldTituloLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTituloLivroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTituloLivroActionPerformed
-
-    private void jTextFieldAutorLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAutorLivroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAutorLivroActionPerformed
-
-    private void jButtonAddLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLivroActionPerformed
-        
-        JOptionPane.showMessageDialog(null, "Livro adicionado ao sistema!");
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         this.dispose();
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
-    }//GEN-LAST:event_jButtonAddLivroActionPerformed
-
-    private void jButtonCancelarAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarAddActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButtonCancelarAddActionPerformed
-
-    private void jTextFieldRmvLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRmvLivroActionPerformed
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldRmvLivroActionPerformed
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jButtonRmvCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButtonRmvCancelarActionPerformed
-
-    private void jTextFieldConsultaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConsultaLivroActionPerformed
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldConsultaLivroActionPerformed
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButtonConsultarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarLivroActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConsultarLivroActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButtonConsultarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButtonConsultarCancelarActionPerformed
-
-    private void jTextFieldDtQtdeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDtQtdeLivroActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDtQtdeLivroActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddLivro;
-    private javax.swing.JButton jButtonCancelarAdd;
-    private javax.swing.JButton jButtonConsultarCancelar;
-    private javax.swing.JButton jButtonConsultarLivro;
-    private javax.swing.JButton jButtonRmvCancelar;
-    private javax.swing.JButton jButtonRmvLivro;
+    private javax.swing.JButton jButtonAdd;
+    private javax.swing.JButton jButtonAddUser;
+    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonCons;
+    private javax.swing.JButton jButtonEdt;
+    private javax.swing.JButton jButtonRmv;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanelAddLivro;
-    private javax.swing.JPanel jPanelConsultaLivro;
-    private javax.swing.JPanel jPanelRmvLivro;
-    private javax.swing.JTextField jTextFieldAutorLivro;
-    private javax.swing.JTextField jTextFieldConsultaLivro;
-    private javax.swing.JTextField jTextFieldDEdicaoLivro;
-    private javax.swing.JTextField jTextFieldDtQtdeLivro;
-    private javax.swing.JTextField jTextFieldRmvLivro;
-    private javax.swing.JTextField jTextFieldTituloLivro;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanelAdd;
+    private javax.swing.JPanel jPanelCampos;
+    private javax.swing.JPanel jPanelCrud;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

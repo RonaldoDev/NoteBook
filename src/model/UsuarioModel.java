@@ -22,8 +22,9 @@ public class UsuarioModel {
     
      public boolean Incluir(Usuario p_usuario)
     {
-        persistencia.ExecutaPersistencia(p_usuario, EventoBotao.Incluir);
-        return true;
+       ArrayList<Object> list = persistencia.ExecutaPersistencia(p_usuario, EventoBotao.Incluir);
+       //System.out.print(list.isEmpty());
+       return true;
     }
     public boolean Alterar(Usuario p_usuario)
     {
