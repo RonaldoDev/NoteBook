@@ -17,6 +17,7 @@ public class LoginView extends javax.swing.JFrame {
      * Creates new form LoginView
      */
     public LoginView() {
+        this.setLocation(500,250);
         initComponents();
     }
 

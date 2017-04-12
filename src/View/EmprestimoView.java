@@ -18,6 +18,7 @@ public class EmprestimoView extends javax.swing.JFrame {
      * Creates new form EmprestimoView
      */
     public EmprestimoView() {
+        this.setLocation(300,100);
         initComponents();
     }
 
@@ -270,21 +271,28 @@ public class EmprestimoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-
+        jLabelEmprestimo.setText("Adicionar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Adicionar");
 
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
 
+        jLabelEmprestimo.setText("Remover Emprestimo");
+        jButtonConfirmEmprestimo.setText("Remover");
 
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
+        jLabelEmprestimo.setText("Consultar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Consultar");
 
 
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
+        jLabelEmprestimo.setText("Editar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Editar");
 
 
     }//GEN-LAST:event_jButtonEdtActionPerformed

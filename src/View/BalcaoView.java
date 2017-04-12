@@ -22,6 +22,7 @@ public class BalcaoView extends javax.swing.JFrame {
      * Creates new form BalcaoView
      */
     public BalcaoView() {
+        this.setLocation(150,50);
         initComponents();
         jPanelEmprestimo.setVisible(true);
         jPanelUsuario.setVisible(false);
@@ -44,7 +45,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableEmprestimos = new javax.swing.JTable();
         jPanelLivro = new javax.swing.JPanel();
-        jLabelEmprestimos1 = new javax.swing.JLabel();
+        jLabelLivro = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableLivro = new javax.swing.JTable();
         jPanelUsuario = new javax.swing.JPanel();
@@ -65,7 +66,7 @@ public class BalcaoView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelEmprestimos.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabelEmprestimos.setText("Manipular Empréstimos");
+        jLabelEmprestimos.setText("Lista de Empréstimos");
 
         JTableEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,8 +108,8 @@ public class BalcaoView extends javax.swing.JFrame {
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        jLabelEmprestimos1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabelEmprestimos1.setText("Manipular Livros");
+        jLabelLivro.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabelLivro.setText("Lista de Livros");
 
         JTableLivro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,21 +137,21 @@ public class BalcaoView extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLivroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelEmprestimos1)
+                .addComponent(jLabelLivro)
                 .addGap(387, 387, 387))
         );
         jPanelLivroLayout.setVerticalGroup(
             jPanelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLivroLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabelEmprestimos1)
+                .addComponent(jLabelLivro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jLabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabelUsuario.setText("Manipular Usuários");
+        jLabelUsuario.setText("Lista de Usuários");
 
         JTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -366,7 +367,7 @@ public class BalcaoView extends javax.swing.JFrame {
     private javax.swing.JTable JTableLivro;
     private javax.swing.JTable JTableUsuario;
     private javax.swing.JLabel jLabelEmprestimos;
-    private javax.swing.JLabel jLabelEmprestimos1;
+    private javax.swing.JLabel jLabelLivro;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JMenuBar jMenuBarBalcao;
     private javax.swing.JMenu jMenuEmprestimo;

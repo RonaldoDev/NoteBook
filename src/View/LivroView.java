@@ -23,6 +23,7 @@ public class LivroView extends javax.swing.JFrame {
      * 
      */
     public LivroView() {
+        this.setLocation(300,100);
         initComponents();
         
     }
@@ -278,22 +279,23 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTituloLivroActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-       
-        
+        jLabelLivro.setText("Adicionar Livro");
+        jButtonConfirmLivro.setText("Adicionar");
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-
-        
+        jLabelLivro.setText("Remover Livro");
+        jButtonConfirmLivro.setText("Remover");
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
-
-        
+        jLabelLivro.setText("Editar Livro");
+        jButtonConfirmLivro.setText("Editar");
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-        
+        jLabelLivro.setText("Consultar Livro");
+        jButtonConfirmLivro.setText("Consultar");
        
     }//GEN-LAST:event_jButtonConsActionPerformed
 

@@ -20,6 +20,7 @@ public class UsuarioView extends javax.swing.JFrame {
      * Creates new form UsuarioView
      */
     public UsuarioView() {
+        this.setLocation(300,100);
         initComponents();
         
     }
@@ -52,7 +53,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldIdUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButtonConfirmUser = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,8 +265,8 @@ public class UsuarioView extends javax.swing.JFrame {
 
         jButtonConfirmUser.setText("Adicionar");
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel1.setText("Adicionar Usuario");
+        jLabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabelUsuario.setText("Adicionar Usuario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,7 +279,7 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
+                            .addComponent(jLabelUsuario)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonConfirmUser)
                                 .addGap(32, 32, 32)
@@ -291,7 +292,7 @@ public class UsuarioView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,19 +306,23 @@ public class UsuarioView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-     
+        jLabelUsuario.setText("Adicionar Usuario");
+        jButtonConfirmUser.setText("Adicionar");
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-      
+        jLabelUsuario.setText("Remover Usuario");
+        jButtonConfirmUser.setText("Remover");
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-    
+        jLabelUsuario.setText("Consultar Usuario");
+        jButtonConfirmUser.setText("Consultar");
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
-      
+        jLabelUsuario.setText("Editar Usuario");
+        jButtonConfirmUser.setText("Editar");
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
     private void jTextFieldNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeUsuarioActionPerformed
@@ -360,7 +365,6 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEdt;
     private javax.swing.JButton jButtonRmv;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -369,6 +373,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelCampos;
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JTextField jTextFieldCPFUsuario;
