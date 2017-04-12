@@ -59,7 +59,7 @@ public class Persistencia {
             switch(evtBotao)
             {
                 case Incluir:
-                    _objRetorno.add(this.Gravar(o, _path));
+                    _objRetorno.add(this.Gravar(o, _id));
                     break;
                 case Alterar:
                     _objRetorno.add(this.Alterar(o, _id, _path));
@@ -86,14 +86,9 @@ public class Persistencia {
             return _objRetorno;
         }
     }
-    private Object Gravar(Object o, String p_path) throws IOException, Exception
+    private Object Gravar(Object o, int p_id) throws FileNotFoundException, IOException, Exception
     {
-        return Gravar(o, p_path, 0);
-    } 
-    private Object Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException, Exception
-    {
-        
-        if(seg.VerificaAcesso(getOperacao()))
+        if(!seg.VerificaAcesso(getOperacao()))
         {
         } else {
             int _novoId = 0;
@@ -102,7 +97,7 @@ public class Persistencia {
                 _novoId = p_id;
             }
             else{
-                _novoId = this.RetornaUltimo(p_path) + 1;
+                _novoId = this.RetornaUltimo(dePath) + 1;
             }
             FileOutputStream arquivoGrav = new FileOutputStream(dePath+Integer.toString(_novoId) + ".txt");
             ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
@@ -111,8 +106,7 @@ public class Persistencia {
             objGravar.close();
             arquivoGrav.flush();
             arquivoGrav.close();
-            o.getClass().getMethod("setId"+o.getClass().getName().substring(10)).invoke(_novoId);
-            return true;
+            return _novoId;
         }
         throw new Exception("Operação não permitida.");
     }
@@ -121,7 +115,7 @@ public class Persistencia {
         if(seg.VerificaAcesso(getOperacao()))
         {
             this.Excluir(p_id, p_path, true);
-            this.Gravar(o, p_path, p_id);
+            this.Gravar(o, p_id);
             return true;
         }
         throw new Exception("Operação não permitida.");

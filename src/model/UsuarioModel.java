@@ -23,7 +23,8 @@ public class UsuarioModel {
     
     public Usuario Incluir(Usuario p_usuario)
     {
-      return (Usuario)db.ExecutaPersistencia(p_usuario, EventoBotao.Incluir).get(0);
+      p_usuario.setIdUsuario((int)db.ExecutaPersistencia(p_usuario, EventoBotao.Incluir).get(0));
+      return  p_usuario;
     }
     public Usuario Alterar(Usuario p_usuario)
     {
