@@ -18,17 +18,17 @@ import model.UsuarioModel;
  */
 public class UsuarioView extends javax.swing.JFrame {
 
-     UsuarioController ctrlUsuario = new UsuarioController();
-     private EventoBotao acao;
+    UsuarioController ctrlUsuario = new UsuarioController();
+    private EventoBotao acao;
+
     /**
      * Creates new form UsuarioView
      */
     public UsuarioView() {
-        this.setLocation(300,100);
+        this.setLocation(300, 100);
         initComponents();
-        
-    }
 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -331,7 +331,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldNomeUsuario.setText(user.getNome());
         jTextFieldEnderecoUsuario.setText(user.getEndereco());
         jTextFieldCPFUsuario.setText(user.getCpf());
-        jTextFieldDtNascUsuario.setText(user.getDataNascimento());
+        jTextFieldDtNascUsuario.setText(user.getDtNasc());
         jTextFieldUserName.setText("aa");
         jTextFieldSenha.setText("**********");
     }//GEN-LAST:event_jButtonConsActionPerformed
@@ -346,18 +346,18 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonConfirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmUserActionPerformed
-   
+
         TipoUsuario _tipo = null;
-        switch(jComboBox2.getSelectedIndex()){
+        switch (jComboBox2.getSelectedIndex()) {
             case 0:
                 _tipo = _tipo.FUNCIONARIO;
-            break;
+                break;
             case 1:
                 _tipo = _tipo.GERENTE;
-            break;
+                break;
             case 2:
                 _tipo = _tipo.CLIENTE;
-            break;
+                break;
         }
         Usuario user = new Usuario(jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
         jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));

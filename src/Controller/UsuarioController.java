@@ -17,60 +17,49 @@ import model.UsuarioModel;
  * @author Rolando
  */
 public class UsuarioController {
-    
+
     UsuarioModel _mdlUsuario = new UsuarioModel();
-     
-    public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao)
-    {
-        try 
-        {
-            if(ValidaRegrasNegocio(p_usuario, evtBotao))
-            {
+
+    public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao) {
+        try {
+            if (ValidaRegrasNegocio(p_usuario, evtBotao)) {
                 //UsuarioModel _mdlUsuario = new UsuarioModel();
-                switch(evtBotao)
-                {
-                    case Incluir :
+                switch (evtBotao) {
+                    case Incluir:
                         return _mdlUsuario.Incluir(p_usuario);
-                    case Alterar :
+                    case Alterar:
                         return _mdlUsuario.Alterar(p_usuario);
-                    case Excluir :
-                        if(_mdlUsuario.Excluir(p_usuario));
-                            return null;
-                    case Consultar :
-                       return _mdlUsuario.Consultar(p_usuario);
+                    case Excluir:
+                        if (_mdlUsuario.Excluir(p_usuario));
+                        return null;
+                    case Consultar:
+                        return _mdlUsuario.Consultar(p_usuario);
                 }
             }
-        } 
-        catch (Exception e) 
-        {
-             System.err.println(e);
+        } catch (Exception e) {
+            System.err.println(e);
         }
         return p_usuario;
     }
-    
-    public ArrayList<Usuario> Listar() {
-        
+
+    public ArrayList<Usuario> Listar(Usuario p_objUsuario) {
+
         ArrayList<Usuario> _lstUsuario = null;
-        try{
-            _lstUsuario = _mdlUsuario.Listar();
-        } catch(Exception e){
+        try {
+            _lstUsuario = _mdlUsuario.Listar(p_objUsuario);
+        } catch (Exception e) {
             System.err.println(e);
         }
         return _lstUsuario;
     }
 
     private boolean ValidaRegrasNegocio(Usuario p_usuario, EventoBotao evtBotao) throws Exception {
-        if(p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir)
-        {
+        if (p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir) {
             throw new Exception("Não pode incluir um registro com código.");
-        }
-        else if(p_usuario.getIdUsuario() == 0 && evtBotao == EventoBotao.Alterar)
-        {
+        } else if (p_usuario.getIdUsuario() == 0 && evtBotao == EventoBotao.Alterar) {
             throw new Exception("Não pode incluir um registro sem código.");
-        }
-        else if(p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir)
-        {
-             throw new Exception("Não pode consultar um registro sem código.");
+        } else if (p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir) {
+            throw new Exception("Não pode consultar um registro sem código.");
         }
         return true;
     }

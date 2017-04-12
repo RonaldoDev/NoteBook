@@ -17,92 +17,130 @@ import java.util.Arrays;
  *
  * @author Rolando
  */
-public class Usuario extends Pessoa implements Serializable{
+public class Usuario implements Serializable {
+
     private int IdUsuario;
-    private String Usuario;
-    private String Senha;
-    private TipoUsuario tipoUsuario;
+    private String NmUsuario;
+    private String DeEndereco;
+    private String NuCpf;
+    private String DtNascimento;
+    private String NmLogin;
+    private String DeSenha;
+    private TipoUsuario TpUsuario;
+
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
 
-
     public Usuario(String p_nmUsuario, String p_endUsuario, String p_nuCpf, String p_dtNascimento, String p_nmLogin, String p_deSenha, TipoUsuario p_tpUsuario) {
-        super(p_nmUsuario, p_endUsuario, p_nuCpf, p_dtNascimento);
+        Cripto c = new Cripto(String.valueOf(p_deSenha));
         this.IdUsuario = 0;
-        this.Usuario = p_nmLogin;
-        this.Senha = String.valueOf(p_deSenha);
-        this.tipoUsuario = p_tpUsuario;
+        this.NmUsuario = p_nmUsuario;
+        this.DeEndereco = p_endUsuario;
+        this.NuCpf = p_nuCpf;
+        this.DtNascimento = p_dtNascimento;
+        this.NmLogin = p_nmLogin;
+        this.DeSenha = c.Criptografa();
+        this.TpUsuario = p_tpUsuario;
     }
 
-    /**
-     *
-     */
     public Usuario() {
-        
-    }
-    
-    
-    
 
-    public String getSenha() {
-        return Senha;
     }
-    public void setSenha(String Senha, boolean IsNova) {
-        if(IsNova)
-        {
-            Cripto objCripto = new Cripto(Senha);
-            this.Senha = objCripto.Criptografa();
-        }
-        else
-        {
-            this.Senha = Senha;
-        }
-    }
-    public ArrayList<TransacaoSistema> getPermissoesTela() {
-        return PermissoesTela;
-    }
-    public void setPermissoesTela(ArrayList<TransacaoSistema> PermissoesTela) {
-        this.PermissoesTela = PermissoesTela;
-    }
-    public ArrayList<EventoBotao> getPermissaoFuncao() {
-        return PermissaoFuncao;
-    }
-    public void setPermissaoFuncao(ArrayList<EventoBotao> PermissaoFuncao) {
-        this.PermissaoFuncao = PermissaoFuncao;
-    }
-    public void setIdUsuario(int IdUsuario) {
-        this.IdUsuario = IdUsuario;
-    }
+
     public int getIdUsuario() {
         return IdUsuario;
     }
-    
-    public String getTipoUsuario(){
-      
+
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
+    }
+
+    public String getNome() {
+        return NmUsuario;
+    }
+
+    public void setNome(String nome) {
+        this.NmUsuario = nome;
+    }
+
+    public String getEndereco() {
+        return DeEndereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.DeEndereco = endereco;
+    }
+
+    public String getCpf() {
+        return NuCpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.NuCpf = cpf;
+    }
+
+    public String getDtNasc() {
+        return DtNascimento;
+    }
+
+    public void setDtNasc(String dtNasc) {
+        this.DtNascimento = dtNasc;
+    }
+
+    public String getUsuario() {
+        return NmLogin;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.NmLogin = Usuario;
+    }
+
+    public String getSenha() {
+        return DeSenha;
+    }
+
+    public void setSenha(String Senha) {
+        Cripto objCripto = new Cripto(Senha);
+        this.DeSenha = objCripto.Criptografa();
+    }
+
+    public void setTpUsuario(TipoUsuario TpUsuario) {
+        this.TpUsuario = TpUsuario;
+    }
+
+    public String getTipoUsuario() {
         String _retTipo = "";
-        switch(tipoUsuario){
+        switch (TpUsuario) {
             case CLIENTE:
-                _retTipo =  "Cliente";
-            break;
-            
+                _retTipo = "Cliente";
+                break;
+
             case FUNCIONARIO:
                 _retTipo = "Funcionário";
-            break;
-            
+                break;
+
             case GERENTE:
                 _retTipo = "Gerente";
-            break;        
+                break;
         }
-        
+
         return _retTipo;
     }
 
-    /**
-     * @return the Usuario
-     */
-    public String getUsername() {
-        return Usuario;
+    public ArrayList<TransacaoSistema> getPermissoesTela() {
+        return PermissoesTela;
     }
-    
-    
+
+    public void setPermissoesTela(ArrayList<TransacaoSistema> PermissoesTela) {
+        this.PermissoesTela = PermissoesTela;
+    }
+
+    public ArrayList<EventoBotao> getPermissaoFuncao() {
+        return PermissaoFuncao;
+    }
+
+    public void setPermissaoFuncao(ArrayList<EventoBotao> PermissaoFuncao) {
+        this.PermissaoFuncao = PermissaoFuncao;
+    }
+
 }

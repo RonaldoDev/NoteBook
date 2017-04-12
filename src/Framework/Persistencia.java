@@ -33,11 +33,12 @@ import java.util.stream.Stream;
  * @author Rolando
  */
 public class Persistencia {
-    private Seguranca seg;
-    private String dePath = DiretorioPadrao.getDIRETORIO_PADRAO();
-    public Persistencia ()
-    {
-        this.seg = new Seguranca();
+
+    private Seguranca segOperaoes;
+    private String dePath;
+
+    public Persistencia() {
+        this.segOperaoes = new Seguranca();
     }
     private EventoBotao Operacao;
 
@@ -48,60 +49,52 @@ public class Persistencia {
     public void setOperacao(EventoBotao Operacao) {
         this.Operacao = Operacao;
     }
-    public ArrayList<Object> ExecutaPersistencia(Object o, EventoBotao evtBotao)
-    {
+
+    public ArrayList<Object> ExecutaPersistencia(Object o, EventoBotao evtBotao) {
         this.setOperacao(evtBotao);
         ArrayList<Object> _objRetorno = new ArrayList<>();
-        try 
-        {
+        try {
             String _path = "";
             PopulaPath(o);
-            int _id = (int)o.getClass().getMethod("getId"+o.getClass().getName().substring(10)).invoke(o);
-            switch(evtBotao)
-            {
+            int _id = (int) o.getClass().getMethod("getId" + o.getClass().getName().substring(10)).invoke(o);
+            switch (evtBotao) {
                 case Incluir:
                     _objRetorno.add(this.Gravar(o, _id));
                     break;
                 case Alterar:
-                    _objRetorno.add(this.Alterar(o, _id, _path));
+                    _objRetorno.add(this.Alterar(o, _id));
                     break;
                 case Excluir:
-                    _objRetorno.add(this.Excluir(_id, _path, false));
+                    _objRetorno.add(this.Excluir(_id, false));
                     break;
                 case Consultar:
-                    _objRetorno.add(this.CarregaArquivo(_id+".txt"));
+                    _objRetorno.add(this.CarregaArquivo(_id + ".txt"));
                     break;
                 case Listar:
-                    _objRetorno = this.RetornaLista(o, _path);
+                    _objRetorno = this.RetornaLista(o);
                     break;
             }
-            
-        
-        } 
-        catch (Exception e) 
-        {
-            
+
+        } catch (Exception e) {
+            e.toString();
+        } finally {
+
         }
-        finally
-        {
-            return _objRetorno;
-        }
+        return _objRetorno;
     }
-    private Object Gravar(Object o, int p_id) throws FileNotFoundException, IOException, Exception
-    {
-        if(!seg.VerificaAcesso(getOperacao()))
-        {
+
+    private Object Gravar(Object o, int p_id) throws FileNotFoundException, IOException, Exception {
+        if (!segOperaoes.VerificaAcesso(getOperacao())) {
         } else {
             int _novoId = 0;
-            if(p_id > 0)
-            {
+            if (p_id > 0) {
                 _novoId = p_id;
-            }
-            else{
+            } else {
                 _novoId = this.RetornaUltimo(dePath) + 1;
             }
-            FileOutputStream arquivoGrav = new FileOutputStream(dePath+Integer.toString(_novoId) + ".txt");
+            FileOutputStream arquivoGrav = new FileOutputStream(dePath + Integer.toString(_novoId) + ".txt");
             ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+            SetarId(o, _novoId);
             objGravar.writeObject(o);
             objGravar.flush();
             objGravar.close();
@@ -111,53 +104,66 @@ public class Persistencia {
         }
         throw new Exception("Operação não permitida.");
     }
-    private boolean Alterar(Object o,int p_id, String p_path) throws IOException, Exception
-    {
-        if(seg.VerificaAcesso(getOperacao()))
-        {
-            this.Excluir(p_id, p_path, true);
+
+    public void SetarId(Object o, int p_id) {
+        if (o.getClass() == Usuario.class) {
+            Usuario _u = (Usuario) o;
+            _u.setIdUsuario(p_id);
+            o = _u;
+        } else if (o.getClass() == Livro.class) {
+            Livro _u = (Livro) o;
+            _u.setIdLivro(p_id);
+            o = _u;
+        } else if (o.getClass() == Emprestimo.class) {
+            Emprestimo _u = (Emprestimo) o;
+            _u.setIdEmprestimo(p_id);
+            o = _u;
+        }
+    }
+
+    private boolean Alterar(Object o, int p_id) throws IOException, Exception {
+        if (segOperaoes.VerificaAcesso(getOperacao())) {
+            this.Excluir(p_id, true);
             this.Gravar(o, p_id);
             return true;
         }
         throw new Exception("Operação não permitida.");
     }
-    private boolean Excluir(int p_id, String p_path, boolean IsAlterar) throws Exception
-    {
-        if(seg.VerificaAcesso(getOperacao()) || IsAlterar)
-        {
-            File _file = new File(p_path+p_id+".txt");
+
+    private boolean Excluir(int p_id, boolean IsAlterar) throws Exception {
+        if (segOperaoes.VerificaAcesso(getOperacao()) || IsAlterar) {
+            File _file = new File(dePath + p_id + ".txt");
             _file.delete();
             return true;
         }
         throw new Exception("Operação não permitida.");
     }
-    private int RetornaUltimo(String p_path)
-    {
-        File arquivo = new File(p_path); 
+
+    private int RetornaUltimo(String dePath) {
+        File arquivo = new File(dePath);
         File[] arquivos = arquivo.listFiles();
         int _id = 0;
-        if(arquivos.length > 0)
-        {
-            Arrays.sort(arquivos,0, arquivos.length);
-            String ultimoArquivo = arquivos[arquivos.length -1].getName();
-            _id = Integer.parseInt(ultimoArquivo.substring(0,ultimoArquivo.length() -4));
+        if (arquivos.length > 0) {
+            Arrays.sort(arquivos, 0, arquivos.length);
+            String ultimoArquivo = arquivos[arquivos.length - 1].getName();
+            _id = Integer.parseInt(ultimoArquivo.substring(0, ultimoArquivo.length() - 4));
         }
         return _id;
     }
-    public File RetornaSelecionado(String p_path, int p_id)
-    {
-        File arquivo = new File("../"+p_path); 
+
+    public File RetornaSelecionado(int p_id) {
+        File arquivo = new File(dePath);
         ArrayList<File> arquivos = new ArrayList<>(Stream.of(arquivo.listFiles()).collect(Collectors.toList()));
         return arquivos.stream()
-                .filter((File f) -> 
-                 Integer.parseInt(f.getName()
-                  .substring(0, f.getName().length() -4)) == p_id)
-                    .findFirst()
-                     .orElse(arquivo);
+                .filter((File f)
+                        -> Integer.parseInt(f.getName()
+                        .substring(0, f.getName().length() - 4)) == p_id)
+                .findFirst()
+                .orElse(arquivo);
     }
-    public ArrayList<Object> RetornaLista(Object o, String p_path) throws IOException, FileNotFoundException, ClassNotFoundException
-    {
-        File _arquivo = new File("../"+p_path); 
+
+    public ArrayList<Object> RetornaLista(Object oh) throws IOException, FileNotFoundException, ClassNotFoundException {
+        File _arquivo = new File(dePath);
         ArrayList<File> _arquivos = new ArrayList<>(Stream.of(_arquivo.listFiles()).collect(Collectors.toList()));
         ArrayList<Object> _objRetorno = new ArrayList<>();
         for (File arq : _arquivos) {
@@ -165,37 +171,30 @@ public class Persistencia {
         }
         return _objRetorno;
     }
-    private Object CarregaArquivo(String p_nmArquivo) throws FileNotFoundException, IOException, ClassNotFoundException
-    {
-        FileInputStream arquivoLeitura = new FileInputStream(dePath+p_nmArquivo);
-        ObjectInputStream objLeitura =  new ObjectInputStream(arquivoLeitura);
-        Object objRetorno  = objLeitura.readObject();
+
+    private Object CarregaArquivo(String p_nmArquivo) throws FileNotFoundException, IOException, ClassNotFoundException {
+        FileInputStream arquivoLeitura = new FileInputStream(dePath + p_nmArquivo);
+        ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
+        Object objRetorno = objLeitura.readObject();
         arquivoLeitura.close();
         objLeitura.close();
         return objRetorno;
     }
-    private void PopulaPath(Object o)
-    {
-        if(o.getClass() == Usuario.class)
-        {
+
+    private void PopulaPath(Object o) {
+        dePath = DiretorioPadrao.getDIRETORIO_PADRAO();
+        if (o.getClass() == Usuario.class) {
             dePath += "//Usuario//";
-           
-                
-                
+        } else if (o.getClass() == Livro.class) {
+            dePath += "//Livro//";
+        } else if (o.getClass() == Emprestimo.class) {
+            dePath += "//Emprestimo//";
         }
-        else if(o.getClass() == Livro.class)
-        {
-            dePath += "../Livro/";
+        Path _pasta = Paths.get(dePath);
+        boolean success;
+        if (!Files.exists(_pasta)) {
+            success = (new File(dePath)).mkdirs();
         }
-        else if(o.getClass() == Emprestimo.class)
-        {
-            dePath += "../Emprestimo/";
-        }
-         Path _pasta = Paths.get(dePath);
-            boolean success;
-            if(!Files.exists(_pasta))
-                success =  (new File(dePath)).mkdirs();
     }
-    
-    
+
 }

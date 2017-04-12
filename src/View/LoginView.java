@@ -22,7 +22,7 @@ public class LoginView extends javax.swing.JFrame {
      * Creates new form LoginView
      */
     public LoginView() {
-        this.setLocation(500,250);
+        this.setLocation(500, 250);
         initComponents();
     }
 
@@ -120,14 +120,14 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         Seguranca seg = new Seguranca();
         try {
-            if(seg.Login(new Usuario(null, null, null, null, jTextFieldLogin.getText(), String.valueOf(jPasswordFieldLogin.getPassword()), TipoUsuario.CLIENTE)))
-            {
+            Usuario _u = new Usuario();
+            _u.setUsuario(jTextFieldLogin.getText());
+            _u.setSenha(jPasswordFieldLogin.getText());
+            if (seg.Login(_u)) {
                 this.setVisible(false);
                 new BalcaoView().setVisible(true);
                 JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso");
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario e/ou Senha Incorretos");
             }
         } catch (Exception ex) {
@@ -141,9 +141,8 @@ public class LoginView extends javax.swing.JFrame {
 
     private void jPasswordFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jPasswordFieldLoginActionPerformed
 
+    }//GEN-LAST:event_jPasswordFieldLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;

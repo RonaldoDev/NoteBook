@@ -5,27 +5,39 @@
  */
 package Framework;
 
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
  *
  * @author Rolando
  */
-public  class Cripto {
-    private String Hash;
-    public Cripto(String p_senha)
-    {
+public class Cripto implements Serializable {
+
+    private final String Hash;
+
+    public Cripto(String p_senha) {
         Hash = p_senha;
     }
-    public String Criptografa()
-    {
-        String _alfa = "QqWwEeTtYuIiOoPp=P*8123457AaSsFfhHKkÇçCcXxMmNnBb.RrZz";
+
+    public String Criptografa() {
+        StringBuilder strSenha = new StringBuilder();
+        String _alfa = "QqWwEeTtYuIiOoPp=P*8123457AaSsFfhHKkÇçCcXxMmNnBb.RrZzU";
         int _n = _alfa.length();
-        Random r = new Random();
         String[] a = Hash.split("");
         for (String string : a) {
-           string = Character.toString(_alfa.charAt(r.nextInt(_n)));
+            int _nuPosition = _alfa.indexOf(string);
+            if (_nuPosition != -1) {
+                if (_nuPosition == _alfa.length() - 1) {
+                    strSenha.append(Character.toString(_alfa.charAt(_nuPosition / 3)));
+                } else {
+                    strSenha.append(Character.toString(_alfa.charAt(_nuPosition / 2)));
+                }
+            } else {
+                strSenha.append(Character.toString(_alfa.charAt(Hash.length() / 2)));
+            }
         }
-        return a.toString();
+        return strSenha.toString();
     }
 }
