@@ -19,7 +19,7 @@ public class EmprestimoController {
     {
         try 
         {
-            if(ValidaRegrasNegocio())
+            if(ValidaRegrasNegocio(p_emprestimo, evtBotao))
             {
                 EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
                 switch(evtBotao)
@@ -34,7 +34,7 @@ public class EmprestimoController {
                         _mdlEmprestimo.Excluir(p_livro, p_emprestimo);
                         break;
                     case Consultar :
-                        Livro _retornoEmprestimo = _mdlEmprestimo.Consultar(p_livro, p_emprestimo);
+                        Emprestimo _retornoEmprestimo = _mdlEmprestimo.Consultar(p_livro, p_emprestimo);
                         break;
                 }
             }
@@ -45,7 +45,19 @@ public class EmprestimoController {
         return p_emprestimo;
     }
 
-    private boolean ValidaRegrasNegocio() {
+      private boolean ValidaRegrasNegocio(Emprestimo p_emprestimo, EventoBotao evtBotao) throws Exception {
+        if(p_emprestimo.getIdEmprestimo() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+            throw new Exception("Não pode incluir um registro com código.");
+        }
+        else if(p_emprestimo.getIdEmprestimo() == 0 && evtBotao == EventoBotao.Alterar)
+        {
+            throw new Exception("Não pode incluir um registro sem código.");
+        }
+        else if(p_emprestimo.getIdEmprestimo() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+             throw new Exception("Não pode consultar um registro sem código.");
+        }
         return true;
     }
 }

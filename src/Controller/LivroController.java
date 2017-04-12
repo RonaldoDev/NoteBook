@@ -18,7 +18,7 @@ public class LivroController {
     {
         try 
         {
-            if(ValidaRegrasNegocio())
+            if(ValidaRegrasNegocio(p_livro, evtBotao))
             {
                 LivroModel _mdlLivro = new LivroModel();
                 switch(evtBotao)
@@ -44,8 +44,19 @@ public class LivroController {
         return p_livro;
     }
 
-    private boolean ValidaRegrasNegocio() 
-    {
+    private boolean ValidaRegrasNegocio(Livro p_livro, EventoBotao evtBotao) throws Exception {
+        if(p_livro.getIdLivro() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+            throw new Exception("Não pode incluir um registro com código.");
+        }
+        else if(p_livro.getIdLivro() == 0 && evtBotao == EventoBotao.Alterar)
+        {
+            throw new Exception("Não pode incluir um registro sem código.");
+        }
+        else if(p_livro.getIdLivro() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+             throw new Exception("Não pode consultar um registro sem código.");
+        }
         return true;
     }
 }
