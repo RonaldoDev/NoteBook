@@ -22,6 +22,10 @@ public class Pessoa {
         this.cpf = cpf;
         this.dtNasc = dtNasc;
     }
+    public Pessoa()
+    {
+        
+    }
     
     public String getNome(){
         return this.nome;

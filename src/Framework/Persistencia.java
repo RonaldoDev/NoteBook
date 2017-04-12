@@ -68,7 +68,7 @@ public class Persistencia {
                     _objRetorno.add(this.Excluir(_id, _path, false));
                     break;
                 case Consultar:
-                    _objRetorno.add(this.RetornaSelecionado(o.getClass().getName(),_id));
+                    _objRetorno.add(this.CarregaArquivo(_id+".txt"));
                     break;
                 case Listar:
                     _objRetorno = this.RetornaLista(o, _path);
@@ -160,17 +160,18 @@ public class Persistencia {
         ArrayList<File> _arquivos = new ArrayList<>(Stream.of(_arquivo.listFiles()).collect(Collectors.toList()));
         ArrayList<Object> _objRetorno = new ArrayList<>();
         for (File arq : _arquivos) {
-            _objRetorno.add(CarregaArquivo(arq.getName(), p_path));
+            _objRetorno.add(CarregaArquivo(arq.getName()));
         }
         return _objRetorno;
     }
-    private Object CarregaArquivo(String p_nmArquivo, String p_path) throws FileNotFoundException, IOException, ClassNotFoundException
+    private Object CarregaArquivo(String p_nmArquivo) throws FileNotFoundException, IOException, ClassNotFoundException
     {
-        FileInputStream arquivoLeitura = new FileInputStream(p_path + p_nmArquivo);
+        FileInputStream arquivoLeitura = new FileInputStream(dePath+p_nmArquivo);
         ObjectInputStream objLeitura =  new ObjectInputStream(arquivoLeitura);
+        Object objRetorno  = objLeitura.readObject();
         arquivoLeitura.close();
         objLeitura.close();
-        return objLeitura.readObject();
+        return objRetorno;
     }
     private void PopulaPath(Object o)
     {

@@ -36,7 +36,7 @@ public class UsuarioModel {
     }
     public Usuario Consultar(Usuario p_usuario)
     {
-         return (Usuario)db.ExecutaPersistencia(p_usuario, EventoBotao.Alterar).get(0);
+         return (Usuario)db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
     }
 
     public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException

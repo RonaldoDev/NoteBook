@@ -327,6 +327,13 @@ public class UsuarioView extends javax.swing.JFrame {
         Usuario user = new Usuario();
         user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
         user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
+        jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
+        jTextFieldNomeUsuario.setText(user.getNome());
+        jTextFieldEnderecoUsuario.setText(user.getEndereco());
+        jTextFieldCPFUsuario.setText(user.getCpf());
+        jTextFieldDtNascUsuario.setText(user.getDataNascimento());
+        jTextFieldUserName.setText("aa");
+        jTextFieldSenha.setText("**********");
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
