@@ -5,7 +5,6 @@
  */
 package notebook;
 
-import Config.DiretorioPadrao;
 import Entidades.Usuario;
 import View.LoginView;
 import java.awt.List;
@@ -27,8 +26,6 @@ public class NoteBook {
          java.awt.EventQueue.invokeLater(() -> {
              new LoginView().setVisible(true);
          });
-         
-         System.out.println("Diretório Padrão: " + DiretorioPadrao.getDIRETORIO_PADRAO());
          
          
         // TODO code application logic here

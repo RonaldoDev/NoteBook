@@ -148,7 +148,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConfirmLivro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Confirmar"/>
+        <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanelCampos">

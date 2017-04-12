@@ -202,12 +202,7 @@ public class EmprestimoView extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
-        jButtonConfirmEmprestimo.setText("Confirmar");
-        jButtonConfirmEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConfirmEmprestimoActionPerformed(evt);
-            }
-        });
+        jButtonConfirmEmprestimo.setText("Adicionar");
 
         jButtonCancel.setText("Cancelar");
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -274,23 +269,27 @@ public class EmprestimoView extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         jLabelEmprestimo.setText("Adicionar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Adicionar");
 
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
 
         jLabelEmprestimo.setText("Remover Emprestimo");
+        jButtonConfirmEmprestimo.setText("Remover");
 
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelEmprestimo.setText("Consultar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Consultar");
 
 
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
         jLabelEmprestimo.setText("Editar Emprestimo");
+        jButtonConfirmEmprestimo.setText("Editar");
 
 
     }//GEN-LAST:event_jButtonEdtActionPerformed
@@ -318,10 +317,6 @@ public class EmprestimoView extends javax.swing.JFrame {
     private void jTextFieldLivroEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLivroEmprestimoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldLivroEmprestimoActionPerformed
-
-    private void jButtonConfirmEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmEmprestimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConfirmEmprestimoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

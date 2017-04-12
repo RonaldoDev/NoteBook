@@ -11,16 +11,12 @@ package Config;
  */
 public class DiretorioPadrao {
     
-    private static String DIRETORIO_PADRAO = System.getProperty("user.dir");
+    private static String DIRETORIO_PADRAO = System.getProperty("user.hone");
 
     /**
      * @return the DIRETORIO_PADRAO
      */
     public static String getDIRETORIO_PADRAO() {
         return DIRETORIO_PADRAO;
-    }
-    
-    public static String getDIRETORIO_PADRAO_SERIALIZABLE() {
-        return DIRETORIO_PADRAO + "/Serializaveis/";
     }
 }
