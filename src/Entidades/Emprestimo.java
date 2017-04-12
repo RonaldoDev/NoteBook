@@ -18,13 +18,11 @@ public class Emprestimo {
     private String dtEmprestimo;
     private String dtDevolucao;
     
-    public Emprestimo(Livro livro, Usuario user, String dtEmp, String dtDev){
+    public Emprestimo(Livro livro, Usuario user){
         this.idEmprestimo = 0;
         this.livro = livro;
         this.livro.setSituacao(SituacaoLivro.Emprestado);
         this.usuario = user;
-        this.dtDevolucao = dtDev;
-        this.dtEmprestimo = dtEmp;
     }
 
     /**

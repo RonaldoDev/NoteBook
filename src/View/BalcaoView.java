@@ -457,7 +457,7 @@ public class BalcaoView extends javax.swing.JFrame {
 
     private void preencheTabelaEmprestimo() {
         ArrayList<Emprestimo> lstEmprestimo = ctrlEmprestimo.Listar();
-        lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO), "02/02/2017", "02/03/2017"));
+        lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO)));
         System.out.println(lstEmprestimo.size());
         for (int i = 0; i < lstEmprestimo.size(); i++) {
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getLivro().getTitulo(), i, 0);
