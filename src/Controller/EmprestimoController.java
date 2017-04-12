@@ -8,6 +8,7 @@ package Controller;
 import Entidades.Emprestimo;
 import Entidades.Livro;
 import Enumeradores.EventoBotao;
+import java.util.ArrayList;
 import model.EmprestimoModel;
 
 /**
@@ -15,13 +16,16 @@ import model.EmprestimoModel;
  * @author Rolando
  */
 public class EmprestimoController {
+    
+    EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
+    
     public Emprestimo ExecutaEventoBotao(Emprestimo p_emprestimo, Livro p_livro, EventoBotao evtBotao)
     {
         try 
         {
             if(ValidaRegrasNegocio(p_emprestimo, evtBotao))
             {
-                EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
+                //EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
                 switch(evtBotao)
                 {
                     case Incluir :
@@ -43,6 +47,16 @@ public class EmprestimoController {
         {
         }
         return p_emprestimo;
+    }
+    
+    public ArrayList<Emprestimo> Listar() {
+        
+        ArrayList<Emprestimo> _lstEmprestimo = null;
+        try{
+            _lstEmprestimo = _mdlEmprestimo.Listar();
+        } catch(Exception e){    
+        }
+        return _lstEmprestimo;
     }
 
       private boolean ValidaRegrasNegocio(Emprestimo p_emprestimo, EventoBotao evtBotao) throws Exception {

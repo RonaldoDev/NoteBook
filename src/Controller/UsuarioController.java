@@ -7,6 +7,9 @@ package Controller;
 
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import model.UsuarioModel;
 
 /**
@@ -14,13 +17,16 @@ import model.UsuarioModel;
  * @author Rolando
  */
 public class UsuarioController {
+    
+    UsuarioModel _mdlUsuario = new UsuarioModel();
+     
     public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao)
     {
         try 
         {
             if(ValidaRegrasNegocio(p_usuario, evtBotao))
             {
-                UsuarioModel _mdlUsuario = new UsuarioModel();
+                //UsuarioModel _mdlUsuario = new UsuarioModel();
                 switch(evtBotao)
                 {
                     case Incluir :
@@ -39,6 +45,17 @@ public class UsuarioController {
         {
         }
         return p_usuario;
+    }
+    
+    public ArrayList<Usuario> Listar() {
+        
+        ArrayList<Usuario> _lstUsuario = null;
+        try{
+            _lstUsuario = _mdlUsuario.Listar();
+        } catch(Exception e){
+            
+        }
+        return _lstUsuario;
     }
 
     private boolean ValidaRegrasNegocio(Usuario p_usuario, EventoBotao evtBotao) throws Exception {
