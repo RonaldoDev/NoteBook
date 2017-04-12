@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Enumeradores.SituacaoLivro;
+
 /**
  *
  * @author Rolando
@@ -16,14 +18,16 @@ public class Livro {
     private String edicao;
     private int qtdeTotal;
     private int qtdeDisponivel;
+    private SituacaoLivro situacao;
     
-    public Livro(String titulo, String autor, String edicao, int qtdeTotal){
+    public Livro(String titulo, String autor, String edicao){
         this.idLivro = 0;
         this.autor = autor;
         this.titulo = titulo;
         this.edicao = edicao;
-        this.qtdeTotal = qtdeTotal;
-        this.qtdeTotal = qtdeTotal;
+        //this.qtdeTotal = qtdeTotal;
+        //this.qtdeTotal = qtdeTotal;
+        this.situacao = SituacaoLivro.Disponivel;
     }
 
     /**
@@ -87,6 +91,21 @@ public class Livro {
      */
     public void setIdLivro(int idLivro) {
         this.idLivro = idLivro;
+    }
+
+    /**
+     * @return the situacao
+     */
+    public String getSituacao() {
+        if(situacao == SituacaoLivro.Disponivel) return "Disponivel";
+        else return "Emprestado";
+    }
+
+    /**
+     * @param situacao the situacao to set
+     */
+    public void setSituacao(SituacaoLivro situacao) {
+        this.situacao = situacao;
     }
     
 }
