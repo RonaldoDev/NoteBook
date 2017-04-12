@@ -40,9 +40,9 @@ public class UsuarioModel {
 
     public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException
     {
-       // List<Usuario> arrUsuarioGenerico = db.ExecutaPersistencia(0, EventoBotao.Alterar).forEach(f -> f.getClass().cast(o));
+        ArrayList<Object> arrUsuarioGenerico = db.ExecutaPersistencia(0, EventoBotao.Listar);
         ArrayList<Usuario> arrUsuario = new ArrayList<>();
-        for (Object usuario : arrUsuario) {
+        for (Object usuario : arrUsuarioGenerico) {
             arrUsuario.add((Usuario)usuario);
         }
         return arrUsuario;

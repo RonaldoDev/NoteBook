@@ -51,8 +51,7 @@ public class Persistencia {
         {
             String _path = "";
             _path = RetornaPath(o);
-            Field _field = o.getClass().getField("Id"+o.getClass().getName());
-            int _id = _field.getInt(o);
+            int _id = (int)o.getClass().getMethod("getId"+o.getClass().getName().substring(10)).invoke(o);
             switch(evtBotao)
             {
                 case Incluir:

@@ -26,14 +26,12 @@ public class UsuarioController {
                     case Incluir :
                         return _mdlUsuario.Incluir(p_usuario);
                     case Alterar :
-                        _mdlUsuario.Alterar(p_usuario);
-                        break;
+                        return _mdlUsuario.Alterar(p_usuario);
                     case Excluir :
-                        _mdlUsuario.Excluir(p_usuario);
-                        break;
+                        if(_mdlUsuario.Excluir(p_usuario));
+                            return null;
                     case Consultar :
-                        Usuario _retornoUsuario = _mdlUsuario.Consultar(p_usuario);
-                        break;
+                       return _mdlUsuario.Consultar(p_usuario);
                 }
             }
         } 
