@@ -24,7 +24,7 @@ public class UsuarioController {
                 switch(evtBotao)
                 {
                     case Incluir :
-                        _mdlUsuario.Incluir(p_usuario);
+                        return _mdlUsuario.Incluir(p_usuario);
                         break;
                     case Alterar :
                         _mdlUsuario.Alterar(p_usuario);
