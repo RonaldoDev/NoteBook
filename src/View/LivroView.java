@@ -118,7 +118,7 @@ public class LivroView extends javax.swing.JFrame {
             }
         });
 
-        jButtonConfirmLivro.setText("Adicionar");
+        jButtonConfirmLivro.setText("Confirmar");
 
         jPanelCampos.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -277,22 +277,18 @@ public class LivroView extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         jLabelLivro.setText("Adicionar Livro");
-        jButtonConfirmLivro.setText("Adicionar");
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
         jLabelLivro.setText("Remover Livro");
-        jButtonConfirmLivro.setText("Remover");
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
         jLabelLivro.setText("Editar Livro");
-        jButtonConfirmLivro.setText("Editar");
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelLivro.setText("Consultar Livro");
-        jButtonConfirmLivro.setText("Consultar");
        
     }//GEN-LAST:event_jButtonConsActionPerformed
 

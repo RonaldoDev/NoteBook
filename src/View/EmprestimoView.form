@@ -294,8 +294,11 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonConfirmEmprestimo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Adicionar"/>
+            <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConfirmEmprestimoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCancel">
           <Properties>

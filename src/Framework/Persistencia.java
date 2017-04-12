@@ -34,7 +34,7 @@ import java.util.stream.Stream;
  */
 public class Persistencia {
     private Seguranca seg;
-    private String dePath = DiretorioPadrao.getDIRETORIO_PADRAO();
+    private String dePath = DiretorioPadrao.getDIRETORIO_PADRAO_SERIALIZABLE();
     public Persistencia ()
     {
         this.seg = new Seguranca();

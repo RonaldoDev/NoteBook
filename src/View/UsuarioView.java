@@ -231,7 +231,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanelCamposLayout.setVerticalGroup(
             jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCamposLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
@@ -264,7 +264,7 @@ public class UsuarioView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButtonConfirmUser.setText("Adicionar");
+        jButtonConfirmUser.setText("Confirmar");
         jButtonConfirmUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmUserActionPerformed(evt);
@@ -313,17 +313,14 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         jLabelUsuario.setText("Adicionar Usuario");
-        jButtonConfirmUser.setText("Adicionar");
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
         jLabelUsuario.setText("Remover Usuario");
-        jButtonConfirmUser.setText("Remover");
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelUsuario.setText("Consultar Usuario");
-        jButtonConfirmUser.setText("Consultar");
         Usuario user = new Usuario();
         user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
         user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
@@ -338,7 +335,6 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
         jLabelUsuario.setText("Editar Usuario");
-        jButtonConfirmUser.setText("Editar");
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
