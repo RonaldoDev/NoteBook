@@ -45,6 +45,7 @@ public class EmprestimoController {
         } 
         catch (Exception e) 
         {
+             System.err.println(e);
         }
         return p_emprestimo;
     }
@@ -54,7 +55,8 @@ public class EmprestimoController {
         ArrayList<Emprestimo> _lstEmprestimo = null;
         try{
             _lstEmprestimo = _mdlEmprestimo.Listar();
-        } catch(Exception e){    
+        } catch(Exception e){ 
+             System.err.println(e);
         }
         return _lstEmprestimo;
     }

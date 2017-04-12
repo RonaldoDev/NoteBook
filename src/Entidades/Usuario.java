@@ -77,5 +77,32 @@ public class Usuario extends Pessoa implements Serializable{
         return IdUsuario;
     }
     
+    public String getTipoUsuario(){
+      
+        String _retTipo = "";
+        switch(tipoUsuario){
+            case CLIENTE:
+                _retTipo =  "Cliente";
+            break;
+            
+            case FUNCIONARIO:
+                _retTipo = "Funcionário";
+            break;
+            
+            case GERENTE:
+                _retTipo = "Gerente";
+            break;        
+        }
+        
+        return _retTipo;
+    }
+
+    /**
+     * @return the Usuario
+     */
+    public String getUsername() {
+        return Usuario;
+    }
+    
     
 }

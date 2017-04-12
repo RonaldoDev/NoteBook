@@ -14,14 +14,15 @@ public class Livro {
     private String titulo;
     private String autor;
     private String edicao;
-    private String qtdeTotal;
-    private String qtdeDisponivel;
+    private int qtdeTotal;
+    private int qtdeDisponivel;
     
-    public Livro(String titulo, String autor, String edicao, String qtdeTotal){
+    public Livro(String titulo, String autor, String edicao, int qtdeTotal){
         this.idLivro = 0;
         this.autor = autor;
         this.titulo = titulo;
         this.edicao = edicao;
+        this.qtdeTotal = qtdeTotal;
         this.qtdeTotal = qtdeTotal;
     }
 
@@ -49,28 +50,28 @@ public class Livro {
     /**
      * @return the qtdeTotal
      */
-    public String getQtdeTotal() {
+    public int getQtdeTotal() {
         return qtdeTotal;
     }
 
     /**
      * @param qtdeTotal the qtdeTotal to set
      */
-    public void setQtdeTotal(String qtdeTotal) {
+    public void setQtdeTotal(int qtdeTotal) {
         this.qtdeTotal = qtdeTotal;
     }
 
     /**
      * @return the qtdeDisponivel
      */
-    public String getQtdeDisponivel() {
+    public int getQtdeDisponivel() {
         return qtdeDisponivel;
     }
 
     /**
      * @param qtdeDisponivel the qtdeDisponivel to set
      */
-    public void setQtdeDisponivel(String qtdeDisponivel) {
+    public void setQtdeDisponivel(int qtdeDisponivel) {
         this.qtdeDisponivel = qtdeDisponivel;
     }
 
