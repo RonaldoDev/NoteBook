@@ -18,7 +18,7 @@ public class UsuarioController {
     {
         try 
         {
-            if(ValidaRegrasNegocio())
+            if(ValidaRegrasNegocio(p_usuario, evtBotao))
             {
                 UsuarioModel _mdlUsuario = new UsuarioModel();
                 switch(evtBotao)
@@ -41,7 +41,19 @@ public class UsuarioController {
         return p_usuario;
     }
 
-    private boolean ValidaRegrasNegocio() {
+    private boolean ValidaRegrasNegocio(Usuario p_usuario, EventoBotao evtBotao) throws Exception {
+        if(p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+            throw new Exception("Não pode incluir um registro com código.");
+        }
+        else if(p_usuario.getIdUsuario() == 0 && evtBotao == EventoBotao.Alterar)
+        {
+            throw new Exception("Não pode incluir um registro sem código.");
+        }
+        else if(p_usuario.getIdUsuario() > 0 && evtBotao == EventoBotao.Incluir)
+        {
+             throw new Exception("Não pode consultar um registro sem código.");
+        }
         return true;
     }
 }

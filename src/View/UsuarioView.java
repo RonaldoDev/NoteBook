@@ -324,6 +324,9 @@ public class UsuarioView extends javax.swing.JFrame {
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelUsuario.setText("Consultar Usuario");
         jButtonConfirmUser.setText("Consultar");
+        Usuario user = new Usuario();
+        user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
+        user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
