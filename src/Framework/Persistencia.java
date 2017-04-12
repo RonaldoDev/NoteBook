@@ -145,8 +145,14 @@ public class Persistencia {
         int _id = 0;
         if (arquivos.length > 0) {
             Arrays.sort(arquivos, 0, arquivos.length);
-            String ultimoArquivo = arquivos[arquivos.length - 1].getName();
-            _id = Integer.parseInt(ultimoArquivo.substring(0, ultimoArquivo.length() - 4));
+            int _ultimo = 0;
+            for (File arq : arquivos) {
+                if (Integer.parseInt(arq.getName().substring(0, arq.getName().length() - 4)) > _ultimo) {
+                    _ultimo = Integer.parseInt(arq.getName().substring(0, arq.getName().length() - 4));
+                }
+            }
+            //   String ultimoArquivo = arquivos[arquivos.length - 1].getName();
+            _id = _ultimo;
         }
         return _id;
     }
