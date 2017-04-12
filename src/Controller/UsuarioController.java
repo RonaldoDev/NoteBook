@@ -25,7 +25,6 @@ public class UsuarioController {
                 {
                     case Incluir :
                         return _mdlUsuario.Incluir(p_usuario);
-                        break;
                     case Alterar :
                         _mdlUsuario.Alterar(p_usuario);
                         break;
