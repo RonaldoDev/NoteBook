@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import static java.util.Arrays.stream;
@@ -175,6 +176,7 @@ public class Persistencia {
     }
     private String RetornaPath(Object o)
     {
+        
         String _path = "";
         if(o.getClass() == Usuario.class)
         {

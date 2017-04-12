@@ -6,8 +6,10 @@
 package Entidades;
 
 import Enumeradores.EventoBotao;
+import Enumeradores.TipoUsuario;
 import Enumeradores.TransacaoSistema;
 import Framework.Cripto;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,21 +17,23 @@ import java.util.Arrays;
  *
  * @author Rolando
  */
-public class Usuario extends Pessoa{
+public class Usuario extends Pessoa implements Serializable{
     private int IdUsuario;
     private String Usuario;
     private String Senha;
-    private int tipoUsuario;
+    private TipoUsuario tipoUsuario;
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
 
-    public Usuario(String nm, String end, String cpf, String dtNasc, String username, char[] senha, int tipo) {
-        super(nm, end, cpf, dtNasc);
-        this.IdUsuario = 23;
-        this.Usuario = username;
-        this.Senha = String.valueOf(senha);
-        this.tipoUsuario = tipo;
+
+    public Usuario(String p_nmUsuario, String p_endUsuario, String p_nuCpf, String p_dtNascimento, String p_nmLogin, String p_deSenha, TipoUsuario p_tpUsuario) {
+        super(p_nmUsuario, p_endUsuario, p_nuCpf, p_dtNascimento);
+        this.IdUsuario = 0;
+        this.Usuario = p_nmLogin;
+        this.Senha = String.valueOf(p_deSenha);
+        this.tipoUsuario = p_tpUsuario;
     }
+    
     
     
 

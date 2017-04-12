@@ -6,6 +6,7 @@
 package View;
 
 import Entidades.Usuario;
+import Enumeradores.TipoUsuario;
 import javax.swing.JOptionPane;
 import model.UsuarioModel;
 
@@ -49,9 +50,9 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldUserName = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextFieldSenha = new javax.swing.JTextField();
         jTextFieldIdUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jTextFieldSenha = new javax.swing.JPasswordField();
         jButtonConfirmUser = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
 
@@ -147,7 +148,7 @@ public class UsuarioView extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Data Nascimento");
+        jLabel5.setText("Data Nasc.");
 
         jTextFieldDtNascUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +156,12 @@ public class UsuarioView extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Gerente", "Cliente"}));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Tipo Usuário:");
 
@@ -168,12 +174,6 @@ public class UsuarioView extends javax.swing.JFrame {
         jLabel22.setText("Usuario;");
 
         jLabel23.setText("Senha;");
-
-        jTextFieldSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSenhaActionPerformed(evt);
-            }
-        });
 
         jTextFieldIdUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,43 +188,41 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanelCamposLayout.setHorizontalGroup(
             jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCamposLayout.createSequentialGroup()
-                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanelCamposLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldCPFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(179, 179, 179)
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldDtNascUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldEnderecoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(24, 24, 24)
+                                .addComponent(jTextFieldEnderecoUsuario))))
                     .addGroup(jPanelCamposLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNomeUsuario)))
+                    .addGroup(jPanelCamposLayout.createSequentialGroup()
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldCPFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldSenha)
+                                .addComponent(jComboBox2, 0, 351, Short.MAX_VALUE)
+                                .addComponent(jTextFieldUserName)))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanelCamposLayout.setVerticalGroup(
@@ -258,12 +256,17 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
+                    .addComponent(jLabel23)
+                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jButtonConfirmUser.setText("Adicionar");
+        jButtonConfirmUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmUserActionPerformed(evt);
+            }
+        });
 
         jLabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabelUsuario.setText("Adicionar Usuario");
@@ -325,37 +328,55 @@ public class UsuarioView extends javax.swing.JFrame {
         jButtonConfirmUser.setText("Editar");
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
-    private void jTextFieldNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeUsuarioActionPerformed
-
-    private void jTextFieldEnderecoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEnderecoUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEnderecoUsuarioActionPerformed
-
-    private void jTextFieldCPFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCPFUsuarioActionPerformed
-
-    private void jTextFieldDtNascUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDtNascUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDtNascUsuarioActionPerformed
-
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jButtonConfirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmUserActionPerformed
+   
+        TipoUsuario _tipo = null;
+        switch(jComboBox2.getSelectedIndex()){
+            case 0:
+                _tipo = _tipo.FUNCIONARIO;
+            break;
+            case 1:
+                _tipo = _tipo.GERENTE;
+            break;
+            case 2:
+                _tipo = _tipo.CLIENTE;
+            break;
+        }
+        Usuario user = new Usuario(jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
+        model.Incluir(user);
+    }//GEN-LAST:event_jButtonConfirmUserActionPerformed
+
+    private void jTextFieldIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdUsuarioActionPerformed
 
     private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
-    private void jTextFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSenhaActionPerformed
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSenhaActionPerformed
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jTextFieldIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdUsuarioActionPerformed
+    private void jTextFieldDtNascUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDtNascUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdUsuarioActionPerformed
+    }//GEN-LAST:event_jTextFieldDtNascUsuarioActionPerformed
+
+    private void jTextFieldCPFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCPFUsuarioActionPerformed
+
+    private void jTextFieldEnderecoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEnderecoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEnderecoUsuarioActionPerformed
+
+    private void jTextFieldNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
@@ -381,7 +402,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEnderecoUsuario;
     private javax.swing.JTextField jTextFieldIdUsuario;
     private javax.swing.JTextField jTextFieldNomeUsuario;
-    private javax.swing.JTextField jTextFieldSenha;
+    private javax.swing.JPasswordField jTextFieldSenha;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
 }
