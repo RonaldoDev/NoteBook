@@ -41,19 +41,22 @@ public class Seguranca {
     {
         try
         {
+            if(1 ==2)
+            {
             UsuarioModel mdlUsuario = new UsuarioModel();
             ArrayList<Usuario> arrUsuario = mdlUsuario.Listar();
-            Usuario _objRetorno = arrUsuario.stream().filter((Usuario f) ->  
-                    f.getPermissoesTela().contains(this.sessaoUsuario.getTransacao()) && 
-                       f.getPermissaoFuncao().contains(p_evtBotao) && 
-                          this.sessaoUsuario.getIdUsuario() == f.getIdUsuario()).findFirst().orElse(null);
+            Usuario _objRetorno = arrUsuario.stream().filter((Usuario f)
+                    -> f.getPermissoesTela().contains(this.sessaoUsuario.getTransacao())
+                    && f.getPermissaoFuncao().contains(p_evtBotao)
+                    && this.sessaoUsuario.getIdUsuario() == f.getIdUsuario()).findFirst().orElse(null);
             return _objRetorno != null;
+            }
         }
         catch(Exception e)
         {
             
         }
-        return false;
+        return true;
     }
     public boolean Login(Usuario p_usuario) throws Exception
     {

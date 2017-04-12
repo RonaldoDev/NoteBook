@@ -17,12 +17,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import static java.util.Arrays.stream;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.stage.DirectoryChooser;
 
 /**
  *
@@ -30,6 +33,7 @@ import java.util.stream.Stream;
  */
 public class Persistencia {
     private Seguranca seg;
+    private String dePath = System.getProperty("user.hone");
     public Persistencia ()
     {
         this.seg = new Seguranca();
@@ -50,7 +54,7 @@ public class Persistencia {
         try 
         {
             String _path = "";
-            _path = RetornaPath(o);
+            PopulaPath(o);
             int _id = (int)o.getClass().getMethod("getId"+o.getClass().getName().substring(10)).invoke(o);
             switch(evtBotao)
             {
@@ -82,11 +86,11 @@ public class Persistencia {
             return _objRetorno;
         }
     }
-    private boolean Gravar(Object o, String p_path) throws IOException, Exception
+    private Object Gravar(Object o, String p_path) throws IOException, Exception
     {
         return Gravar(o, p_path, 0);
     } 
-    private boolean Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException, Exception
+    private Object Gravar(Object o, String p_path, int p_id) throws FileNotFoundException, IOException, Exception
     {
         
         if(seg.VerificaAcesso(getOperacao()))
@@ -100,13 +104,14 @@ public class Persistencia {
             else{
                 _novoId = this.RetornaUltimo(p_path) + 1;
             }
-            FileOutputStream arquivoGrav = new FileOutputStream(RetornaPath(o)+Integer.toString(_novoId) + ".txt");
+            FileOutputStream arquivoGrav = new FileOutputStream(dePath+Integer.toString(_novoId) + ".txt");
             ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
             objGravar.writeObject(o);
             objGravar.flush();
             objGravar.close();
             arquivoGrav.flush();
             arquivoGrav.close();
+            o.getClass().getMethod("setId"+o.getClass().getName().substring(10)).invoke(_novoId);
             return true;
         }
         throw new Exception("Operação não permitida.");
@@ -173,23 +178,27 @@ public class Persistencia {
         objLeitura.close();
         return objLeitura.readObject();
     }
-    private String RetornaPath(Object o)
+    private void PopulaPath(Object o)
     {
-        
-        String _path = "";
         if(o.getClass() == Usuario.class)
         {
-            _path = "../Usuario/";
+            dePath += "//Usuario//";
+           
+                
+                
         }
         else if(o.getClass() == Livro.class)
         {
-            _path = "../Livro/";
+            dePath += "../Livro/";
         }
         else if(o.getClass() == Emprestimo.class)
         {
-            _path = "../Emprestimo/";
+            dePath += "../Emprestimo/";
         }
-        return _path; 
+         Path _pasta = Paths.get(dePath);
+            boolean success;
+            if(!Files.exists(_pasta))
+                success =  (new File(dePath)).mkdirs();
     }
     
     
