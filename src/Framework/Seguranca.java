@@ -5,6 +5,7 @@
  */
 package Framework;
 
+import Config.UsuarioPadrao;
 import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
@@ -60,19 +61,26 @@ public class Seguranca {
     }
     public boolean Login(Usuario p_usuario) throws Exception
     {
-        try {
-            UsuarioModel mdlUsuario = new UsuarioModel();
-            Usuario _u = mdlUsuario.Consultar(p_usuario);
-            if(_u != null && p_usuario.getSenha() == _u.getSenha())
-            {
+        //usuario e senha padrao
+        if(p_usuario.getUsername().equals(UsuarioPadrao.getUSERNAME_PADRAO()) && p_usuario.getSenha().equals(UsuarioPadrao.getPASSWORD_PADRAO())){
                 return true;
+        }else
+        {
+            try {
+                UsuarioModel mdlUsuario = new UsuarioModel();
+                Usuario _u = mdlUsuario.Consultar(p_usuario);
+                //usuario e senha padrao
+                 if(_u != null && p_usuario.getSenha() == _u.getSenha())
+                {
+                    return true;
+                }
+                else
+                {
+                   throw  new Exception("Usuario ou senha está incorreto."); 
+                }
+            } catch (Exception e) {
+
             }
-            else
-            {
-               throw  new Exception("Usuario ou senha está incorreto."); 
-            }
-        } catch (Exception e) {
-            
         }
         return false;
     }

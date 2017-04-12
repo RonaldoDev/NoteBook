@@ -5,6 +5,11 @@
  */
 package View;
 
+import Entidades.Usuario;
+import Enumeradores.TipoUsuario;
+import Framework.Seguranca;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +35,7 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UsuarioTextField = new javax.swing.JTextField();
+        jTextFieldLogin = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,9 +44,9 @@ public class LoginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        UsuarioTextField.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioTextFieldActionPerformed(evt);
+                jTextFieldLoginActionPerformed(evt);
             }
         });
 
@@ -87,7 +92,7 @@ public class LoginView extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPasswordFieldLogin)
-                            .addComponent(UsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,7 +102,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -113,17 +118,26 @@ public class LoginView extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-        //if("admin".equals(UsuarioTextField.getText()) && "admin".equals(String.valueOf(jPasswordFieldLogin.getPassword()))){
-            this.setVisible(false);
-            new BalcaoView().setVisible(true);
-      //  } else{
-      //      JOptionPane.showMessageDialog(null,"Usuário e/ou Senha incorretos");
-       // }
+        Seguranca seg = new Seguranca();
+        try {
+            if(seg.Login(new Usuario(null, null, null, null, jTextFieldLogin.getText(), String.valueOf(jPasswordFieldLogin.getPassword()), TipoUsuario.CLIENTE)))
+            {
+                this.setVisible(false);
+                new BalcaoView().setVisible(true);
+                JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario e/ou Senha Incorretos");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void UsuarioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioTextFieldActionPerformed
+    private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioTextFieldActionPerformed
+    }//GEN-LAST:event_jTextFieldLoginActionPerformed
 
     private void jPasswordFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginActionPerformed
         // TODO add your handling code here:
@@ -133,10 +147,10 @@ public class LoginView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
-    private javax.swing.JTextField UsuarioTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordFieldLogin;
+    private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
 }
