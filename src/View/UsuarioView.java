@@ -5,7 +5,9 @@
  */
 package View;
 
+import Controller.UsuarioController;
 import Entidades.Usuario;
+import Enumeradores.EventoBotao;
 import Enumeradores.TipoUsuario;
 import javax.swing.JOptionPane;
 import model.UsuarioModel;
@@ -16,7 +18,8 @@ import model.UsuarioModel;
  */
 public class UsuarioView extends javax.swing.JFrame {
 
-     UsuarioModel model = new UsuarioModel();
+     UsuarioController ctrlUsuario = new UsuarioController();
+     private EventoBotao acao;
     /**
      * Creates new form UsuarioView
      */
@@ -347,7 +350,7 @@ public class UsuarioView extends javax.swing.JFrame {
             break;
         }
         Usuario user = new Usuario(jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
-        model.Incluir(user);
+        jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));
     }//GEN-LAST:event_jButtonConfirmUserActionPerformed
 
     private void jTextFieldIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdUsuarioActionPerformed
