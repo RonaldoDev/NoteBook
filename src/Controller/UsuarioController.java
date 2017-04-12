@@ -30,7 +30,7 @@ public class UsuarioController {
                     case Alterar:
                         return _mdlUsuario.Alterar(p_usuario);
                     case Excluir:
-                        if (_mdlUsuario.Excluir(p_usuario));
+                        if (!_mdlUsuario.Excluir(p_usuario));
                         return null;
                     case Consultar:
                         return _mdlUsuario.Consultar(p_usuario);

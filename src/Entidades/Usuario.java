@@ -43,6 +43,10 @@ public class Usuario implements Serializable {
         this.TpUsuario = p_tpUsuario;
     }
 
+    public Usuario(int p_IdUsuario) {
+        this.IdUsuario = p_IdUsuario;
+    }
+
     public Usuario() {
 
     }

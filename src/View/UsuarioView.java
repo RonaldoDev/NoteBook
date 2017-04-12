@@ -9,7 +9,10 @@ import Controller.UsuarioController;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
 import Enumeradores.TipoUsuario;
+import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import model.UsuarioModel;
 
 /**
@@ -33,11 +36,6 @@ public class UsuarioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelCrud = new javax.swing.JPanel();
-        jButtonAdd = new javax.swing.JButton();
-        jButtonRmv = new javax.swing.JButton();
-        jButtonCons = new javax.swing.JButton();
-        jButtonEdt = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jPanelCampos = new javax.swing.JPanel();
         jTextFieldNomeUsuario = new javax.swing.JTextField();
@@ -56,67 +54,14 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldIdUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldSenha = new javax.swing.JPasswordField();
-        jButtonConfirmUser = new javax.swing.JButton();
+        jButtonLimpaTela = new javax.swing.JButton();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonRmv = new javax.swing.JButton();
+        jButtonEdt = new javax.swing.JButton();
+        jButtonCons = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanelCrud.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        jButtonAdd.setText("Adicionar");
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
-            }
-        });
-
-        jButtonRmv.setText("Remover");
-        jButtonRmv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRmvActionPerformed(evt);
-            }
-        });
-
-        jButtonCons.setText("Consultar");
-        jButtonCons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsActionPerformed(evt);
-            }
-        });
-
-        jButtonEdt.setText("Editar");
-        jButtonEdt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEdtActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
-        jPanelCrud.setLayout(jPanelCrudLayout);
-        jPanelCrudLayout.setHorizontalGroup(
-            jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCons, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        jPanelCrudLayout.setVerticalGroup(
-            jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(jButtonCons, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(jButtonRmv, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(jButtonEdt, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
-                .addContainerGap())
-        );
 
         jButtonCancel.setText("Cancelar");
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -197,23 +142,21 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
-                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addGap(179, 179, 179)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldDtNascUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCamposLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jTextFieldEnderecoUsuario))))
+                            .addComponent(jTextFieldEnderecoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelCamposLayout.createSequentialGroup()
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNomeUsuario)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelCamposLayout.createSequentialGroup()
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
@@ -231,7 +174,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanelCamposLayout.setVerticalGroup(
             jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCamposLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
@@ -264,10 +207,38 @@ public class UsuarioView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButtonConfirmUser.setText("Adicionar");
-        jButtonConfirmUser.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpaTela.setLabel("Limpar Tela");
+        jButtonLimpaTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConfirmUserActionPerformed(evt);
+                jButtonLimpaTelaActionPerformed(evt);
+            }
+        });
+
+        jButtonAdd.setLabel("Incluir");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
+
+        jButtonRmv.setText("Remover");
+        jButtonRmv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRmvActionPerformed(evt);
+            }
+        });
+
+        jButtonEdt.setLabel("Alterar");
+        jButtonEdt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEdtActionPerformed(evt);
+            }
+        });
+
+        jButtonCons.setText("Consultar");
+        jButtonCons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsActionPerformed(evt);
             }
         });
 
@@ -279,74 +250,52 @@ public class UsuarioView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelCrud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonAdd)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCons)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCancel)
+                            .addGap(4, 4, 4))
+                        .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelUsuario)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonConfirmUser)
-                                .addGap(32, 32, 32)
-                                .addComponent(jButtonCancel)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabelUsuario)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCons, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConfirmUser, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        jLabelUsuario.setText("Adicionar Usuario");
-        jButtonConfirmUser.setText("Adicionar");
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
-    private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-        jLabelUsuario.setText("Remover Usuario");
-        jButtonConfirmUser.setText("Remover");
-    }//GEN-LAST:event_jButtonRmvActionPerformed
-
-    private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-        jLabelUsuario.setText("Consultar Usuario");
-        jButtonConfirmUser.setText("Consultar");
-        Usuario user = new Usuario();
-        user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
-        user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
-        jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
-        jTextFieldNomeUsuario.setText(user.getNome());
-        jTextFieldEnderecoUsuario.setText(user.getEndereco());
-        jTextFieldCPFUsuario.setText(user.getCpf());
-        jTextFieldDtNascUsuario.setText(user.getDtNasc());
-        jTextFieldUserName.setText("aa");
-        jTextFieldSenha.setText("**********");
-    }//GEN-LAST:event_jButtonConsActionPerformed
-
-    private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
-        jLabelUsuario.setText("Editar Usuario");
-        jButtonConfirmUser.setText("Editar");
-    }//GEN-LAST:event_jButtonEdtActionPerformed
-
-    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButtonCancelActionPerformed
-
-    private void jButtonConfirmUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmUserActionPerformed
-
         TipoUsuario _tipo = null;
         switch (jComboBox2.getSelectedIndex()) {
             case 0:
@@ -361,7 +310,47 @@ public class UsuarioView extends javax.swing.JFrame {
         }
         Usuario user = new Usuario(jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
         jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));
-    }//GEN-LAST:event_jButtonConfirmUserActionPerformed
+    }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
+        jLabelUsuario.setText("Remover Usuario");
+        Usuario _u = ctrlUsuario.ExecutaEventoBotao(new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText())), acao.Excluir);
+        if (_u == null) {
+            LimparCampos();
+        }
+    }//GEN-LAST:event_jButtonRmvActionPerformed
+
+    private void LimparCampos() {
+        jTextFieldIdUsuario.setText("");
+        jTextFieldNomeUsuario.setText("");
+        jTextFieldEnderecoUsuario.setText("");
+        jTextFieldCPFUsuario.setText("");
+        jTextFieldDtNascUsuario.setText("");
+        jTextFieldUserName.setText("");
+        jTextFieldSenha.setText("");
+    }
+    private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
+        jLabelUsuario.setText("Consultar Usuario");
+        Usuario user = new Usuario();
+        user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
+        user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
+        jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
+        jTextFieldNomeUsuario.setText(user.getNome());
+        jTextFieldEnderecoUsuario.setText(user.getEndereco());
+        jTextFieldCPFUsuario.setText(user.getCpf());
+        jTextFieldDtNascUsuario.setText(user.getDtNasc());
+        jTextFieldUserName.setText(user.getUsuario());
+        jTextFieldSenha.setText(user.getSenha());
+    }//GEN-LAST:event_jButtonConsActionPerformed
+
+    private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
+        jLabelUsuario.setText("Editar Usuario");
+
+    }//GEN-LAST:event_jButtonEdtActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jTextFieldIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdUsuarioActionPerformed
         // TODO add your handling code here:
@@ -391,12 +380,16 @@ public class UsuarioView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeUsuarioActionPerformed
 
+    private void jButtonLimpaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpaTelaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimpaTelaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;
-    private javax.swing.JButton jButtonConfirmUser;
     private javax.swing.JButton jButtonCons;
     private javax.swing.JButton jButtonEdt;
+    private javax.swing.JButton jButtonLimpaTela;
     private javax.swing.JButton jButtonRmv;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel2;
@@ -409,7 +402,6 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelCampos;
-    private javax.swing.JPanel jPanelCrud;
     private javax.swing.JTextField jTextFieldCPFUsuario;
     private javax.swing.JTextField jTextFieldDtNascUsuario;
     private javax.swing.JTextField jTextFieldEnderecoUsuario;
