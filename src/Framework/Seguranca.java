@@ -44,7 +44,7 @@ public class Seguranca {
             if (1 == 2) {
                 UsuarioModel mdlUsuario = new UsuarioModel();
                 Usuario _u = new Usuario();
-                ArrayList<Usuario> arrUsuario = mdlUsuario.Listar(_u);
+                ArrayList<Usuario> arrUsuario = mdlUsuario.Listar();
                 Usuario _objRetorno = arrUsuario.stream().filter((Usuario f)
                         -> f.getPermissoesTela().contains(this.sessaoUsuario.getTransacao())
                         && f.getPermissaoFuncao().contains(p_evtBotao)

@@ -42,11 +42,11 @@ public class UsuarioController {
         return p_usuario;
     }
 
-    public ArrayList<Usuario> Listar(Usuario p_objUsuario) {
+    public ArrayList<Usuario> Listar() {
 
         ArrayList<Usuario> _lstUsuario = null;
         try {
-            _lstUsuario = _mdlUsuario.Listar(p_objUsuario);
+            _lstUsuario = _mdlUsuario.Listar();
         } catch (Exception e) {
             System.err.println(e);
         }

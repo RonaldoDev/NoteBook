@@ -33,9 +33,11 @@ public class BalcaoView extends javax.swing.JFrame {
     public BalcaoView() {
         this.setLocation(150, 50);
         initComponents();
-        jPanelEmprestimo.setVisible(true);
-        jPanelUsuario.setVisible(false);
-        jPanelLivro.setVisible(false);
+        //desativar edição de celulas
+        JTableLivro.setEnabled(false);
+        JTableEmprestimos.setEnabled(false);
+        JTableUsuario.setEnabled(false);
+        
         preencheTabelaEmprestimo();
     }
 
@@ -132,13 +134,10 @@ public class BalcaoView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Título do Livro", "Autor", "Total De Exemplares", "Exemplares Disponíveis"
+                "ID", "Título", "Autor", "Estado"
             }
         ));
         jScrollPane2.setViewportView(JTableLivro);
-        if (JTableLivro.getColumnModel().getColumnCount() > 0) {
-            JTableLivro.getColumnModel().getColumn(3).setHeaderValue("Exemplares Disponíveis");
-        }
 
         javax.swing.GroupLayout jPanelLivroLayout = new javax.swing.GroupLayout(jPanelLivro);
         jPanelLivro.setLayout(jPanelLivroLayout);
@@ -190,7 +189,7 @@ public class BalcaoView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome Completo", "CPF", "Usuario", "Tipo"
+                "ID", "CPF", "Usuario", "Tipo"
             }
         ) {
             Class[] types = new Class [] {
@@ -431,9 +430,14 @@ public class BalcaoView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void preencheTabelaUsuario() {
-        Usuario _user = new Usuario("daniel", "rua 1", "12354", "02/02/1996", "Daniel", "1234", TipoUsuario.FUNCIONARIO);
-        ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar(_user);
-        lstUsuario.add(_user);
+        
+        jPanelEmprestimo.setVisible(false);
+        jPanelUsuario.setVisible(true);
+        jPanelLivro.setVisible(false);
+        
+        Usuario _user = new Usuario(null, null, null, null, null, null, null);
+        ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar();
+        //lstUsuario.add(_user);
         System.out.println(lstUsuario.size());
         for (int i = 0; i < lstUsuario.size(); i++) {
             JTableUsuario.setValueAt(lstUsuario.get(i).getIdUsuario(), i, 0);
@@ -445,25 +449,25 @@ public class BalcaoView extends javax.swing.JFrame {
 
     private void preencheTabelaLivro() {
         ArrayList<Livro> lstLivro = ctrlLivro.Listar();
-        lstLivro.add(new Livro("teste", "teste", "teste"));
+       // lstLivro.add(new Livro("teste", "teste", "teste"));
         System.out.println(lstLivro.size());
         for (int i = 0; i < lstLivro.size(); i++) {
-            JTableLivro.setValueAt(lstLivro.get(i).getNome(), i, 0);
-            JTableLivro.setValueAt(lstLivro.get(i).getAutor(), i, 1);
-            JTableLivro.setValueAt(lstLivro.get(i).getQtdeTotal(), i, 2);
-            JTableLivro.setValueAt(lstLivro.get(i).getQtdeDisponivel(), i, 3);
+            JTableLivro.setValueAt(lstLivro.get(i).getIdLivro(), i, 0);
+            JTableLivro.setValueAt(lstLivro.get(i).getNome(), i, 1);
+            JTableLivro.setValueAt(lstLivro.get(i).getAutor(), i, 2);
+            JTableLivro.setValueAt(lstLivro.get(i).getSituacao(), i, 3);
         }
     }
 
     private void preencheTabelaEmprestimo() {
         ArrayList<Emprestimo> lstEmprestimo = ctrlEmprestimo.Listar();
-        lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO)));
+        //lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO)));
         System.out.println(lstEmprestimo.size());
         for (int i = 0; i < lstEmprestimo.size(); i++) {
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getLivro().getNome(), i, 0);
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getUsuario().getNome(), i, 1);
-            JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtEmprestimo(), i, 2);
-            JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtDevolucao(), i, 3);
+            JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtEmprestimoString(), i, 2);
+            JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtDevolucaoString(), i, 3);
         }
     }
 

@@ -11,6 +11,7 @@ import Framework.Persistencia;
 import java.awt.List;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
@@ -34,7 +35,7 @@ public class UsuarioModel {
         return (boolean) db.ExecutaPersistencia(p_usuario, EventoBotao.Excluir).get(0);
     }
 
-    public Usuario Consultar(Usuario p_usuario) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException {
+    public Usuario Consultar(Usuario p_usuario) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         if (!p_usuario.getNome().equals("")) {
             return (Usuario) db.RetornaSelecionado(p_usuario);
         } else {
@@ -43,8 +44,8 @@ public class UsuarioModel {
 
     }
 
-    public ArrayList<Usuario> Listar(Usuario p_objUsuario) throws IOException, FileNotFoundException, ClassNotFoundException {
-        ArrayList<Object> arrUsuarioGenerico = db.ExecutaPersistencia(p_objUsuario, EventoBotao.Listar);
+    public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException {
+        ArrayList<Object> arrUsuarioGenerico = db.ExecutaPersistencia(new Usuario(null, null, null, null, null, null, null), EventoBotao.Listar);
         ArrayList<Usuario> arrUsuario = new ArrayList<>();
         for (Object usuario : arrUsuarioGenerico) {
             arrUsuario.add((Usuario) usuario);

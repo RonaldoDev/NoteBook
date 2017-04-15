@@ -49,8 +49,8 @@ public class UsuarioView extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         jTextFieldUserName = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        jLabelUser = new javax.swing.JLabel();
+        jLabelSenha = new javax.swing.JLabel();
         jTextFieldIdUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldSenha = new javax.swing.JPasswordField();
@@ -119,9 +119,9 @@ public class UsuarioView extends javax.swing.JFrame {
             }
         });
 
-        jLabel22.setText("Usuario;");
+        jLabelUser.setText("Usuario;");
 
-        jLabel23.setText("Senha;");
+        jLabelSenha.setText("Senha;");
 
         jTextFieldIdUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,15 +153,15 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelCamposLayout.createSequentialGroup()
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
+                            .addComponent(jLabelUser)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel23))
+                            .addComponent(jLabelSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldCPFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,10 +199,10 @@ public class UsuarioView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
+                    .addComponent(jLabelUser))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
+                    .addComponent(jLabelSenha)
                     .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -250,7 +250,7 @@ public class UsuarioView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
@@ -269,8 +269,7 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jLabelUsuario)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(jLabelUsuario))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +288,7 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -320,15 +319,7 @@ public class UsuarioView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
-    private void LimparCampos() {
-        jTextFieldIdUsuario.setText("");
-        jTextFieldNomeUsuario.setText("");
-        jTextFieldEnderecoUsuario.setText("");
-        jTextFieldCPFUsuario.setText("");
-        jTextFieldDtNascUsuario.setText("");
-        jTextFieldUserName.setText("");
-        jTextFieldSenha.setText("");
-    }
+  
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelUsuario.setText("Consultar Usuario");
         Usuario user = new Usuario();
@@ -364,6 +355,25 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
+        switch (jComboBox2.getSelectedIndex()) {
+            
+            case 0:
+            case 1:
+                jTextFieldUserName.setVisible(true);
+                jTextFieldSenha.setVisible(true);
+                jLabelUser.setVisible(true);
+                jLabelSenha.setVisible(true);
+                break;
+            
+            case 2:
+                jTextFieldUserName.setText("");
+                jTextFieldSenha.setText("");
+                jTextFieldUserName.setVisible(false);
+                jTextFieldSenha.setVisible(false);
+                jLabelUser.setVisible(false);
+                jLabelSenha.setVisible(false);
+                break;
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTextFieldDtNascUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDtNascUsuarioActionPerformed
@@ -396,12 +406,12 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelSenha;
+    private javax.swing.JLabel jLabelUser;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelCampos;
     private javax.swing.JTextField jTextFieldCPFUsuario;
@@ -412,4 +422,18 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTextFieldSenha;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
+  
+    
+    private void LimparCampos() {
+        jTextFieldIdUsuario.setText("");
+        jTextFieldNomeUsuario.setText("");
+        jTextFieldEnderecoUsuario.setText("");
+        jTextFieldCPFUsuario.setText("");
+        jTextFieldDtNascUsuario.setText("");
+        jTextFieldUserName.setText("");
+        jTextFieldSenha.setText("");
 }
+
+}
+
+
