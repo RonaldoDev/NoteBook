@@ -34,8 +34,13 @@ public class UsuarioModel {
         return (boolean) db.ExecutaPersistencia(p_usuario, EventoBotao.Excluir).get(0);
     }
 
-    public Usuario Consultar(Usuario p_usuario) {
-        return (Usuario) db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
+    public Usuario Consultar(Usuario p_usuario) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException {
+        if (!p_usuario.getNome().equals("")) {
+            return (Usuario) db.RetornaSelecionado(p_usuario);
+        } else {
+            return (Usuario) db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
+        }
+
     }
 
     public ArrayList<Usuario> Listar(Usuario p_objUsuario) throws IOException, FileNotFoundException, ClassNotFoundException {

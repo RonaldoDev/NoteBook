@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -151,24 +152,35 @@ public class Persistencia {
                     _ultimo = Integer.parseInt(arq.getName().substring(0, arq.getName().length() - 4));
                 }
             }
-            //   String ultimoArquivo = arquivos[arquivos.length - 1].getName();
             _id = _ultimo;
         }
         return _id;
     }
 
-    public File RetornaSelecionado(int p_id) {
-        File arquivo = new File(dePath);
-        ArrayList<File> arquivos = new ArrayList<>(Stream.of(arquivo.listFiles()).collect(Collectors.toList()));
-        return arquivos.stream()
-                .filter((File f)
-                        -> Integer.parseInt(f.getName()
-                        .substring(0, f.getName().length() - 4)) == p_id)
-                .findFirst()
-                .orElse(arquivo);
+    public Object RetornaSelecionado(Object o) throws IOException, FileNotFoundException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        PopulaPath(o);
+        ArrayList<Object> _lstEntidade = new ArrayList<>();
+        try {
+            File arquivo = new File(dePath);
+            ArrayList<File> arquivos = new ArrayList<>(Stream.of(arquivo.listFiles()).collect(Collectors.toList()));
+
+            String _classe = o.getClass().getName().substring(10);
+            for (File arq : arquivos) {
+                _lstEntidade.add(CarregaArquivo(arq.getName()));
+            }
+            for (Object obj : _lstEntidade) {
+                if (obj.getClass().getMethod("getNome").invoke(obj).toString().equals(o.getClass().getMethod("getNome").invoke(o).toString())) {
+                    return obj;
+                }
+            }
+        } catch (ClassNotFoundException c) {
+
+        }
+        return o;
+
     }
 
-    public ArrayList<Object> RetornaLista(Object oh) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public ArrayList<Object> RetornaLista(Object o) throws IOException, FileNotFoundException, ClassNotFoundException {
         File _arquivo = new File(dePath);
         ArrayList<File> _arquivos = new ArrayList<>(Stream.of(_arquivo.listFiles()).collect(Collectors.toList()));
         ArrayList<Object> _objRetorno = new ArrayList<>();

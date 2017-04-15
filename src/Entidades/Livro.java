@@ -12,6 +12,7 @@ import Enumeradores.SituacaoLivro;
  * @author Rolando
  */
 public class Livro {
+
     private int idLivro;
     private String titulo;
     private String autor;
@@ -19,8 +20,8 @@ public class Livro {
     private int qtdeTotal;
     private int qtdeDisponivel;
     private SituacaoLivro situacao;
-    
-    public Livro(String titulo, String autor, String edicao){
+
+    public Livro(String titulo, String autor, String edicao) {
         this.idLivro = 0;
         this.autor = autor;
         this.titulo = titulo;
@@ -33,7 +34,7 @@ public class Livro {
     /**
      * @return the titulo
      */
-    public String getTitulo() {
+    public String getNome() {
         return titulo;
     }
 
@@ -97,8 +98,11 @@ public class Livro {
      * @return the situacao
      */
     public String getSituacao() {
-        if(situacao == SituacaoLivro.Disponivel) return "Disponivel";
-        else return "Emprestado";
+        if (situacao == SituacaoLivro.Disponivel) {
+            return "Disponivel";
+        } else {
+            return "Emprestado";
+        }
     }
 
     /**
@@ -107,5 +111,5 @@ public class Livro {
     public void setSituacao(SituacaoLivro situacao) {
         this.situacao = situacao;
     }
-    
+
 }

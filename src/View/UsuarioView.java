@@ -332,7 +332,9 @@ public class UsuarioView extends javax.swing.JFrame {
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelUsuario.setText("Consultar Usuario");
         Usuario user = new Usuario();
-        user.setIdUsuario(Integer.parseInt(jTextFieldIdUsuario.getText()));
+
+        user.setIdUsuario(Integer.parseInt(!jTextFieldIdUsuario.getText().trim().equals("") ? jTextFieldIdUsuario.getText() : "0"));
+        user.setNome(!jTextFieldNomeUsuario.getText().trim().equals("") ? jTextFieldNomeUsuario.getText() : "");
         user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
         jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
         jTextFieldNomeUsuario.setText(user.getNome());
@@ -381,7 +383,7 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeUsuarioActionPerformed
 
     private void jButtonLimpaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpaTelaActionPerformed
-        // TODO add your handling code here:
+        LimparCampos();
     }//GEN-LAST:event_jButtonLimpaTelaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
