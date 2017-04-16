@@ -11,7 +11,6 @@ import Enumeradores.TransacaoSistema;
 import Framework.Cripto;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -31,9 +30,9 @@ public class Usuario implements Serializable {
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
 
-    public Usuario(String p_nmUsuario, String p_endUsuario, String p_nuCpf, String p_dtNascimento, String p_nmLogin, String p_deSenha, TipoUsuario p_tpUsuario) {
+    public Usuario(int p_IdUsuario, String p_nmUsuario, String p_endUsuario, String p_nuCpf, String p_dtNascimento, String p_nmLogin, String p_deSenha, TipoUsuario p_tpUsuario) {
         Cripto c = new Cripto(String.valueOf(p_deSenha));
-        this.IdUsuario = 0;
+        this.IdUsuario = p_IdUsuario;
         this.NmUsuario = p_nmUsuario;
         this.DeEndereco = p_endUsuario;
         this.NuCpf = p_nuCpf;

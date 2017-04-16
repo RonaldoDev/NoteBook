@@ -20,25 +20,23 @@ public class UsuarioController {
 
     UsuarioModel _mdlUsuario = new UsuarioModel();
 
-    public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao) {
-        try {
-            if (ValidaRegrasNegocio(p_usuario, evtBotao)) {
-                //UsuarioModel _mdlUsuario = new UsuarioModel();
-                switch (evtBotao) {
-                    case Incluir:
-                        return _mdlUsuario.Incluir(p_usuario);
-                    case Alterar:
-                        return _mdlUsuario.Alterar(p_usuario);
-                    case Excluir:
-                        if (!_mdlUsuario.Excluir(p_usuario));
-                        return null;
-                    case Consultar:
-                        return _mdlUsuario.Consultar(p_usuario);
-                }
+    public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao) throws Exception {
+
+        if (ValidaRegrasNegocio(p_usuario, evtBotao)) {
+            //UsuarioModel _mdlUsuario = new UsuarioModel();
+            switch (evtBotao) {
+                case Incluir:
+                    return _mdlUsuario.Incluir(p_usuario);
+                case Alterar:
+                    return _mdlUsuario.Alterar(p_usuario);
+                case Excluir:
+                    if (!_mdlUsuario.Excluir(p_usuario));
+                    return null;
+                case Consultar:
+                    return _mdlUsuario.Consultar(p_usuario);
             }
-        } catch (Exception e) {
-            System.err.println(e);
         }
+
         return p_usuario;
     }
 

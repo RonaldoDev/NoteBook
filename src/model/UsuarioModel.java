@@ -36,7 +36,7 @@ public class UsuarioModel {
     }
 
     public Usuario Consultar(Usuario p_usuario) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        if (!p_usuario.getNome().equals("")) {
+        if (!p_usuario.getNome().equals("") && Integer.parseInt(p_usuario.getNome()) > 0) {
             return (Usuario) db.RetornaSelecionado(p_usuario);
         } else {
             return (Usuario) db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
@@ -45,7 +45,7 @@ public class UsuarioModel {
     }
 
     public ArrayList<Usuario> Listar() throws IOException, FileNotFoundException, ClassNotFoundException {
-        ArrayList<Object> arrUsuarioGenerico = db.ExecutaPersistencia(new Usuario(null, null, null, null, null, null, null), EventoBotao.Listar);
+        ArrayList<Object> arrUsuarioGenerico = db.ExecutaPersistencia(new Usuario(), EventoBotao.Listar);
         ArrayList<Usuario> arrUsuario = new ArrayList<>();
         for (Object usuario : arrUsuarioGenerico) {
             arrUsuario.add((Usuario) usuario);

@@ -60,6 +60,8 @@ public class UsuarioView extends javax.swing.JFrame {
         jButtonEdt = new javax.swing.JButton();
         jButtonCons = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,31 +247,40 @@ public class UsuarioView extends javax.swing.JFrame {
         jLabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabelUsuario.setText("Adicionar Usuario");
 
+        lblMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCons)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCancel)
+                                .addGap(4, 4, 4))
+                            .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonAdd)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonCons)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonCancel)
-                            .addGap(4, 4, 4))
-                        .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabelUsuario))))
+                            .addGap(164, 164, 164)
+                            .addComponent(jLabelUsuario)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,52 +299,75 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblMensagem.getAccessibleContext().setAccessibleName("lblMensagem");
+        lblMensagem.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        TipoUsuario _tipo = null;
-        switch (jComboBox2.getSelectedIndex()) {
-            case 0:
-                _tipo = _tipo.FUNCIONARIO;
-                break;
-            case 1:
-                _tipo = _tipo.GERENTE;
-                break;
-            case 2:
-                _tipo = _tipo.CLIENTE;
-                break;
+        try {
+            TipoUsuario _tipo = null;
+            switch (jComboBox2.getSelectedIndex()) {
+                case 0:
+                    _tipo = _tipo.FUNCIONARIO;
+                    break;
+                case 1:
+                    _tipo = _tipo.GERENTE;
+                    break;
+                case 2:
+                    _tipo = _tipo.CLIENTE;
+                    break;
+            }
+            Usuario user = new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText()), jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
+            jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
         }
-        Usuario user = new Usuario(jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
-        jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-        jLabelUsuario.setText("Remover Usuario");
-        Usuario _u = ctrlUsuario.ExecutaEventoBotao(new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText())), acao.Excluir);
-        if (_u == null) {
-            LimparCampos();
+        try {
+            jLabelUsuario.setText("Remover Usuario");
+            Usuario _u = ctrlUsuario.ExecutaEventoBotao(new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText())), acao.Excluir);
+            if (_u == null) {
+                LimparCampos();
+                lblMensagem.setText("Exclusão com sucesso!");
+
+            }
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
         }
+
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
-  
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-        jLabelUsuario.setText("Consultar Usuario");
-        Usuario user = new Usuario();
+        try {
+            jLabelUsuario.setText("Consultar Usuario");
+            Usuario user = new Usuario();
 
-        user.setIdUsuario(Integer.parseInt(!jTextFieldIdUsuario.getText().trim().equals("") ? jTextFieldIdUsuario.getText() : "0"));
-        user.setNome(!jTextFieldNomeUsuario.getText().trim().equals("") ? jTextFieldNomeUsuario.getText() : "");
-        user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
-        jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
-        jTextFieldNomeUsuario.setText(user.getNome());
-        jTextFieldEnderecoUsuario.setText(user.getEndereco());
-        jTextFieldCPFUsuario.setText(user.getCpf());
-        jTextFieldDtNascUsuario.setText(user.getDtNasc());
-        jTextFieldUserName.setText(user.getUsuario());
-        jTextFieldSenha.setText(user.getSenha());
+            user.setIdUsuario(Integer.parseInt(!jTextFieldIdUsuario.getText().trim().equals("") ? jTextFieldIdUsuario.getText() : "0"));
+            user.setNome(!jTextFieldNomeUsuario.getText().trim().equals("") ? jTextFieldNomeUsuario.getText() : "");
+            user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
+            jTextFieldIdUsuario.setText(String.valueOf(user.getIdUsuario()));
+            jTextFieldNomeUsuario.setText(user.getNome());
+            jTextFieldEnderecoUsuario.setText(user.getEndereco());
+            jTextFieldCPFUsuario.setText(user.getCpf());
+            jTextFieldDtNascUsuario.setText(user.getDtNasc());
+            jTextFieldUserName.setText(user.getUsuario());
+            jTextFieldSenha.setText(user.getSenha());
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
+        }
+
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
@@ -356,7 +390,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
         switch (jComboBox2.getSelectedIndex()) {
-            
+
             case 0:
             case 1:
                 jTextFieldUserName.setVisible(true);
@@ -364,7 +398,7 @@ public class UsuarioView extends javax.swing.JFrame {
                 jLabelUser.setVisible(true);
                 jLabelSenha.setVisible(true);
                 break;
-            
+
             case 2:
                 jTextFieldUserName.setText("");
                 jTextFieldSenha.setText("");
@@ -404,6 +438,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpaTela;
     private javax.swing.JButton jButtonRmv;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -421,9 +456,9 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNomeUsuario;
     private javax.swing.JPasswordField jTextFieldSenha;
     private javax.swing.JTextField jTextFieldUserName;
+    private javax.swing.JLabel lblMensagem;
     // End of variables declaration//GEN-END:variables
-  
-    
+
     private void LimparCampos() {
         jTextFieldIdUsuario.setText("");
         jTextFieldNomeUsuario.setText("");
@@ -432,8 +467,6 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldDtNascUsuario.setText("");
         jTextFieldUserName.setText("");
         jTextFieldSenha.setText("");
-}
+    }
 
 }
-
-

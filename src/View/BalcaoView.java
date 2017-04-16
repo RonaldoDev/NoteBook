@@ -37,7 +37,7 @@ public class BalcaoView extends javax.swing.JFrame {
         JTableLivro.setEnabled(false);
         JTableEmprestimos.setEnabled(false);
         JTableUsuario.setEnabled(false);
-        
+
         preencheTabelaEmprestimo();
     }
 
@@ -430,12 +430,12 @@ public class BalcaoView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void preencheTabelaUsuario() {
-        
+
         jPanelEmprestimo.setVisible(false);
         jPanelUsuario.setVisible(true);
         jPanelLivro.setVisible(false);
-        
-        Usuario _user = new Usuario(null, null, null, null, null, null, null);
+
+        Usuario _user = new Usuario();
         ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar();
         //lstUsuario.add(_user);
         System.out.println(lstUsuario.size());
@@ -449,7 +449,7 @@ public class BalcaoView extends javax.swing.JFrame {
 
     private void preencheTabelaLivro() {
         ArrayList<Livro> lstLivro = ctrlLivro.Listar();
-       // lstLivro.add(new Livro("teste", "teste", "teste"));
+        // lstLivro.add(new Livro("teste", "teste", "teste"));
         System.out.println(lstLivro.size());
         for (int i = 0; i < lstLivro.size(); i++) {
             JTableLivro.setValueAt(lstLivro.get(i).getIdLivro(), i, 0);
