@@ -20,20 +20,20 @@ public class EmprestimoModel {
     Persistencia db = new Persistencia();
 
     
-     public Emprestimo Incluir(Livro p_livro, Emprestimo p_emprestimo)
+     public Emprestimo Incluir( Emprestimo p_emprestimo)
     {
         p_emprestimo.setIdEmprestimo((int)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Incluir).get(0));
       return  p_emprestimo;
     }
-    public Emprestimo Alterar(Livro p_livro, Emprestimo p_emprestimo)
+    public Emprestimo Alterar( Emprestimo p_emprestimo)
     {
          return (Emprestimo)db.ExecutaPersistencia(p_emprestimo , EventoBotao.Alterar).get(0);
     }
-    public boolean Excluir(Livro p_livro, Emprestimo p_emprestimo)
+    public boolean Excluir(Emprestimo p_emprestimo)
     {
         return (boolean)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Excluir).get(0);
     }
-    public Emprestimo Consultar(Livro p_livro, Emprestimo p_emprestimo)
+    public Emprestimo Consultar(Emprestimo p_emprestimo)
     {
         return (Emprestimo)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
 

@@ -34,22 +34,22 @@ public class EmprestimoController {
         seg = new Seguranca(p_sessao);
     }
 
-    public Emprestimo ExecutaEventoBotao(Emprestimo p_emprestimo, Livro p_livro, EventoBotao evtBotao) {
+    public Emprestimo ExecutaEventoBotao(Emprestimo p_emprestimo, EventoBotao evtBotao) {
         try {
             if (seg.VerificaAcesso(evtBotao) && ValidaRegrasNegocio(p_emprestimo, evtBotao)) {
                 //EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
                 switch (evtBotao) {
                     case Incluir:
-                        _mdlEmprestimo.Incluir(p_livro, p_emprestimo);
+                        _mdlEmprestimo.Incluir(p_emprestimo);
                         break;
                     case Alterar:
-                        _mdlEmprestimo.Alterar(p_livro, p_emprestimo);
+                        _mdlEmprestimo.Alterar(p_emprestimo);
                         break;
                     case Excluir:
-                        _mdlEmprestimo.Excluir(p_livro, p_emprestimo);
+                        _mdlEmprestimo.Excluir(p_emprestimo);
                         break;
                     case Consultar:
-                        Emprestimo _retornoEmprestimo = _mdlEmprestimo.Consultar(p_livro, p_emprestimo);
+                        Emprestimo _retornoEmprestimo = _mdlEmprestimo.Consultar(p_emprestimo);
                         break;
                 }
             }
