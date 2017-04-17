@@ -6,6 +6,7 @@
 package View;
 
 import Controller.LivroController;
+import Controller.UsuarioController;
 import Entidades.Livro;
 import Entidades.Sessao;
 import Entidades.Usuario;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 public class LivroView extends javax.swing.JFrame {
 
     LivroController ctrlLivro;
+    private EventoBotao acao;
 
     /**
      * Creates new form LivroView
@@ -35,6 +37,7 @@ public class LivroView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblMensagem = new javax.swing.JLabel();
         jButtonCancel = new javax.swing.JButton();
         jPanelCampos = new javax.swing.JPanel();
         jTextFieldTituloLivro = new javax.swing.JTextField();
@@ -49,6 +52,9 @@ public class LivroView extends javax.swing.JFrame {
         jButtonEdt = new javax.swing.JButton();
         jButtonCons = new javax.swing.JButton();
         jLabelLivro = new javax.swing.JLabel();
+        lblMensagem1 = new javax.swing.JLabel();
+
+        lblMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,6 +168,8 @@ public class LivroView extends javax.swing.JFrame {
         jLabelLivro.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabelLivro.setText("Adicionar Livro");
 
+        lblMensagem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,6 +195,10 @@ public class LivroView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabelLivro))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblMensagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,6 +217,8 @@ public class LivroView extends javax.swing.JFrame {
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMensagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -232,12 +246,27 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLimpaTelaActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-
+        try{   
+            Livro livro = new Livro(Integer.parseInt(jTextFieldIdLivro.getText().equals("") ? "0" : jTextFieldIdLivro.getText()), jTextFieldTituloLivro.getText(), jTextFieldAutorLivro.getText());
+            jTextFieldIdLivro.setText(String.valueOf(ctrlLivro.ExecutaEventoBotao(livro, acao.Incluir).getIdLivro()));
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-        jLabelLivro.setText("Remover Livro");
+   
+        try {
+            jLabelLivro.setText("Remover Livro");
+            Livro _l = ctrlLivro.ExecutaEventoBotao(new Livro(Integer.parseInt(jTextFieldIdLivro.getText())), acao.Excluir);
+            if (_l == null) {
+                LimparCampos();
+                lblMensagem.setText("Exclusão com sucesso!");
 
+            }
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
+        }
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
@@ -245,8 +274,20 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEdtActionPerformed
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-        jLabelLivro.setText("Consultar Livro");
+        
+         try {
+            jLabelLivro.setText("Consultar Livro");
+            Livro livro = new Livro();
 
+            livro.setIdLivro(Integer.parseInt(!jTextFieldIdLivro.getText().trim().equals("") ? jTextFieldIdLivro.getText() : "0"));
+            livro.setNome(!jTextFieldTituloLivro.getText().trim().equals("") ? jTextFieldTituloLivro.getText() : "");
+            livro = ctrlLivro.ExecutaEventoBotao(livro, acao.Consultar);
+            jTextFieldTituloLivro.setText(livro.getNome());
+            jTextFieldAutorLivro.setText(livro.getAutor());
+            
+        } catch (Exception e) {
+            lblMensagem.setText(e.getMessage());
+        }
     }//GEN-LAST:event_jButtonConsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -264,6 +305,8 @@ public class LivroView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAutorLivro;
     private javax.swing.JTextField jTextFieldIdLivro;
     private javax.swing.JTextField jTextFieldTituloLivro;
+    private javax.swing.JLabel lblMensagem;
+    private javax.swing.JLabel lblMensagem1;
     // End of variables declaration//GEN-END:variables
 
     private void LimparCampos() {

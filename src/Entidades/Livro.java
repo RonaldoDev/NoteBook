@@ -21,21 +21,33 @@ public class Livro {
     private int qtdeDisponivel;
     private SituacaoLivro situacao;
 
-    public Livro(String titulo, String autor, String edicao) {
-        this.idLivro = 0;
-        this.autor = autor;
-        this.titulo = titulo;
-        this.edicao = edicao;
+    public Livro(int p_IdLivro, String p_titulo, String p_autor) {
+        this.idLivro = p_IdLivro;
+        this.autor = p_autor;
+        this.titulo = p_titulo;
+        //this.edicao = edicao;
         //this.qtdeTotal = qtdeTotal;
         //this.qtdeTotal = qtdeTotal;
         this.situacao = SituacaoLivro.Disponivel;
     }
+    
+    public Livro(int p_IdLivro) {
+        this.idLivro = p_IdLivro;
+    }
+    
+     public Livro(){
+         
+     }
 
     /**
      * @return the titulo
      */
     public String getNome() {
         return titulo;
+    }
+    
+    public void setNome(String titulo) {
+        this.titulo = titulo;
     }
 
     /**

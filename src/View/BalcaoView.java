@@ -40,6 +40,10 @@ public class BalcaoView extends javax.swing.JFrame {
         JTableEmprestimos.setEnabled(false);
         JTableUsuario.setEnabled(false);
         sessao = p_sessao;
+        if(sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
+            jMenuItemManUsuario.setVisible(false);
+            jMenuItemManLivro.setVisible(false);
+        }
 
         preencheTabelaEmprestimo();
     }

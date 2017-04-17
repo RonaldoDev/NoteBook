@@ -208,6 +208,7 @@ public class Persistencia {
         if (!Files.exists(_pasta)) {
             success = (new File(dePath)).mkdirs();
         }
+        System.out.println(dePath);
     }
 
 }
