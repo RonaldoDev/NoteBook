@@ -35,6 +35,8 @@ public class UsuarioView extends javax.swing.JFrame {
          if(p_sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
              jComboBoxTipoUsuario.setSelectedIndex(2);
              jComboBoxTipoUsuario.setEnabled(false);
+             jButtonEdt.setEnabled(false);
+             jButtonRmv.setEnabled(false);
          }
 
     }
