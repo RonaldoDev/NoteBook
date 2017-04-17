@@ -16,35 +16,32 @@ import java.util.ArrayList;
  * @author Rolando
  */
 public class EmprestimoModel {
-    
+
     Persistencia db = new Persistencia();
 
-    
-     public Emprestimo Incluir( Emprestimo p_emprestimo)
-    {
-        p_emprestimo.setIdEmprestimo((int)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Incluir).get(0));
-      return  p_emprestimo;
+    public Emprestimo Incluir(Emprestimo p_emprestimo) {
+        p_emprestimo.setIdEmprestimo((int) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Incluir).get(0));
+        return p_emprestimo;
     }
-    public Emprestimo Alterar( Emprestimo p_emprestimo)
-    {
-         return (Emprestimo)db.ExecutaPersistencia(p_emprestimo , EventoBotao.Alterar).get(0);
+
+    public Emprestimo Alterar(Emprestimo p_emprestimo) {
+        return (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
     }
-    public boolean Excluir(Emprestimo p_emprestimo)
-    {
-        return (boolean)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Excluir).get(0);
+
+    public boolean Excluir(Emprestimo p_emprestimo) {
+        return (boolean) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Excluir).get(0);
     }
-    public Emprestimo Consultar(Emprestimo p_emprestimo)
-    {
-        return (Emprestimo)db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
+
+    public Emprestimo Consultar(Emprestimo p_emprestimo) {
+        return (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
 
     }
 
-    public ArrayList<Emprestimo> Listar()
-    {
-        ArrayList<Object> arrEmprestimoGenerico = db.ExecutaPersistencia(0, EventoBotao.Listar);
+    public ArrayList<Emprestimo> Listar() {
+        ArrayList<Object> arrEmprestimoGenerico = db.ExecutaPersistencia(new Emprestimo(), EventoBotao.Listar);
         ArrayList<Emprestimo> arrEmprestimo = new ArrayList<>();
         for (Object emprestimo : arrEmprestimoGenerico) {
-            arrEmprestimo.add((Emprestimo)emprestimo);
+            arrEmprestimo.add((Emprestimo) emprestimo);
         }
         return arrEmprestimo;
     }
