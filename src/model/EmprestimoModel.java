@@ -33,7 +33,7 @@ public class EmprestimoModel {
     }
 
     public Emprestimo Consultar(Emprestimo p_emprestimo) {
-        return (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
+        return (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Consultar).get(0);
 
     }
 
