@@ -33,7 +33,7 @@ public class UsuarioController {
                     if (!_mdlUsuario.Excluir(p_usuario));
                     return null;
                 case Consultar:
-                    return _mdlUsuario.Consultar(p_usuario);
+                    return _mdlUsuario.Consultar(p_usuario, false);
             }
         }
 

@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class LoginView extends javax.swing.JFrame {
 
+    Usuario sessao;
+
     /**
      * Creates new form LoginView
      */
@@ -123,9 +125,10 @@ public class LoginView extends javax.swing.JFrame {
             Usuario _u = new Usuario();
             _u.setUsuario(jTextFieldLogin.getText());
             _u.setSenha(jPasswordFieldLogin.getText());
-            if (seg.Login(_u)) {
+            _u = seg.Login(_u);
+            if (_u != null) {
                 this.setVisible(false);
-                new BalcaoView().setVisible(true);
+                new BalcaoView(_u).setVisible(true);
                 JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario e/ou Senha Incorretos");

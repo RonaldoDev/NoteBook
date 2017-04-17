@@ -11,7 +11,10 @@ import Controller.UsuarioController;
 import Entidades.Emprestimo;
 import Entidades.Livro;
 import Entidades.Usuario;
+import Enumeradores.SituacaoLivro;
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
 /**
@@ -337,11 +340,10 @@ public class EmprestimoView extends javax.swing.JFrame {
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         Usuario _user = new Usuario();
-        jTableLista.removeColumnSelectionInterval(0, 3);
-        ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar();
-        //lstUsuario.add(_user);
+
+        ArrayList<Usuario> lstUsuario = new ArrayList<>(ctrlUsuario.Listar().stream().filter((Usuario u) -> !u.getDeLivro().equals(SituacaoLivro.Disponivel)).map(m -> m).collect(Collectors.toList()));
         System.out.println(lstUsuario.size());
-        jTableLista.addColumnSelectionInterval(0, 3);
+
         for (int i = 0; i < lstUsuario.size(); i++) {
             jTableLista.setValueAt(lstUsuario.get(i).getNome(), i, 0);
             jTableLista.setValueAt(lstUsuario.get(i).getCpf(), i, 1);

@@ -6,6 +6,7 @@
 package Entidades;
 
 import Enumeradores.EventoBotao;
+import Enumeradores.SituacaoLivro;
 import Enumeradores.TipoUsuario;
 import Enumeradores.TransacaoSistema;
 import Framework.Cripto;
@@ -26,6 +27,7 @@ public class Usuario implements Serializable {
     private String NmLogin;
     private String DeSenha;
     private TipoUsuario TpUsuario;
+    private SituacaoLivro DeLivro;
 
     private ArrayList<TransacaoSistema> PermissoesTela;
     private ArrayList<EventoBotao> PermissaoFuncao;
@@ -48,6 +50,14 @@ public class Usuario implements Serializable {
 
     public Usuario() {
 
+    }
+
+    public SituacaoLivro getDeLivro() {
+        return DeLivro;
+    }
+
+    public void setDeLivro(SituacaoLivro DeLivro) {
+        this.DeLivro = DeLivro;
     }
 
     public int getIdUsuario() {

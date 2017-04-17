@@ -157,7 +157,7 @@ public class Persistencia {
         return _id;
     }
 
-    public Object RetornaSelecionado(Object o) throws IOException, FileNotFoundException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public Object RetornaSelecionado(Object o, boolean IsLogin) throws IOException, FileNotFoundException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         PopulaPath(o);
         ArrayList<Object> _lstEntidade = new ArrayList<>();
         try {
@@ -169,7 +169,9 @@ public class Persistencia {
                 _lstEntidade.add(CarregaArquivo(arq.getName()));
             }
             for (Object obj : _lstEntidade) {
-                if (obj.getClass().getMethod("getNome").invoke(obj).toString().equals(o.getClass().getMethod("getNome").invoke(o).toString())) {
+                if (!IsLogin && obj.getClass().getMethod("getNome").invoke(obj).toString().equals(o.getClass().getMethod("getNome").invoke(o).toString())) {
+                    return obj;
+                } else if (IsLogin && obj.getClass().getMethod("getUsuario").invoke(obj).equals(o.getClass().getMethod("getUsuario").invoke(o))) {
                     return obj;
                 }
             }

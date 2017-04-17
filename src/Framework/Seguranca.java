@@ -57,18 +57,18 @@ public class Seguranca {
         return true;
     }
 
-    public boolean Login(Usuario p_usuario) throws Exception {
+    public Usuario Login(Usuario p_usuario) throws Exception {
         //usuario e senha padrao
         Cripto c = new Cripto(UsuarioPadrao.getPASSWORD_PADRAO());
         if (p_usuario.getUsuario().equals(UsuarioPadrao.getUSERNAME_PADRAO()) && p_usuario.getSenha().equals(c.Criptografa())) {
-            return true;
+            return new Usuario();
         } else {
             try {
                 UsuarioModel mdlUsuario = new UsuarioModel();
-                Usuario _u = mdlUsuario.Consultar(p_usuario);
+                Usuario _u = mdlUsuario.Consultar(p_usuario, true);
                 //usuario e senha padrao
                 if (_u != null && p_usuario.getSenha().equals(_u.getSenha())) {
-                    return true;
+                    return _u;
                 } else {
                     throw new Exception("Usuario ou senha está incorreto.");
                 }
@@ -76,6 +76,6 @@ public class Seguranca {
 
             }
         }
-        return false;
+        return null;
     }
 }

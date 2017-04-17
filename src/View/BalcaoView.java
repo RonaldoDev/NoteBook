@@ -23,6 +23,7 @@ import javax.swing.table.TableModel;
  */
 public class BalcaoView extends javax.swing.JFrame {
 
+    Usuario sessao;
     UsuarioController ctrlUsuario = new UsuarioController();
     LivroController ctrlLivro = new LivroController();
     EmprestimoController ctrlEmprestimo = new EmprestimoController();
@@ -30,13 +31,14 @@ public class BalcaoView extends javax.swing.JFrame {
     /**
      * Creates new form BalcaoView
      */
-    public BalcaoView() {
+    public BalcaoView(Usuario p_sessao) {
         this.setLocation(150, 50);
         initComponents();
         //desativar edição de celulas
         JTableLivro.setEnabled(false);
         JTableEmprestimos.setEnabled(false);
         JTableUsuario.setEnabled(false);
+        sessao = p_sessao;
 
         preencheTabelaEmprestimo();
     }

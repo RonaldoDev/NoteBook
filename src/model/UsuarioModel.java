@@ -35,9 +35,13 @@ public class UsuarioModel {
         return (boolean) db.ExecutaPersistencia(p_usuario, EventoBotao.Excluir).get(0);
     }
 
-    public Usuario Consultar(Usuario p_usuario) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public Usuario Consultar(Usuario p_usuario, boolean IsLogin) throws IOException, FileNotFoundException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+        if (IsLogin) {
+            return (Usuario) db.RetornaSelecionado(p_usuario, true);
+        }
         if (!p_usuario.getNome().equals("") && Integer.parseInt(p_usuario.getNome()) > 0) {
-            return (Usuario) db.RetornaSelecionado(p_usuario);
+            return (Usuario) db.RetornaSelecionado(p_usuario, false);
         } else {
             return (Usuario) db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
         }
