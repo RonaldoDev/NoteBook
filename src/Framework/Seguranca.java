@@ -9,6 +9,7 @@ import Config.UsuarioPadrao;
 import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
+import Enumeradores.TipoUsuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class Seguranca {
         //usuario e senha padrao
         Cripto c = new Cripto(UsuarioPadrao.getPASSWORD_PADRAO());
         if (p_usuario.getUsuario().equals(UsuarioPadrao.getUSERNAME_PADRAO()) && p_usuario.getSenha().equals(c.Criptografa())) {
-            return new Usuario();
+            return new Usuario(0, "Admin", null, null, null, null, null, TipoUsuario.GERENTE);
         } else {
             try {
                 UsuarioModel mdlUsuario = new UsuarioModel();
