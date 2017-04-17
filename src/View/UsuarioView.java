@@ -6,6 +6,7 @@
 package View;
 
 import Controller.UsuarioController;
+import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
 import Enumeradores.TipoUsuario;
@@ -21,15 +22,16 @@ import model.UsuarioModel;
  */
 public class UsuarioView extends javax.swing.JFrame {
 
-    UsuarioController ctrlUsuario = new UsuarioController();
+    UsuarioController ctrlUsuario;
     private EventoBotao acao;
 
     /**
      * Creates new form UsuarioView
      */
-    public UsuarioView() {
+    public UsuarioView(Sessao p_sessao) {
         this.setLocation(300, 100);
         initComponents();
+        ctrlUsuario = new UsuarioController(p_sessao);
 
     }
 

@@ -10,6 +10,7 @@ import Controller.LivroController;
 import Controller.UsuarioController;
 import Entidades.Emprestimo;
 import Entidades.Livro;
+import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.TipoUsuario;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import javax.swing.table.TableModel;
  */
 public class BalcaoView extends javax.swing.JFrame {
 
-    Usuario sessao;
+    Sessao sessao;
     UsuarioController ctrlUsuario = new UsuarioController();
     LivroController ctrlLivro = new LivroController();
     EmprestimoController ctrlEmprestimo = new EmprestimoController();
@@ -31,7 +32,7 @@ public class BalcaoView extends javax.swing.JFrame {
     /**
      * Creates new form BalcaoView
      */
-    public BalcaoView(Usuario p_sessao) {
+    public BalcaoView(Sessao p_sessao) {
         this.setLocation(150, 50);
         initComponents();
         //desativar edição de celulas
@@ -363,7 +364,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelEmprestimo.setVisible(false);
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(true);
-        new LivroView().setVisible(true);
+        new LivroView(sessao).setVisible(true);
         preencheTabelaLivro();
     }//GEN-LAST:event_jMenuItemManLivroActionPerformed
 
@@ -373,7 +374,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelUsuario.setVisible(true);
         jPanelLivro.setVisible(false);
         preencheTabelaUsuario();
-        new UsuarioView().setVisible(true);
+        new UsuarioView(sessao).setVisible(true);
 
     }//GEN-LAST:event_jMenuItemManUsuarioActionPerformed
 
@@ -399,7 +400,7 @@ public class BalcaoView extends javax.swing.JFrame {
         jPanelUsuario.setVisible(false);
         jPanelLivro.setVisible(false);
         preencheTabelaEmprestimo();
-        new EmprestimoView().setVisible(true);
+        new EmprestimoView(sessao).setVisible(true);
     }//GEN-LAST:event_jMenuItemManEmprestimoActionPerformed
 
     private void jMenuUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuUsuarioKeyPressed

@@ -10,6 +10,7 @@ import Controller.LivroController;
 import Controller.UsuarioController;
 import Entidades.Emprestimo;
 import Entidades.Livro;
+import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.SituacaoLivro;
 import java.awt.List;
@@ -26,13 +27,15 @@ public class EmprestimoView extends javax.swing.JFrame {
     EmprestimoController ctrlEmprestimo = new EmprestimoController();
     LivroController ctrlLivro = new LivroController();
     UsuarioController ctrlUsuario = new UsuarioController();
+    Sessao sessao;
 
     /**
      * Creates new form EmprestimoView
      */
-    public EmprestimoView() {
+    public EmprestimoView(Sessao p_sessao) {
         this.setLocation(300, 100);
         initComponents();
+        sessao = p_sessao;
     }
 
     @SuppressWarnings("unchecked")

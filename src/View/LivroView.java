@@ -7,6 +7,8 @@ package View;
 
 import Controller.LivroController;
 import Entidades.Livro;
+import Entidades.Sessao;
+import Entidades.Usuario;
 import Enumeradores.EventoBotao;
 import Framework.Persistencia;
 import javax.swing.JOptionPane;
@@ -16,16 +18,17 @@ import javax.swing.JOptionPane;
  * @author jackdaniels
  */
 public class LivroView extends javax.swing.JFrame {
-    LivroController lvrController = new LivroController();
+
+    LivroController ctrlLivro;
 
     /**
      * Creates new form LivroView
-     * 
+     *
      */
-    public LivroView() {
-        this.setLocation(300,100);
+    public LivroView(Sessao p_sessao) {
+        this.setLocation(300, 100);
         initComponents();
-        
+        ctrlLivro = new LivroController(p_sessao);
     }
 
     @SuppressWarnings("unchecked")
@@ -229,12 +232,12 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLimpaTelaActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-     
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
         jLabelLivro.setText("Remover Livro");
-      
+
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
     private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
@@ -243,9 +246,8 @@ public class LivroView extends javax.swing.JFrame {
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelLivro.setText("Consultar Livro");
-        
-    }//GEN-LAST:event_jButtonConsActionPerformed
 
+    }//GEN-LAST:event_jButtonConsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
@@ -264,7 +266,7 @@ public class LivroView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTituloLivro;
     // End of variables declaration//GEN-END:variables
 
-    private void LimparCampos(){
+    private void LimparCampos() {
         jTextFieldAutorLivro.setText("");
         jTextFieldIdLivro.setText("");
         jTextFieldTituloLivro.setText("");

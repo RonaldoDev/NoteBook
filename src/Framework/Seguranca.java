@@ -40,19 +40,50 @@ public class Seguranca {
     }
 
     public boolean VerificaAcesso(EventoBotao p_evtBotao) {
-        try {
-            if (1 == 2) {
-                UsuarioModel mdlUsuario = new UsuarioModel();
-                Usuario _u = new Usuario();
-                ArrayList<Usuario> arrUsuario = mdlUsuario.Listar();
-                Usuario _objRetorno = arrUsuario.stream().filter((Usuario f)
-                        -> f.getPermissoesTela().contains(this.sessaoUsuario.getTransacao())
-                        && f.getPermissaoFuncao().contains(p_evtBotao)
-                        && this.sessaoUsuario.getIdUsuario() == f.getIdUsuario()).findFirst().orElse(null);
-                return _objRetorno != null;
-            }
-        } catch (Exception e) {
-
+        /**
+         * try { if (1 == 2) { UsuarioModel mdlUsuario = new UsuarioModel();
+         * Usuario _u = new Usuario(); ArrayList<Usuario> arrUsuario =
+         * mdlUsuario.Listar(); Usuario _objRetorno =
+         * arrUsuario.stream().filter((Usuario f) ->
+         * f.getPermissoesTela().contains(this.sessaoUsuario.getTransacao()) &&
+         * f.getPermissaoFuncao().contains(p_evtBotao) &&
+         * this.sessaoUsuario.getIdUsuario() ==
+         * f.getIdUsuario()).findFirst().orElse(null); return _objRetorno !=
+         * null; } } catch (Exception e) {
+         *
+         * } *
+         */
+        switch (p_evtBotao) {
+            case Alterar:
+                switch (sessaoUsuario.getPerfilUsuario()) {
+                    case GERENTE:
+                        break;
+                    case FUNCIONARIO:
+                        break;
+                    case CLIENTE:
+                        break;
+                }
+                break;
+            case Incluir:
+                switch (sessaoUsuario.getPerfilUsuario()) {
+                    case GERENTE:
+                        break;
+                    case FUNCIONARIO:
+                        break;
+                    case CLIENTE:
+                        break;
+                }
+                break;
+            case Excluir:
+                switch (sessaoUsuario.getPerfilUsuario()) {
+                    case GERENTE:
+                        break;
+                    case FUNCIONARIO:
+                        break;
+                    case CLIENTE:
+                        break;
+                }
+                break;
         }
         return true;
     }

@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.EventoBotao;
+import Framework.Seguranca;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,11 +21,21 @@ import model.UsuarioModel;
 public class UsuarioController {
 
     UsuarioModel _mdlUsuario = new UsuarioModel();
+    Seguranca seg;
+
+    public UsuarioController() {
+
+    }
+
+    public UsuarioController(Sessao p_sessao) {
+        p_sessao.setTransacao("USUARIO");
+        seg = new Seguranca(p_sessao);
+    }
 
     public Usuario ExecutaEventoBotao(Usuario p_usuario, EventoBotao evtBotao) throws Exception {
 
-        if (ValidaRegrasNegocio(p_usuario, evtBotao)) {
-            //UsuarioModel _mdlUsuario = new UsuarioModel();
+        if (seg.VerificaAcesso(evtBotao) && ValidaRegrasNegocio(p_usuario, evtBotao)) {
+            UsuarioModel _mdlUsuario = new UsuarioModel();
             switch (evtBotao) {
                 case Incluir:
                     return _mdlUsuario.Incluir(p_usuario);

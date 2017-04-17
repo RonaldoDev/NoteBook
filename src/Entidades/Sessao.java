@@ -13,15 +13,22 @@ import Enumeradores.TransacaoSistema;
  * @author Rolando
  */
 public class Sessao {
+
     private int IdUsuario;
     private TipoUsuario PerfilUsuario;
-    private TransacaoSistema Transacao ;
+    private String Transacao;
 
-    public TransacaoSistema getTransacao() {
+    public Sessao(int p_id, TipoUsuario p_tp, String p_trs) {
+        IdUsuario = p_id;
+        PerfilUsuario = p_tp;
+        Transacao = p_trs;
+    }
+
+    public String getTransacao() {
         return Transacao;
     }
 
-    public void setTransacao(TransacaoSistema Transacao) {
+    public void setTransacao(String Transacao) {
         this.Transacao = Transacao;
     }
 
@@ -41,5 +48,4 @@ public class Sessao {
         this.PerfilUsuario = PerfilUsuario;
     }
 
-    
 }

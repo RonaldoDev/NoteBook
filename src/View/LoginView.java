@@ -5,6 +5,7 @@
  */
 package View;
 
+import Entidades.Sessao;
 import Entidades.Usuario;
 import Enumeradores.TipoUsuario;
 import Framework.Seguranca;
@@ -128,7 +129,7 @@ public class LoginView extends javax.swing.JFrame {
             _u = seg.Login(_u);
             if (_u != null) {
                 this.setVisible(false);
-                new BalcaoView(_u).setVisible(true);
+                new BalcaoView(new Sessao(_u.getIdUsuario(), _u.getTipoUsuario(), "")).setVisible(true);
                 JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario e/ou Senha Incorretos");

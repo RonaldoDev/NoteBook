@@ -121,23 +121,8 @@ public class Usuario implements Serializable {
         this.TpUsuario = TpUsuario;
     }
 
-    public String getTipoUsuario() {
-        String _retTipo = "";
-        switch (TpUsuario) {
-            case CLIENTE:
-                _retTipo = "Cliente";
-                break;
-
-            case FUNCIONARIO:
-                _retTipo = "Funcionário";
-                break;
-
-            case GERENTE:
-                _retTipo = "Gerente";
-                break;
-        }
-
-        return _retTipo;
+    public TipoUsuario getTipoUsuario() {
+        return TpUsuario;
     }
 
     public ArrayList<TransacaoSistema> getPermissoesTela() {

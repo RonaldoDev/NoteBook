@@ -35,11 +35,10 @@ import java.util.stream.Stream;
  */
 public class Persistencia {
 
-    private Seguranca segOperaoes;
     private String dePath;
 
     public Persistencia() {
-        this.segOperaoes = new Seguranca();
+
     }
     private EventoBotao Operacao;
 
@@ -85,25 +84,22 @@ public class Persistencia {
     }
 
     private Object Gravar(Object o, int p_id) throws FileNotFoundException, IOException, Exception {
-        if (!segOperaoes.VerificaAcesso(getOperacao())) {
+        int _novoId = 0;
+        if (p_id > 0) {
+            _novoId = p_id;
         } else {
-            int _novoId = 0;
-            if (p_id > 0) {
-                _novoId = p_id;
-            } else {
-                _novoId = this.RetornaUltimo(dePath) + 1;
-            }
-            FileOutputStream arquivoGrav = new FileOutputStream(dePath + Integer.toString(_novoId) + ".txt");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-            SetarId(o, _novoId);
-            objGravar.writeObject(o);
-            objGravar.flush();
-            objGravar.close();
-            arquivoGrav.flush();
-            arquivoGrav.close();
-            return _novoId;
+            _novoId = this.RetornaUltimo(dePath) + 1;
         }
-        throw new Exception("Operação não permitida.");
+        FileOutputStream arquivoGrav = new FileOutputStream(dePath + Integer.toString(_novoId) + ".txt");
+        ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+        SetarId(o, _novoId);
+        objGravar.writeObject(o);
+        objGravar.flush();
+        objGravar.close();
+        arquivoGrav.flush();
+        arquivoGrav.close();
+        return _novoId;
+
     }
 
     public void SetarId(Object o, int p_id) {
@@ -123,21 +119,15 @@ public class Persistencia {
     }
 
     private boolean Alterar(Object o, int p_id) throws IOException, Exception {
-        if (segOperaoes.VerificaAcesso(getOperacao())) {
-            this.Excluir(p_id, true);
-            this.Gravar(o, p_id);
-            return true;
-        }
-        throw new Exception("Operação não permitida.");
+        this.Excluir(p_id, true);
+        this.Gravar(o, p_id);
+        return true;
     }
 
     private boolean Excluir(int p_id, boolean IsAlterar) throws Exception {
-        if (segOperaoes.VerificaAcesso(getOperacao()) || IsAlterar) {
-            File _file = new File(dePath + p_id + ".txt");
-            _file.delete();
-            return true;
-        }
-        throw new Exception("Operação não permitida.");
+        File _file = new File(dePath + p_id + ".txt");
+        _file.delete();
+        return true;
     }
 
     private int RetornaUltimo(String dePath) {
@@ -203,10 +193,13 @@ public class Persistencia {
 
     private void PopulaPath(Object o) {
         dePath = DiretorioPadrao.getDIRETORIO_PADRAO();
+
         if (o.getClass() == Usuario.class) {
             dePath += "//Usuario//";
+
         } else if (o.getClass() == Livro.class) {
             dePath += "//Livro//";
+
         } else if (o.getClass() == Emprestimo.class) {
             dePath += "//Emprestimo//";
         }
