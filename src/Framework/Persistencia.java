@@ -118,10 +118,10 @@ public class Persistencia {
         }
     }
 
-    private boolean Alterar(Object o, int p_id) throws IOException, Exception {
+    private Object Alterar(Object o, int p_id) throws IOException, Exception {
         this.Excluir(p_id, true);
         this.Gravar(o, p_id);
-        return true;
+        return o;
     }
 
     private boolean Excluir(int p_id, boolean IsAlterar) throws Exception {
