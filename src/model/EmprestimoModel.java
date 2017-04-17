@@ -37,6 +37,12 @@ public class EmprestimoModel {
     }
 
     public boolean Excluir(Emprestimo p_emprestimo) {
+
+        p_emprestimo.getLivro().setSituacao(SituacaoLivro.Disponivel);
+        LivroModel mdlLivro = new LivroModel();
+        Livro _livro = p_emprestimo.getLivro();
+        _livro = mdlLivro.Alterar(_livro);
+        p_emprestimo.setLivro(_livro);
         return (boolean) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Excluir).get(0);
     }
 

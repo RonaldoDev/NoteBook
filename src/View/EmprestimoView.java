@@ -349,7 +349,7 @@ public class EmprestimoView extends javax.swing.JFrame {
         try {
             Emprestimo _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Consultar);
             JOptionPane.showMessageDialog(null, "Este empréstimo contem R$" + ctrlEmprestimo.devolveLivro(_e) + " de multa");
-            _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Excluir);
+            _e = ctrlEmprestimo.ExecutaEventoBotao(_e, acao.Excluir);
 
             if (_e == null) {
                 LimparCampos();

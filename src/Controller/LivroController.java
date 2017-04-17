@@ -43,7 +43,9 @@ public class LivroController {
                         _mdlLivro.Alterar(p_livro);
                         break;
                     case Excluir:
-                        _mdlLivro.Excluir(p_livro);
+                        if (!_mdlLivro.Excluir(p_livro)) {
+                            return null;
+                        }
                         break;
                     case Consultar:
                         return _mdlLivro.Consultar(p_livro);

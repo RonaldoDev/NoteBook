@@ -45,7 +45,10 @@ public class EmprestimoController {
                         _mdlEmprestimo.Alterar(p_emprestimo);
                         break;
                     case Excluir:
-                        _mdlEmprestimo.Excluir(p_emprestimo);
+                        if (_mdlEmprestimo.Excluir(p_emprestimo)) {
+                            return null;
+                        }
+
                         break;
                     case Consultar:
                         return _mdlEmprestimo.Consultar(p_emprestimo);
