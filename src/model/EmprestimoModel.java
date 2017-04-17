@@ -8,6 +8,7 @@ package model;
 import Entidades.Livro;
 import Entidades.Emprestimo;
 import Enumeradores.EventoBotao;
+import Enumeradores.SituacaoLivro;
 import Framework.Persistencia;
 import java.util.ArrayList;
 
@@ -21,11 +22,18 @@ public class EmprestimoModel {
 
     public Emprestimo Incluir(Emprestimo p_emprestimo) {
         p_emprestimo.setIdEmprestimo((int) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Incluir).get(0));
+        p_emprestimo.getLivro().setSituacao(SituacaoLivro.Emprestado);
+        LivroModel mdlLivro = new LivroModel();
+        Livro _livro = p_emprestimo.getLivro();
+        _livro = mdlLivro.Alterar(_livro);
+        p_emprestimo.setLivro(_livro);
         return p_emprestimo;
     }
 
     public Emprestimo Alterar(Emprestimo p_emprestimo) {
-        return (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
+        Emprestimo emp = (Emprestimo) db.ExecutaPersistencia(p_emprestimo, EventoBotao.Alterar).get(0);
+
+        return emp;
     }
 
     public boolean Excluir(Emprestimo p_emprestimo) {

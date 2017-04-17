@@ -74,6 +74,8 @@ public class LivroController {
             throw new Exception("Não pode incluir um registro sem código.");
         } else if (p_livro.getIdLivro() > 0 && evtBotao == EventoBotao.Incluir) {
             throw new Exception("Não pode consultar um registro sem código.");
+        } else if (p_livro.getSituacao().equals("Emprestado") && evtBotao == EventoBotao.Excluir) {
+            throw new Exception("Não pode excluir um livro emprestado.");
         }
         return true;
     }

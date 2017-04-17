@@ -349,7 +349,7 @@ public class EmprestimoView extends javax.swing.JFrame {
         try {
             Emprestimo _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Consultar);
             JOptionPane.showMessageDialog(null, "Este empréstimo contem R$" + ctrlEmprestimo.devolveLivro(_e) + " de multa");
-           // _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Excluir);
+            _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Excluir);
 
             if (_e == null) {
                 LimparCampos();
@@ -366,6 +366,8 @@ public class EmprestimoView extends javax.swing.JFrame {
             Emprestimo _e = new Emprestimo();
             _e.setIdEmprestimo(Integer.parseInt(!jTextFieldIdEmprestimo.getText().trim().equals("") ? jTextFieldIdEmprestimo.getText() : "0"));
             _e = ctrlEmprestimo.ExecutaEventoBotao(_e, acao.Consultar);
+            jTextFieldIdLivroEmprestimo.setText(String.valueOf(_e.getLivro().getIdLivro()));
+            jTextFieldIdUsuarioEmprestimo.setText(String.valueOf(_e.getUsuario().getIdUsuario()));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Algo deu errado");
             System.err.println(e.getMessage());

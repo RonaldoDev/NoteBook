@@ -20,8 +20,7 @@ import model.EmprestimoModel;
  * @author Rolando
  */
 public class EmprestimoController {
-    
-    
+
     EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
     Seguranca seg;
 
@@ -49,8 +48,7 @@ public class EmprestimoController {
                         _mdlEmprestimo.Excluir(p_emprestimo);
                         break;
                     case Consultar:
-                        Emprestimo _retornoEmprestimo = _mdlEmprestimo.Consultar(p_emprestimo);
-                        break;
+                        return _mdlEmprestimo.Consultar(p_emprestimo);
                 }
             }
         } catch (Exception e) {
@@ -80,17 +78,17 @@ public class EmprestimoController {
         }
         return true;
     }
-    
-    public int devolveLivro(Emprestimo p_emprestimo){
-        
+
+    public int devolveLivro(Emprestimo p_emprestimo) {
+
         int multa = 0;
         Calendar c = Calendar.getInstance();
-        Date _dAgora= c.getTime();
-        if(p_emprestimo.getDtDevolucao().before(_dAgora)){  
-           //calcula multa
-           multa = (int) ((_dAgora.getTime() - p_emprestimo.getDtDevolucao().getTime()) / (1000 * 60 * 60 * 24));
+        Date _dAgora = c.getTime();
+        if (p_emprestimo.getDtDevolucao().before(_dAgora)) {
+            //calcula multa
+            multa = (int) ((_dAgora.getTime() - p_emprestimo.getDtDevolucao().getTime()) / (1000 * 60 * 60 * 24));
         }
-        
+
         return multa;
     }
 }

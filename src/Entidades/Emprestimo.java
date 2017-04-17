@@ -17,6 +17,9 @@ import java.util.Date;
  */
 public class Emprestimo implements Serializable {
 
+    /**
+     * @param livro the livro to set
+     */
     private int idEmprestimo;
     private Livro livro;
     private Usuario usuario;
@@ -27,14 +30,14 @@ public class Emprestimo implements Serializable {
     public Emprestimo(int idEmprestimo, Livro livro, Usuario user) {
         this.idEmprestimo = idEmprestimo;
         this.livro = livro;
-        this.livro.setSituacao(SituacaoLivro.Emprestado);
+
         this.usuario = user;
         Calendar c = Calendar.getInstance();
         this.dtEmprestimo = c.getTime();
         c.add(Calendar.DATE, tempoEmprestimo);
         this.dtDevolucao = c.getTime();
     }
-    
+
     public Emprestimo() {
     }
 
@@ -54,6 +57,10 @@ public class Emprestimo implements Serializable {
      */
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     /**
