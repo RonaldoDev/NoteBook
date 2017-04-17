@@ -40,7 +40,7 @@ public class Seguranca {
         this.sessaoUsuario = sessaoUsuario;
     }
 
-    public boolean VerificaAcesso(EventoBotao p_evtBotao) {
+    public boolean VerificaAcesso(EventoBotao p_evtBotao) throws Exception {
         /**
          * try { if (1 == 2) { UsuarioModel mdlUsuario = new UsuarioModel();
          * Usuario _u = new Usuario(); ArrayList<Usuario> arrUsuario =
@@ -60,6 +60,9 @@ public class Seguranca {
                     case GERENTE:
                         break;
                     case FUNCIONARIO:
+                        if (sessaoUsuario.getTransacao().equals("EMPRESTIMO")) {
+                            throw new Exception("Você não tem permissão para realizar esta operação.");
+                        }
                         break;
                     case CLIENTE:
                         break;
@@ -80,6 +83,9 @@ public class Seguranca {
                     case GERENTE:
                         break;
                     case FUNCIONARIO:
+                        if (sessaoUsuario.getTransacao().equals("EMPRESTIMO") || sessaoUsuario.getTransacao().equals("USUARIO") || sessaoUsuario.getTransacao().equals("LIVRO")) {
+                            throw new Exception("Você não tem permissão para realizar esta operação.");
+                        }
                         break;
                     case CLIENTE:
                         break;

@@ -6,12 +6,13 @@
 package Entidades;
 
 import Enumeradores.SituacaoLivro;
+import java.io.Serializable;
 
 /**
  *
  * @author Rolando
  */
-public class Livro {
+public class Livro implements Serializable {
 
     private int idLivro;
     private String titulo;
@@ -30,14 +31,14 @@ public class Livro {
         //this.qtdeTotal = qtdeTotal;
         this.situacao = SituacaoLivro.Disponivel;
     }
-    
+
     public Livro(int p_IdLivro) {
         this.idLivro = p_IdLivro;
     }
-    
-     public Livro(){
-         
-     }
+
+    public Livro() {
+
+    }
 
     /**
      * @return the titulo
@@ -45,7 +46,7 @@ public class Livro {
     public String getNome() {
         return titulo;
     }
-    
+
     public void setNome(String titulo) {
         this.titulo = titulo;
     }
