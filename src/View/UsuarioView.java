@@ -326,7 +326,7 @@ public class UsuarioView extends javax.swing.JFrame {
                     _tipo = _tipo.CLIENTE;
                     break;
             }
-            Usuario user = new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText()), jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
+            Usuario user = new Usuario(Integer.parseInt(jTextFieldIdUsuario.getText().equals("") ? "0" : jTextFieldIdUsuario.getText()), jTextFieldNomeUsuario.getText(), jTextFieldEnderecoUsuario.getText(), jTextFieldCPFUsuario.getText(), jTextFieldDtNascUsuario.getText(), jTextFieldUserName.getText(), String.valueOf(jTextFieldSenha.getPassword()), _tipo);
             jTextFieldIdUsuario.setText(String.valueOf(ctrlUsuario.ExecutaEventoBotao(user, acao.Incluir).getIdUsuario()));
         } catch (Exception e) {
             lblMensagem.setText(e.getMessage());
