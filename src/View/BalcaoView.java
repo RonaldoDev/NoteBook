@@ -40,7 +40,7 @@ public class BalcaoView extends javax.swing.JFrame {
         JTableEmprestimos.setEnabled(false);
         JTableUsuario.setEnabled(false);
         sessao = p_sessao;
-        if(sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
+        if (sessao.getPerfilUsuario() == TipoUsuario.FUNCIONARIO) {
             //jMenuItemManUsuario.setVisible(false);
             jMenuItemManLivro.setVisible(false);
         }
@@ -164,8 +164,8 @@ public class BalcaoView extends javax.swing.JFrame {
             .addGroup(jPanelLivroLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabelLivro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
@@ -174,33 +174,33 @@ public class BalcaoView extends javax.swing.JFrame {
 
         JTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "CPF", "Usuario", "Tipo"
+                "ID", "Nome", "CPF", "Usuario", "Tipo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -323,7 +323,7 @@ public class BalcaoView extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(jPanelLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(9, Short.MAX_VALUE)))
+                    .addContainerGap(13, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(21, 21, 21)
@@ -448,9 +448,10 @@ public class BalcaoView extends javax.swing.JFrame {
         System.out.println(lstUsuario.size());
         for (int i = 0; i < lstUsuario.size(); i++) {
             JTableUsuario.setValueAt(lstUsuario.get(i).getIdUsuario(), i, 0);
-            JTableUsuario.setValueAt(lstUsuario.get(i).getCpf(), i, 1);
-            JTableUsuario.setValueAt(lstUsuario.get(i).getUsuario(), i, 2);
-            JTableUsuario.setValueAt(lstUsuario.get(i).getTipoUsuario(), i, 3);
+            JTableUsuario.setValueAt(lstUsuario.get(i).getNome(), i, 1);
+            JTableUsuario.setValueAt(lstUsuario.get(i).getCpf(), i, 2);
+            JTableUsuario.setValueAt(lstUsuario.get(i).getUsuario(), i, 3);
+            JTableUsuario.setValueAt(lstUsuario.get(i).getTipoUsuario(), i, 4);
         }
     }
 

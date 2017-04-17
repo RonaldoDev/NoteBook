@@ -49,7 +49,6 @@ public class LivroView extends javax.swing.JFrame {
         jButtonLimpaTela = new javax.swing.JButton();
         jButtonAdd = new javax.swing.JButton();
         jButtonRmv = new javax.swing.JButton();
-        jButtonEdt = new javax.swing.JButton();
         jButtonCons = new javax.swing.JButton();
         jLabelLivro = new javax.swing.JLabel();
         lblMensagem1 = new javax.swing.JLabel();
@@ -151,13 +150,6 @@ public class LivroView extends javax.swing.JFrame {
             }
         });
 
-        jButtonEdt.setLabel("Alterar");
-        jButtonEdt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEdtActionPerformed(evt);
-            }
-        });
-
         jButtonCons.setText("Consultar");
         jButtonCons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,15 +171,14 @@ public class LivroView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(73, 73, 73)
                             .addComponent(jButtonAdd)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonCons)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonCancel)
                             .addGap(4, 4, 4))
@@ -211,7 +202,6 @@ public class LivroView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonCons, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -246,7 +236,7 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLimpaTelaActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        try{   
+        try {
             Livro livro = new Livro(Integer.parseInt(jTextFieldIdLivro.getText().equals("") ? "0" : jTextFieldIdLivro.getText()), jTextFieldTituloLivro.getText(), jTextFieldAutorLivro.getText());
             jTextFieldIdLivro.setText(String.valueOf(ctrlLivro.ExecutaEventoBotao(livro, acao.Incluir).getIdLivro()));
         } catch (Exception e) {
@@ -255,7 +245,7 @@ public class LivroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-   
+
         try {
             jLabelLivro.setText("Remover Livro");
             Livro _l = ctrlLivro.ExecutaEventoBotao(new Livro(Integer.parseInt(jTextFieldIdLivro.getText())), acao.Excluir);
@@ -269,13 +259,9 @@ public class LivroView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
-    private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
-        jLabelLivro.setText("Editar Livro");
-    }//GEN-LAST:event_jButtonEdtActionPerformed
-
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
-        
-         try {
+
+        try {
             jLabelLivro.setText("Consultar Livro");
             Livro livro = new Livro();
 
@@ -284,7 +270,7 @@ public class LivroView extends javax.swing.JFrame {
             livro = ctrlLivro.ExecutaEventoBotao(livro, acao.Consultar);
             jTextFieldTituloLivro.setText(livro.getNome());
             jTextFieldAutorLivro.setText(livro.getAutor());
-            
+
         } catch (Exception e) {
             lblMensagem.setText(e.getMessage());
         }
@@ -294,7 +280,6 @@ public class LivroView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonCons;
-    private javax.swing.JButton jButtonEdt;
     private javax.swing.JButton jButtonLimpaTela;
     private javax.swing.JButton jButtonRmv;
     private javax.swing.JLabel jLabel2;

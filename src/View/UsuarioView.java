@@ -32,12 +32,11 @@ public class UsuarioView extends javax.swing.JFrame {
         this.setLocation(300, 100);
         initComponents();
         ctrlUsuario = new UsuarioController(p_sessao);
-         if(p_sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
-             jComboBoxTipoUsuario.setSelectedIndex(2);
-             jComboBoxTipoUsuario.setEnabled(false);
-             jButtonEdt.setEnabled(false);
-             jButtonRmv.setEnabled(false);
-         }
+        if (p_sessao.getPerfilUsuario() == TipoUsuario.FUNCIONARIO) {
+            jComboBoxTipoUsuario.setSelectedIndex(2);
+            jComboBoxTipoUsuario.setEnabled(false);
+            jButtonRmv.setEnabled(false);
+        }
 
     }
 
@@ -65,7 +64,6 @@ public class UsuarioView extends javax.swing.JFrame {
         jButtonLimpaTela = new javax.swing.JButton();
         jButtonAdd = new javax.swing.JButton();
         jButtonRmv = new javax.swing.JButton();
-        jButtonEdt = new javax.swing.JButton();
         jButtonCons = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -238,13 +236,6 @@ public class UsuarioView extends javax.swing.JFrame {
             }
         });
 
-        jButtonEdt.setLabel("Alterar");
-        jButtonEdt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEdtActionPerformed(evt);
-            }
-        });
-
         jButtonCons.setText("Consultar");
         jButtonCons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,20 +253,18 @@ public class UsuarioView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButtonAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCons)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonCons)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonCancel)
                                 .addGap(4, 4, 4))
@@ -301,7 +290,6 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonCons, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonLimpaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -378,11 +366,6 @@ public class UsuarioView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonConsActionPerformed
 
-    private void jButtonEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdtActionPerformed
-        jLabelUsuario.setText("Editar Usuario");
-
-    }//GEN-LAST:event_jButtonEdtActionPerformed
-
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
@@ -442,7 +425,6 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonCons;
-    private javax.swing.JButton jButtonEdt;
     private javax.swing.JButton jButtonLimpaTela;
     private javax.swing.JButton jButtonRmv;
     private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
