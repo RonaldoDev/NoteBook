@@ -32,6 +32,10 @@ public class UsuarioView extends javax.swing.JFrame {
         this.setLocation(300, 100);
         initComponents();
         ctrlUsuario = new UsuarioController(p_sessao);
+         if(p_sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
+             jComboBoxTipoUsuario.setSelectedIndex(2);
+             jComboBoxTipoUsuario.setEnabled(false);
+         }
 
     }
 
@@ -48,7 +52,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jTextFieldCPFUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldDtNascUsuario = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxTipoUsuario = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         jTextFieldUserName = new javax.swing.JTextField();
         jLabelUser = new javax.swing.JLabel();
@@ -108,10 +112,10 @@ public class UsuarioView extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Gerente", "Cliente"}));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Gerente", "Cliente"}));
+        jComboBoxTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jComboBoxTipoUsuarioActionPerformed(evt);
             }
         });
 
@@ -171,7 +175,7 @@ public class UsuarioView extends javax.swing.JFrame {
                             .addComponent(jTextFieldCPFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldSenha)
-                                .addComponent(jComboBox2, 0, 351, Short.MAX_VALUE)
+                                .addComponent(jComboBoxTipoUsuario, 0, 351, Short.MAX_VALUE)
                                 .addComponent(jTextFieldUserName)))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -198,7 +202,7 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -317,7 +321,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         try {
             TipoUsuario _tipo = null;
-            switch (jComboBox2.getSelectedIndex()) {
+            switch (jComboBoxTipoUsuario.getSelectedIndex()) {
                 case 0:
                     _tipo = _tipo.FUNCIONARIO;
                     break;
@@ -389,9 +393,9 @@ public class UsuarioView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jComboBoxTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoUsuarioActionPerformed
         // TODO add your handling code here:
-        switch (jComboBox2.getSelectedIndex()) {
+        switch (jComboBoxTipoUsuario.getSelectedIndex()) {
 
             case 0:
             case 1:
@@ -410,7 +414,7 @@ public class UsuarioView extends javax.swing.JFrame {
                 jLabelSenha.setVisible(false);
                 break;
         }
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jComboBoxTipoUsuarioActionPerformed
 
     private void jTextFieldDtNascUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDtNascUsuarioActionPerformed
         // TODO add your handling code here:
@@ -439,7 +443,7 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEdt;
     private javax.swing.JButton jButtonLimpaTela;
     private javax.swing.JButton jButtonRmv;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;

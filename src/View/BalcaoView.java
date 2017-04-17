@@ -41,7 +41,7 @@ public class BalcaoView extends javax.swing.JFrame {
         JTableUsuario.setEnabled(false);
         sessao = p_sessao;
         if(sessao.getPerfilUsuario()== TipoUsuario.FUNCIONARIO){
-            jMenuItemManUsuario.setVisible(false);
+            //jMenuItemManUsuario.setVisible(false);
             jMenuItemManLivro.setVisible(false);
         }
 
