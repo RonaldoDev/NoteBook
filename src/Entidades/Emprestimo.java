@@ -20,6 +20,7 @@ private Livro livro;
 private Usuario usuario;
 private Date dtEmprestimo;
 private Date dtDevolucao;
+private static int tempoEmprestimo = 14;
 
 public Emprestimo(Livro livro, Usuario user){
     this.idEmprestimo = 0;
@@ -28,7 +29,7 @@ public Emprestimo(Livro livro, Usuario user){
     this.usuario = user;
     Calendar c = Calendar.getInstance();
     this.dtEmprestimo = c.getTime();
-    c.add(Calendar.DATE, 14);
+    c.add(Calendar.DATE, tempoEmprestimo);
     this.dtDevolucao = c.getTime();
 }
 
@@ -93,5 +94,12 @@ public int getIdEmprestimo() {
 public void setIdEmprestimo(int idEmprestimo) {
     this.idEmprestimo = idEmprestimo;
 }
+
+    /**
+     * @return the tempoEmprestimo
+     */
+    public static int getTempoEmprestimo() {
+        return tempoEmprestimo;
+    }
 
 }

@@ -52,8 +52,8 @@ public class EmprestimoView extends javax.swing.JFrame {
         jTextFieldLivroEmprestimo = new javax.swing.JTextField();
         jTextFieldIdEmprestimo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
+        JButtonAjudaLivro = new java.awt.Button();
+        JButtonAjudaUsuario = new java.awt.Button();
         lblMensagem = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
@@ -112,17 +112,17 @@ public class EmprestimoView extends javax.swing.JFrame {
 
         jLabel8.setText("Código");
 
-        button1.setLabel("?");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        JButtonAjudaLivro.setLabel("?");
+        JButtonAjudaLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                JButtonAjudaLivroActionPerformed(evt);
             }
         });
 
-        button2.setLabel("?");
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        JButtonAjudaUsuario.setLabel("?");
+        JButtonAjudaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
+                JButtonAjudaUsuarioActionPerformed(evt);
             }
         });
 
@@ -188,8 +188,8 @@ public class EmprestimoView extends javax.swing.JFrame {
                                         .addComponent(jTextFieldLivroEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(1, 1, 1)
                                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(JButtonAjudaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JButtonAjudaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanelCamposLayout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -209,21 +209,19 @@ public class EmprestimoView extends javax.swing.JFrame {
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldLivroEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JButtonAjudaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldUsuarioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3))
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JButtonAjudaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblMensagem)
                 .addGap(26, 26, 26))
         );
-
-        button2.getAccessibleContext().setAccessibleName("?");
 
         jButtonLimpaTela.setLabel("Limpar Tela");
         jButtonLimpaTela.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +237,7 @@ public class EmprestimoView extends javax.swing.JFrame {
             }
         });
 
-        jButtonRmv.setText("Remover");
+        jButtonRmv.setText("Devolver");
         jButtonRmv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRmvActionPerformed(evt);
@@ -287,7 +285,7 @@ public class EmprestimoView extends javax.swing.JFrame {
                         .addGap(124, 124, 124)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -327,7 +325,7 @@ public class EmprestimoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
-        jLabelLivro.setText("Remover Emprestimo");
+        jLabelLivro.setText("Devolver Livro");
 
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
@@ -337,36 +335,45 @@ public class EmprestimoView extends javax.swing.JFrame {
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelLivro.setText("Consultar Emprestimo");
-        Emprestimo emp = new Emprestimo();
 
     }//GEN-LAST:event_jButtonConsActionPerformed
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+    private void JButtonAjudaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAjudaUsuarioActionPerformed
         Usuario _user = new Usuario();
+        try {
+            ArrayList<Usuario> lstUsuario = new ArrayList<>(ctrlUsuario.Listar().stream().filter((Usuario u) -> !u.getDeLivro().equals(SituacaoLivro.Disponivel)).map(m -> m).collect(Collectors.toList()));
+            System.out.println(lstUsuario.size());
 
-        ArrayList<Usuario> lstUsuario = new ArrayList<>(ctrlUsuario.Listar().stream().filter((Usuario u) -> !u.getDeLivro().equals(SituacaoLivro.Disponivel)).map(m -> m).collect(Collectors.toList()));
-        System.out.println(lstUsuario.size());
-
-        for (int i = 0; i < lstUsuario.size(); i++) {
-            jTableLista.setValueAt(lstUsuario.get(i).getNome(), i, 0);
-            jTableLista.setValueAt(lstUsuario.get(i).getCpf(), i, 1);
-            jTableLista.setValueAt(lstUsuario.get(i).getUsuario(), i, 2);
+            for (int i = 0; i < lstUsuario.size(); i++) {
+                jTableLista.setValueAt(lstUsuario.get(i).getNome(), i, 0);
+                jTableLista.setValueAt(lstUsuario.get(i).getCpf(), i, 1);
+                jTableLista.setValueAt(lstUsuario.get(i).getUsuario(), i, 2);
+            }
+        } catch (Exception e){
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Algo deu Errado");
         }
-    }//GEN-LAST:event_button2ActionPerformed
+    }//GEN-LAST:event_JButtonAjudaUsuarioActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        ArrayList<Livro> lstLivro = ctrlLivro.Listar();
-        jTableLista.removeColumnSelectionInterval(0, 3);
-        // lstLivro.add(new Livro("teste", "teste", "teste"));
-        System.out.println(lstLivro.size());
-        jTableLista.addColumnSelectionInterval(0, 3);
-        for (int i = 0; i < lstLivro.size(); i++) {
+    private void JButtonAjudaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAjudaLivroActionPerformed
+         
+        try {
+            ArrayList<Livro> lstLivro = ctrlLivro.Listar();
+            jTableLista.removeColumnSelectionInterval(0, 3);
+            // lstLivro.add(new Livro("teste", "teste", "teste"));
+            System.out.println(lstLivro.size());
+            jTableLista.addColumnSelectionInterval(0, 3);
+            for (int i = 0; i < lstLivro.size(); i++) {
 
-            jTableLista.setValueAt(lstLivro.get(i).getNome(), i, 0);
-            jTableLista.setValueAt(lstLivro.get(i).getAutor(), i, 1);
-            jTableLista.setValueAt(lstLivro.get(i).getSituacao(), i, 2);
+                jTableLista.setValueAt(lstLivro.get(i).getNome(), i, 0);
+                jTableLista.setValueAt(lstLivro.get(i).getAutor(), i, 1);
+                jTableLista.setValueAt(lstLivro.get(i).getSituacao(), i, 2);
+            }
+        } catch (Exception e){
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Algo deu Errado");
         }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_JButtonAjudaLivroActionPerformed
 
     private void jTextFieldIdEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdEmprestimoActionPerformed
         // TODO add your handling code here:
@@ -381,8 +388,8 @@ public class EmprestimoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsuarioEmprestimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
+    private java.awt.Button JButtonAjudaLivro;
+    private java.awt.Button JButtonAjudaUsuario;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonCons;

@@ -11,6 +11,8 @@ import Entidades.Sessao;
 import Enumeradores.EventoBotao;
 import Framework.Seguranca;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import model.EmprestimoModel;
 
 /**
@@ -18,7 +20,8 @@ import model.EmprestimoModel;
  * @author Rolando
  */
 public class EmprestimoController {
-
+    
+    
     EmprestimoModel _mdlEmprestimo = new EmprestimoModel();
     Seguranca seg;
 
@@ -76,5 +79,18 @@ public class EmprestimoController {
             throw new Exception("Não pode consultar um registro sem código.");
         }
         return true;
+    }
+    
+    public int devolveLivro(Emprestimo p_emprestimo){
+        
+        int multa = 0;
+        Calendar c = Calendar.getInstance();
+        Date _dAgora= c.getTime();
+        if(p_emprestimo.getDtDevolucao().before(_dAgora)){  
+           //calcula multa
+           multa = (int) ((_dAgora.getTime() - p_emprestimo.getDtDevolucao().getTime()) / (1000 * 60 * 60 * 24));
+        }
+        
+        return multa;
     }
 }

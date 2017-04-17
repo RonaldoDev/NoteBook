@@ -16,9 +16,9 @@ public class Livro {
     private int idLivro;
     private String titulo;
     private String autor;
-    private String edicao;
-    private int qtdeTotal;
-    private int qtdeDisponivel;
+    //private String edicao;
+    //private int qtdeTotal;
+    //private int qtdeDisponivel;
     private SituacaoLivro situacao;
 
     public Livro(int p_IdLivro, String p_titulo, String p_autor) {
@@ -55,41 +55,6 @@ public class Livro {
      */
     public String getAutor() {
         return autor;
-    }
-
-    /**
-     * @return the edicao
-     */
-    public String getEdicao() {
-        return edicao;
-    }
-
-    /**
-     * @return the qtdeTotal
-     */
-    public int getQtdeTotal() {
-        return qtdeTotal;
-    }
-
-    /**
-     * @param qtdeTotal the qtdeTotal to set
-     */
-    public void setQtdeTotal(int qtdeTotal) {
-        this.qtdeTotal = qtdeTotal;
-    }
-
-    /**
-     * @return the qtdeDisponivel
-     */
-    public int getQtdeDisponivel() {
-        return qtdeDisponivel;
-    }
-
-    /**
-     * @param qtdeDisponivel the qtdeDisponivel to set
-     */
-    public void setQtdeDisponivel(int qtdeDisponivel) {
-        this.qtdeDisponivel = qtdeDisponivel;
     }
 
     /**

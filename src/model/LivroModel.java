@@ -9,6 +9,9 @@ import Entidades.Livro;
 import Enumeradores.EventoBotao;
 import Framework.Persistencia;
 import java.awt.List;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
@@ -32,14 +35,13 @@ public class LivroModel {
     {
         return (boolean)db.ExecutaPersistencia(p_livro, EventoBotao.Excluir).get(0);
     }
-    public Livro Consultar(Livro p_livro)
-    {
-        return (Livro)db.ExecutaPersistencia(p_livro, EventoBotao.Alterar).get(0);
+    public Livro Consultar(Livro p_livro) {
+        return (Livro) db.ExecutaPersistencia(p_livro, EventoBotao.Consultar).get(0);
     }
 
-    public ArrayList<Livro> Listar()
+    public ArrayList<Livro> Listar()throws IOException, FileNotFoundException, ClassNotFoundException
     {
-        ArrayList<Object> arrLivroGenerico = db.ExecutaPersistencia(0, EventoBotao.Listar);
+        ArrayList<Object> arrLivroGenerico = db.ExecutaPersistencia(new Livro(), EventoBotao.Listar);
         ArrayList<Livro> arrLivro = new ArrayList<>();
         for (Object livro : arrLivroGenerico) {
             arrLivro.add((Livro)livro);
