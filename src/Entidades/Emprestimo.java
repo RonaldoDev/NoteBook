@@ -24,8 +24,8 @@ public class Emprestimo implements Serializable {
     private Date dtDevolucao;
     private static int tempoEmprestimo = 14;
 
-    public Emprestimo(Livro livro, Usuario user) {
-        this.idEmprestimo = 0;
+    public Emprestimo(int idEmprestimo, Livro livro, Usuario user) {
+        this.idEmprestimo = idEmprestimo;
         this.livro = livro;
         this.livro.setSituacao(SituacaoLivro.Emprestado);
         this.usuario = user;
@@ -34,9 +34,12 @@ public class Emprestimo implements Serializable {
         c.add(Calendar.DATE, tempoEmprestimo);
         this.dtDevolucao = c.getTime();
     }
-
+    
     public Emprestimo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Emprestimo(int idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
     }
 
     /**
