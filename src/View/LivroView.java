@@ -240,7 +240,7 @@ public class LivroView extends javax.swing.JFrame {
             Livro livro = new Livro(Integer.parseInt(jTextFieldIdLivro.getText().equals("") ? "0" : jTextFieldIdLivro.getText()), jTextFieldTituloLivro.getText(), jTextFieldAutorLivro.getText());
             jTextFieldIdLivro.setText(String.valueOf(ctrlLivro.ExecutaEventoBotao(livro, acao.Incluir).getIdLivro()));
         } catch (Exception e) {
-            lblMensagem.setText(e.getMessage());
+            lblMensagem1.setText(e.getMessage());
         }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
@@ -251,11 +251,11 @@ public class LivroView extends javax.swing.JFrame {
             Livro _l = ctrlLivro.ExecutaEventoBotao(new Livro(Integer.parseInt(jTextFieldIdLivro.getText())), acao.Excluir);
             if (_l == null) {
                 LimparCampos();
-                lblMensagem.setText("Exclusão com sucesso!");
+                lblMensagem1.setText("Exclusão com sucesso!");
 
             }
         } catch (Exception e) {
-            lblMensagem.setText(e.getMessage());
+            lblMensagem1.setText(e.getMessage());
         }
     }//GEN-LAST:event_jButtonRmvActionPerformed
 
@@ -272,7 +272,7 @@ public class LivroView extends javax.swing.JFrame {
             jTextFieldAutorLivro.setText(livro.getAutor());
 
         } catch (Exception e) {
-            lblMensagem.setText(e.getMessage());
+            lblMensagem1.setText(e.getMessage());
         }
     }//GEN-LAST:event_jButtonConsActionPerformed
 

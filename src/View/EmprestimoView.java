@@ -384,7 +384,7 @@ public class EmprestimoView extends javax.swing.JFrame {
             // lstLivro.add(new Livro("teste", "teste", "teste"));
             System.out.println(lstUsuario.size());
             jTableLista.addColumnSelectionInterval(0, 2);
-
+            System.out.println(jTableLista.getRowCount());
             for (int i = 0; i < lstUsuario.size(); i++) {
                 jTableLista.setValueAt(lstUsuario.get(i).getIdUsuario(), i, 0);
                 jTableLista.setValueAt(lstUsuario.get(i).getNome(), i, 1);

@@ -31,8 +31,8 @@ public class LivroController {
         seg = new Seguranca(p_sessao);
     }
 
-    public Livro ExecutaEventoBotao(Livro p_livro, EventoBotao evtBotao) {
-        try {
+    public Livro ExecutaEventoBotao(Livro p_livro, EventoBotao evtBotao) throws Exception {
+        
             if (seg.VerificaAcesso(evtBotao) && ValidaRegrasNegocio(p_livro, evtBotao)) {
                 //LivroModel _mdlLivro = new LivroModel();
                 switch (evtBotao) {
@@ -50,9 +50,7 @@ public class LivroController {
 
                 }
             }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        
         return p_livro;
     }
 

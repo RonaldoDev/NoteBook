@@ -87,17 +87,17 @@ public class BalcaoView extends javax.swing.JFrame {
 
         JTableEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Livro", "Usuario", "Data Empréstimo", "Data Devolução"
+                "Livro", "Usuario", "Data Empréstimo", "Data Devolução", "ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -445,6 +445,7 @@ public class BalcaoView extends javax.swing.JFrame {
         Usuario _user = new Usuario();
         ArrayList<Usuario> lstUsuario = ctrlUsuario.Listar();
         //lstUsuario.add(_user);
+        
         System.out.println(lstUsuario.size());
         for (int i = 0; i < lstUsuario.size(); i++) {
             JTableUsuario.setValueAt(lstUsuario.get(i).getIdUsuario(), i, 0);
@@ -458,6 +459,7 @@ public class BalcaoView extends javax.swing.JFrame {
     private void preencheTabelaLivro() {
         ArrayList<Livro> lstLivro = ctrlLivro.Listar();
         // lstLivro.add(new Livro("teste", "teste", "teste"));
+
         System.out.println(lstLivro.size());
         for (int i = 0; i < lstLivro.size(); i++) {
             JTableLivro.setValueAt(lstLivro.get(i).getIdLivro(), i, 0);
@@ -471,11 +473,13 @@ public class BalcaoView extends javax.swing.JFrame {
         ArrayList<Emprestimo> lstEmprestimo = ctrlEmprestimo.Listar();
         //lstEmprestimo.add(new Emprestimo(new Livro("t", null, null), new Usuario("daniel", null, null, null, null, null, TipoUsuario.FUNCIONARIO)));
         System.out.println(lstEmprestimo.size());
+
         for (int i = 0; i < lstEmprestimo.size(); i++) {
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getLivro().getNome(), i, 0);
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getUsuario().getNome(), i, 1);
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtEmprestimoString(), i, 2);
             JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getDtDevolucaoString(), i, 3);
+            JTableEmprestimos.setValueAt(lstEmprestimo.get(i).getIdEmprestimo(), i, 4);
         }
     }
 
