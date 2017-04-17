@@ -46,8 +46,8 @@ public class LivroController {
                         _mdlLivro.Excluir(p_livro);
                         break;
                     case Consultar:
-                        Livro _retornoLivro = _mdlLivro.Consultar(p_livro);
-                        break;
+                        return _mdlLivro.Consultar(p_livro);
+
                 }
             }
         } catch (Exception e) {

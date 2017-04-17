@@ -25,9 +25,9 @@ import javax.swing.JOptionPane;
  */
 public class EmprestimoView extends javax.swing.JFrame {
 
-    EmprestimoController ctrlEmprestimo = new EmprestimoController();
-    LivroController ctrlLivro = new LivroController();
-    UsuarioController ctrlUsuario = new UsuarioController();
+    EmprestimoController ctrlEmprestimo;
+    LivroController ctrlLivro;
+    UsuarioController ctrlUsuario;
     Sessao sessao;
     private EventoBotao acao;
 
@@ -38,6 +38,9 @@ public class EmprestimoView extends javax.swing.JFrame {
         this.setLocation(300, 100);
         initComponents();
         sessao = p_sessao;
+        ctrlEmprestimo = new EmprestimoController(p_sessao);
+        ctrlLivro = new LivroController(p_sessao);
+        ctrlUsuario = new UsuarioController(p_sessao);
     }
 
     @SuppressWarnings("unchecked")
@@ -307,45 +310,45 @@ public class EmprestimoView extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         Usuario user = new Usuario();
         Livro livro = new Livro();
-        
-        try{
+
+        try {
             user = new Usuario(Integer.parseInt(!jTextFieldIdUsuarioEmprestimo.getText().trim().equals("") ? jTextFieldIdUsuarioEmprestimo.getText() : "0"));
             //user.setIdUsuario(1);
             user = ctrlUsuario.ExecutaEventoBotao(user, acao.Consultar);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar Usuario");
             System.err.println(e);
-            System.err.println(e.getLocalizedMessage());    
+            System.err.println(e.getLocalizedMessage());
         }
-        try{
+        try {
             livro = new Livro(Integer.parseInt(jTextFieldIdUsuarioEmprestimo.getText().equals("") ? "0" : jTextFieldIdUsuarioEmprestimo.getText()));
             livro = ctrlLivro.ExecutaEventoBotao(livro, acao.Consultar);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar Livro");
             System.err.println(e);
             System.err.println(e.getLocalizedMessage());
-            
+
         }
-        try{
-            if(livro != null && user != null){
+        try {
+            if (livro != null && user != null) {
                 Emprestimo emp = new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText().equals("") ? "0" : jTextFieldIdEmprestimo.getText()), livro, user);
-                jTextFieldIdEmprestimo.setText(String.valueOf(ctrlEmprestimo.ExecutaEventoBotao(emp, acao.Incluir).getIdEmprestimo()));      
-            }else {
+                jTextFieldIdEmprestimo.setText(String.valueOf(ctrlEmprestimo.ExecutaEventoBotao(emp, acao.Incluir).getIdEmprestimo()));
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou livro não encontrados");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar emprestimo");
             System.err.println(e);
             System.err.println(e.getLocalizedMessage());
-            
+
         }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonRmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRmvActionPerformed
         jLabelLivro.setText("Devolver Livro");
-         try {
+        try {
             Emprestimo _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Consultar);
-            JOptionPane.showMessageDialog(null, "Este empréstimo contem R$"+ ctrlEmprestimo.devolveLivro(_e)+ " de multa");
+            JOptionPane.showMessageDialog(null, "Este empréstimo contem R$" + ctrlEmprestimo.devolveLivro(_e) + " de multa");
             _e = ctrlEmprestimo.ExecutaEventoBotao(new Emprestimo(Integer.parseInt(jTextFieldIdEmprestimo.getText())), acao.Excluir);
 
             if (_e == null) {
@@ -359,15 +362,14 @@ public class EmprestimoView extends javax.swing.JFrame {
 
     private void jButtonConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsActionPerformed
         jLabelLivro.setText("Consultar Emprestimo");
-        try{
+        try {
             Emprestimo _e = new Emprestimo();
             _e.setIdEmprestimo(Integer.parseInt(!jTextFieldIdEmprestimo.getText().trim().equals("") ? jTextFieldIdEmprestimo.getText() : "0"));
             _e = ctrlEmprestimo.ExecutaEventoBotao(_e, acao.Consultar);
-         } catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Algo deu errado");
             System.err.println(e.getMessage());
         }
-           
 
     }//GEN-LAST:event_jButtonConsActionPerformed
 
@@ -380,19 +382,19 @@ public class EmprestimoView extends javax.swing.JFrame {
             // lstLivro.add(new Livro("teste", "teste", "teste"));
             System.out.println(lstUsuario.size());
             jTableLista.addColumnSelectionInterval(0, 2);
-            
+
             for (int i = 0; i < lstUsuario.size(); i++) {
                 jTableLista.setValueAt(lstUsuario.get(i).getIdUsuario(), i, 0);
                 jTableLista.setValueAt(lstUsuario.get(i).getNome(), i, 1);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Algo deu Errado");
         }
     }//GEN-LAST:event_JButtonAjudaUsuarioActionPerformed
 
     private void JButtonAjudaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAjudaLivroActionPerformed
-         
+
         try {
             ArrayList<Livro> lstLivro = ctrlLivro.Listar();
             jTableLista.removeColumnSelectionInterval(0, 2);
@@ -405,7 +407,7 @@ public class EmprestimoView extends javax.swing.JFrame {
                 jTableLista.setValueAt(lstLivro.get(i).getNome(), i, 1);
                 jTableLista.setValueAt(lstLivro.get(i).getSituacao(), i, 2);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Algo deu Errado");
         }

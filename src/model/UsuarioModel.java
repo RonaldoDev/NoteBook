@@ -40,7 +40,7 @@ public class UsuarioModel {
         if (IsLogin) {
             return (Usuario) db.RetornaSelecionado(p_usuario, true);
         }
-        if (!p_usuario.getNome().equals("") && p_usuario.getIdUsuario() > 0) {
+        if (p_usuario.getNome() != null && p_usuario.getIdUsuario() > 0) {
             return (Usuario) db.RetornaSelecionado(p_usuario, false);
         } else {
             return (Usuario) db.ExecutaPersistencia(p_usuario, EventoBotao.Consultar).get(0);
